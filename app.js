@@ -1,7 +1,7 @@
 Ext.application({
     name: 'StudentApp',
     views: ['Main','Maps', "Login", "Labstats", "Search", "Blog", "personalBlog"],
-    controllers:["Main", "Blog", "Labstats"],
+    controllers:["Main", "Blog", "Labstats", "Login"],
     models: ["Labstats"],
     stores: ["Labstats"],
 

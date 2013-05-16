@@ -1,3 +1,9 @@
+// The following two lines import the default Sencha Touch theme. If you are building
+// a new theme, remove them and the add your own CSS on top of the base CSS (which
+// is already included in your app.json file).
+@import 'sencha-touch/base';
+@import 'sencha-touch/base/all';
+
 // Custom code goes here..
 
 // Examples of using the icon mixin:
@@ -5,9 +11,3 @@
 
 @import "variables";
 @import "components/home";
-
-// The following two lines import the default Sencha Touch theme. If you are building
-// a new theme, remove them and the add your own CSS on top of the base CSS (which
-// is already included in your app.json file).
-@import 'sencha-touch/base';
-@import 'sencha-touch/base/all';

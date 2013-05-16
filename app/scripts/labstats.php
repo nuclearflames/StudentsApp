@@ -158,7 +158,7 @@ foreach ($pcData as $oLab) {
                 $oTmpLab->available = 0;
             } else {
                 $oTmpLab->inUse = (int) $oLab->inUseCount;
-                $oTmpLab->available = (int) ($oLab->availableCount)+($oLab->offCount);
+                $oTmpLab->available = (int) $oLab->availableCount;
             }
             $oTmpLab->offline = (int) $oLab->offCount;
             //Include even switched off pc's as available
