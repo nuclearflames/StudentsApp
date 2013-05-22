@@ -5,8 +5,7 @@ Ext.define("StudentApp.store.Labstats", {
 		type: "ajax",
 		url: "app/scripts/labstats.php?",
 		reader: {
-			type: "json",
-			params: "cass-rooms"
+			type: "json"
 		}
 	},
 	autoLoad: true

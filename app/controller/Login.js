@@ -6,7 +6,10 @@ Ext.define("StudentApp.controller.Login", {
 		},
 		control: {
 			"#logInButton": {
-				tap: "loginLogic"
+				tap: "loginButton"
+			},
+			"#registerButton": {
+				tap: "registerButton"
 			}
 		}
 	},
@@ -16,15 +19,13 @@ Ext.define("StudentApp.controller.Login", {
 	slideRightTransition: {
 		type: 'slide', direction: 'right'
 	},
-	loginLogic: function () {
+	loginButton: function () {
 		var username = Ext.getCmp("usernameTextField").getValue(),
 			password = Ext.getCmp("passwordTextField").getValue(),
-			jsonPost = {"user": username, "password": password},
+			jsonPost = {"username": username, "password": password},
 			label = Ext.getCmp("signInFailedLabel");
 
 		label.hide();
-
-		console.log(jsonPost);
 
 		Ext.Ajax.request({
 			url: "app/scripts/login.php",
@@ -32,10 +33,20 @@ Ext.define("StudentApp.controller.Login", {
 			params: jsonPost,
 			success: function(response) {
 				console.log("successfull password send");
+				Ext.Viewport.animateActiveItem("mainview", this.slideLeftTransition);
 			},
 			failure: function(response) {
 				console.log("fail password");
+				label.show();
 			}
 		});
-	}
+	},
+	registerButton: function () {
+		Ext.Viewport.animateActiveItem("registerview", this.slideLeftTransition);
+	},
+	launch: function() {
+        // Destroy the #appLoadingIndicator element
+        Ext.fly('appLoadingIndicator').destroy();
+        Ext.Viewport.add(Ext.create('StudentApp.view.Login'));
+    }
 });

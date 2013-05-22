@@ -3,13 +3,10 @@
 body {
 	background-color: $background;
 }
-#appLoadingIndicator {
-	display: none;
-}
 .x-panel {
 	margin: 10px;
 	.x-inner {
 		padding: 5px;
-		background-color: $panels;
+		//background-color: $panels;
 	}
 }

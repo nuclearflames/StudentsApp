@@ -3,13 +3,10 @@ Ext.define("StudentApp.controller.Main", {
 	config: {
 		control: {
 			"#home": {
-				tap: "backHistory"
+				tap: "homeBtnAction"
 			},
 			"#mapBtn": {
 				tap: "mapsBtnAction"
-			},
-			"#loginBtn": {
-				tap: "loginBtnAction"
 			},
 			"#labstatsBtn": {
 				tap: "labstatsBtnAction"
@@ -22,11 +19,6 @@ Ext.define("StudentApp.controller.Main", {
 			}
 		}
 	},
-	launch: function() {
-        // Destroy the #appLoadingIndicator element
-        Ext.fly('appLoadingIndicator').destroy();
-        Ext.Viewport.add(Ext.create('StudentApp.view.Main'));
-    },
     slideLeftTransition: {
         type: 'slide', direction: 'left'
     },
@@ -35,11 +27,6 @@ Ext.define("StudentApp.controller.Main", {
     },
     mapsBtnAction: function() {
         Ext.Viewport.setActiveItem("mapsview");
-        //Ext.Viewport.setActiveItem(Ext.create("StudentApp.view.Maps"));
-    },
-    loginBtnAction: function() {
-        Ext.Viewport.setActiveItem("loginview");
-        //Ext.getCmp("content").setActiveItem("loginview");
         //Ext.Viewport.setActiveItem(Ext.create("StudentApp.view.Maps"));
     },
     labstatsBtnAction: function() {
@@ -57,7 +44,7 @@ Ext.define("StudentApp.controller.Main", {
         //Ext.getCmp("content").setActiveItem("loginview");
         //Ext.Viewport.setActiveItem(Ext.create("StudentApp.view.Maps"));
     },
-    backHistory: function () {
+    homeBtnAction: function () {
         Ext.Viewport.animateActiveItem("mainview", this.slideRightTransition);
     }
 });

@@ -8,19 +8,22 @@ Ext.define("StudentApp.view.Login", {
             xtype: "panel",
             flex: 1,
             items: [{
-                xtype: "button",
-                text: 'Home',
-                ui: "back",
-                id: "home"
+                    xtype: "image",
+                    src: 'http://s1.city.ac.uk/i/city-logo-1894.png',
+                    height: "50px",
+                    width: "auto"
+                },{
+                    xtype: "label",
+                    html: "Incorrect login details please register or try again",
+                    hidden: true,
+                    id: "incorrectDetailsLabel"
+                },{
+                    xtype: "label",
+                    html: "You have successfully registered an account with us, please login",
+                    hidden: true,
+                    id: "registerLoginLabel"
+                }]
             },{
-                xtype: "label",
-                html: "Login failed. Please enter the correct credentials.",
-                id: "signInFailedLabel",
-                hidden: true,
-                hideAnimation: "fadeOut",
-                showAnimation: "fadeIn"
-            }]
-        },{
             xtype: "panel",
             flex: 8,
             items: [{
@@ -35,16 +38,30 @@ Ext.define("StudentApp.view.Login", {
                 },{
                     xtype: "textfield",
                     placeHolder: "Password",
+                    inputType: 'password',
                     id: "passwordTextField",
                     name: "password",
                     required: true
+                },{
+                    items:[{
+                    xtype: "fieldset",
+                        items: [{
+                            xtype: "button",
+                            //id: "logInButton",
+                            id: "mapBtn",
+                            ui: "confirm",
+                            padding: "10px",
+                            text: "Log in"
+                        },{
+                            xtype: "button",
+                            //id: "logInButton",
+                            id: "registerButton",
+                            ui: "action",
+                            padding: "10px",
+                            text: "Register"
+                        }]
+                    }]
                 }]
-            },{
-                    xtype: "button",
-                    id: "logInButton",
-                    ui: "action",
-                    padding: "10px",
-                    text: "Log in"
             }]
         }]
 	},

@@ -10,16 +10,6 @@ Ext.define('StudentApp.view.Main', {
             width: 200,
             items:
                 [{
-                    xtype: "image",
-                    src: 'http://s1.city.ac.uk/i/city-logo-1894.png',
-                    height: "50px",
-                    width: "auto"
-                },{
-                    xtype: "image",
-                    src: 'Resources/icons/labstats.png',
-                    height: "10%",
-                    width: "auto"
-                },{
                     xtype: "button",
                     iconCls: 'action',
                     iconMask: true,
@@ -45,13 +35,6 @@ Ext.define('StudentApp.view.Main', {
                 flex: 1,
                 items: [{
                     items: [{
-                        xtype: "button",
-                        iconCls: 'action',
-                        iconMask: true,
-                        text: 'Login',
-                        id: "loginBtn",
-                        align: "right"
-                    },{
                         xtype: "button",
                         iconCls: 'action',
                         iconMask: true,
