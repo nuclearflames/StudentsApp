@@ -32,10 +32,30 @@ Ext.define("StudentApp.view.Maps", {
 			xtype: "panel",
 			layout: "fit",
 			docked: "left",
-			width: 200
+			width: 200,
+			items: [{
+				html: "Find a place",
+				id: "findPlaceBtn"
+			},{
+				html: "Lecture Theatres",
+				id: "lectureTheatresBtn"
+			},{
+				html: "Accomdation",
+				id: "accomodationBtn"
+			},{
+				html: "Libraries",
+				id: "libariesBtn"
+			},{
+				html: "Computer Rooms",
+				id: "computerRoomsBtn"
+			},{
+				html: "Student Services",
+				id: "studentServicesBtn"
+			}]
 		}]
 	},
 	initialize: function() {
+		//inline styles ftm
 		var gMap= Ext.get("map"),
 		init = function(b) {
 			$.each(b, function(i, v){
@@ -74,6 +94,7 @@ Ext.define("StudentApp.view.Maps", {
 				console.error(e.message);
 			}
 		});
+		$("body").css("color","black");
 
 
 	}
