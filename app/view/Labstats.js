@@ -1,8 +1,8 @@
 Ext.define("StudentApp.view.Labstats", {
-	extend:'Ext.Container',
-	alias: "widget.labstatsview",
-	xtype: "labstatsview",
-	config: {
+    extend:'Ext.Container',
+    alias: "widget.labstatsview",
+    xtype: "labstatsview",
+    config: {
         layout: {type: 'vbox'},
         fullscreen: true,
         items: [{
@@ -34,47 +34,95 @@ Ext.define("StudentApp.view.Labstats", {
             layout: "fit",
             flex: 9,
             items: [{
-                xtype: "chart",
-                flipXY: true,
-                background: 'white',
-                store: "Labstats",
-                series: [{
-                    type: "bar",
-                    xField: ["name"],
-                    yField: ["available", "offline", "inUse"],
-                    showInLegend: true,
-                    style: {
-                        stroke: 'rgb(40,40,40)',
-                        maxBarWidth: 30
-                    },
-                    subStyle: {
-                        fill: ["green", "black", "red"]
-                    }
-                }],
-                legend: {
-                    position: 'right'
-                },
-                axes: [{
-                    type: "numeric",
-                    position: 'bottom',
-                    minimum: 0
-                },{
-                    type: 'category',
-                    position: 'left'
-                }],
-                interactions: [{
-                    type: 'iteminfo',
-                    // You can also attach listeners to an interaction.
-                    listeners: {
-                        show: function (me, item, panel) {
-                            panel.setHtml("<b>Name:</b> " + item.record.data.name + "<br /><b>Availiable:</b> " + item.record.data.available + "<br /><b>InUse:</b> " + item.record.data.inUse + "<br /><b>Switched Off/Offline:</b> " + item.record.data.offline);
-                        }
-                    }
-                }]
+                id: "chart"
             }]
         }]
-	},
-	initialize: function() {
-		this.callParent();
-	}
+    },
+    initialize: function() {
+        this.callParent();
+        //Delay until store has retrieved data
+        var chart = new Highcharts.Chart({
+            chart: {
+                renderTo: Ext.get("chart"),
+                defaultSeriesType: 'bar',
+                height: 600
+                //events : {
+                //  load: loopsiloop()
+                //}
+            },
+            exporting: {
+                enabled: false
+            },
+            legend: {
+                align: 'right'
+            },
+            series: [{
+                name: 'Available',
+                data: Ext.getStore("Labstats").getCount()
+            }, {
+                name: 'Busy',
+                data: Ext.getStore("Labstats").getCount()
+            }],
+        //    subtitle: {
+       //         text: 'Updated at <b>' + chartData.date[4] + ':' + chartData.date[5] +  '</b> today ',
+       //         y : 40
+        //    },
+            title: {
+                text: 'Computer Room Availablity'
+            },
+            tooltip: {
+                formatter: function () {
+
+                    return '<b>' + this.x + '</b><br/>' +
+                        this.series.name + ': ' + this.y + '<br/>' +
+                        'Total: ' + this.point.stackTotal;
+                }
+            },
+        //    xAxis: {
+        //        categories: chartData.categories
+         //   },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'No. of Computers'
+                }
+            }
+        });
+        while(Ext.getStore("Labstats").getCount() <= 0) {
+            chart.delay(500);
+        }
+        console.log(Ext.getStore("Labstats").getCount());
+            if ($lab.length) {
+
+                chartType = 'pie';
+                ajaxData = "id=" + $lab.attr('id').replace('lab-', '');
+                // CITY.load('highcharts', getPieData);
+
+            }
+
+            // is there the big all lab chart $labs
+            else if ($labs.length) {
+
+                chartType = 'column';
+
+                // check if we are on the page displaying the cass rooms
+                if (/cass-rooms/.test(w.location.pathname)) {
+                    ajaxData = "cass-rooms";
+                }
+
+                // check if we are on the page displaying the law rooms
+                else if (/law-rooms/.test(w.location.pathname)) {
+                    ajaxData = "law-rooms";
+                }
+
+                // check if we are on the page displaying the health rooms
+                else if (/health-rooms/.test(w.location.pathname)) {
+                    ajaxData = "health-rooms";
+                }
+
+
+            }
+
+            CITY.load('highcharts', getData);
+    }
 });

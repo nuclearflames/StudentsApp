@@ -3,99 +3,109 @@ Ext.define("StudentApp.view.Maps", {
 	alias: "widget.mapsview",
 	xtype: "mapsview",
 	config: {
-		layout: 'vbox',
+		layout: 'hbox',
 		fullscreen: true,
 		items: [{
 			xtype: "panel",
-			flex: 1,
+			flex: 3,
 			items: [{
 				xtype: "button",
 				text: 'Maps',
 				ui: "back",
 				id: "home"
-			}]
-		},{
-			xtype: "panel",
-			layout: "fit",
-			flex: 8,
-			items: [{
-				xtype: "map",
-				useCurrentLocation: false,
-				id: "map",
-				mapOptions: {
-					zoom: 17,
-					center: new google.maps.LatLng(51.527361,-0.102365),
-					mapTypeId: google.maps.MapTypeId.ROADMAP
-				}
-			}]
-		},{
-			xtype: "panel",
-			layout: "fit",
-			docked: "left",
-			width: 200,
-			items: [{
-				html: "Find a place",
+			},{
+				xtype: "button",
+				text: "Find a place",
 				id: "findPlaceBtn"
 			},{
-				html: "Lecture Theatres",
+				xtype: "button",
+				text: "Lecture Theatres",
 				id: "lectureTheatresBtn"
 			},{
-				html: "Accomdation",
+				xtype: "button",
+				text: "Accomodation",
 				id: "accomodationBtn"
 			},{
-				html: "Libraries",
+				xtype: "button",
+				text: "Libraries",
 				id: "libariesBtn"
 			},{
-				html: "Computer Rooms",
+				xtype: "button",
+				text: "Computer Rooms",
 				id: "computerRoomsBtn"
 			},{
-				html: "Student Services",
+				xtype: "button",
+				text: "Student Services",
 				id: "studentServicesBtn"
+			}]
+		},{
+			xtype: "panel",
+			layout: "fit",
+			flex: 7,
+			items: [{
+				id: "map"
 			}]
 		}]
 	},
+	blogBtnAction: function() {
+		Ext.Viewport.setActiveItem("blogview");
+		//Ext.getCmp("content").setActiveItem("loginview");
+		//Ext.Viewport.setActiveItem(Ext.create("StudentApp.view.Maps"));
+	},
 	initialize: function() {
-		//inline styles ftm
-		var gMap= Ext.get("map"),
+		//Will setup the default view for the map
+		var
+		infoWindow,
+		mapOptions = {
+			zoom: 17,
+			center: new google.maps.LatLng(51.527361,-0.102365),
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		},
 		init = function(b) {
 			$.each(b, function(i, v){
 				processContent(i, v);
-
+				processMarkers(i, v);
 			});
-        console.log(polygons);
 		},
-		polygons = [],
-        processContent = function(i, v) {
-            //Parse all multiple spaces in string
-            var string = v.polygon.replace(/\s{2,}/g, " "),
-            polygonBuild = [],
-            polygonsBuild = [],
-            tmp = "", j;
-            polygonBuild = string.split(" ");
-            //loop through and format the latlng into google valid latlngs
-            for(j = 0; j < polygonBuild.length; j += 2) {
-                tmp += "new google.maps.LatLng("+polygonBuild[j]+","+ polygonBuild[j+1]+"),";
-            }
-            polygonsBuild.push(tmp);
-            polygons.push("[" + polygonsBuild + "]");
-        };
-		$.ajax({
-			type: "GET",
-			url: "https://www.city.ac.uk/visit/feeds/locationsWebapp.json?callback=?",
-			async: false,
-			jsonpCallback: "jsonCallback",
-			contentType: "application/json",
-			dataType: "jsonp",
-			success: function(json) {
-				console.log(json);
-				init(json.buildings);
-			},
-			error: function(e) {
-				console.error(e.message);
+		processContent = function(i, v) {
+			//Parse all multiple spaces in string
+			var
+			string = v.polygon.replace(/\s{2,}/g, " "),
+			polygonBuild = [],
+			polygonsBuild = [],
+			tmp = "", j;
+			polygonBuild = string.split(" ");
+			//loop through and format the latlng into google valid latlngs
+			for(j = 0; j < polygonBuild.length; j += 2) {
+				tmp += "new google.maps.LatLng("+polygonBuild[j]+","+ polygonBuild[j+1]+"),";
 			}
-		});
-		$("body").css("color","black");
+			polygonsBuild.push(tmp);
+			polygons.push("[" + polygonsBuild + "]");
+		},
+		processMarkers = function(i, v) {
+			var
+			latLngBuild = new google.maps.LatLng(parseFloat(v.geoLat), parseFloat(v.geoLong)),
+            description = unescape(v.description.replace(/\+/g, " ")),
+			marker = new google.maps.Marker({
+				position: latLngBuild,
+				animation: google.maps.Animation.DROP,
+				title: v.title,
+				icon: v.icon
+			});
+			markers.push(marker);
+			if(v.category === "buildings") {
+				marker.setMap(gMap);
+			}
+			google.maps.event.addListener(marker, "mousedown", function() {
+				if(infoWindow) { infoWindow.close(); }
+				infoWindow = new google.maps.InfoWindow({content: "<b>" + v.title + "</b><br />" + description, maxWidth: 300});
+				infoWindow.open(gMap, marker);
+			});
+		};
 
+		//Build the map
+		gMap = new google.maps.Map(Ext.get("map").dom, mapOptions);
 
+		init(json);
 	}
 });

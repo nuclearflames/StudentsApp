@@ -48,7 +48,7 @@ Ext.define("StudentApp.view.Login", {
                         items: [{
                             xtype: "button",
                             //id: "logInButton",
-                            id: "mapBtn",
+                            id: "loginBtn",
                             ui: "confirm",
                             padding: "10px",
                             text: "Log in"
