@@ -8,13 +8,13 @@ Ext.define("StudentApp.controller.Labstats", {
         }
     },
     labstatsCassBtn: function() {
-        console.log(Ext.getStore("Labstats").getCount());
-    },
-    init: function () {
-        this.control({
-            "":{
-                afterrender: this.onGridAfterRender
-            }
+        Ext.getStore("Labstats").load();
+        available = [];
+        Ext.getStore("Labstats").each(function(record) {
+            available.push("1");
+            inUse.push(record.data.inUse);
         });
+        chart.redraw();
+        console.log(chartData);
     }
 });

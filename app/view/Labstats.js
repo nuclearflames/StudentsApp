@@ -41,7 +41,7 @@ Ext.define("StudentApp.view.Labstats", {
     initialize: function() {
         this.callParent();
         //Delay until store has retrieved data
-        var lab, categories = [], inUse = [], available = [], offCount = [],
+        var
         createChart = Ext.create("Ext.util.DelayedTask", function() {
 
         console.log(Ext.getStore("Labstats").getCount());

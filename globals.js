@@ -3,6 +3,7 @@
 var
 gMap,
 chart,
+lab, categories = [], inUse = [], available = [], offCount = [],
 chartData = {},
 markers = [],
 polygons = [],
