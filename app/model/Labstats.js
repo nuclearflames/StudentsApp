@@ -9,7 +9,7 @@ Ext.define("StudentApp.model.Labstats", {
 			{name: "available", type: "int"},
 			{name: "last_updated", type: "date"},
 			{name: "offCount", type: "int"},
-			{name: "asset", type: "string"}
+			{name: "asset", type: "auto"}
 		]
 	}
 });

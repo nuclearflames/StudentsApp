@@ -3,7 +3,7 @@ Ext.define("StudentApp.view.Labstats", {
     alias: "widget.labstatsview",
     xtype: "labstatsview",
     config: {
-        layout: {type: 'vbox'},
+        layout: {type: 'hbox'},
         fullscreen: true,
         items: [{
             xtype: "panel",
@@ -41,88 +41,75 @@ Ext.define("StudentApp.view.Labstats", {
     initialize: function() {
         this.callParent();
         //Delay until store has retrieved data
-        var chart = new Highcharts.Chart({
-            chart: {
-                renderTo: Ext.get("chart"),
-                defaultSeriesType: 'bar',
-                height: 600
-                //events : {
-                //  load: loopsiloop()
-                //}
-            },
-            exporting: {
-                enabled: false
-            },
-            legend: {
-                align: 'right'
-            },
-            series: [{
-                name: 'Available',
-                data: Ext.getStore("Labstats").getCount()
-            }, {
-                name: 'Busy',
-                data: Ext.getStore("Labstats").getCount()
-            }],
-        //    subtitle: {
-       //         text: 'Updated at <b>' + chartData.date[4] + ':' + chartData.date[5] +  '</b> today ',
-       //         y : 40
-        //    },
-            title: {
-                text: 'Computer Room Availablity'
-            },
-            tooltip: {
-                formatter: function () {
+        var lab, categories = [], inUse = [], available = [], offCount = [],
+        createChart = Ext.create("Ext.util.DelayedTask", function() {
 
-                    return '<b>' + this.x + '</b><br/>' +
-                        this.series.name + ': ' + this.y + '<br/>' +
-                        'Total: ' + this.point.stackTotal;
-                }
-            },
-        //    xAxis: {
-        //        categories: chartData.categories
-         //   },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'No. of Computers'
-                }
-            }
-        });
-        while(Ext.getStore("Labstats").getCount() <= 0) {
-            chart.delay(500);
-        }
         console.log(Ext.getStore("Labstats").getCount());
-            if ($lab.length) {
 
-                chartType = 'pie';
-                ajaxData = "id=" + $lab.attr('id').replace('lab-', '');
-                // CITY.load('highcharts', getPieData);
+            Ext.getStore("Labstats").each(function(record) {
+                lab = record.data.asset;
+                console.log(record.data.asset);
+                available.push(record.data.available);
+                inUse.push(record.data.inUse);
+                offCount.push(record.data.offCount);
+                categories.push('<a href="' + String(lab.asset ? lab.asset.url : '') + '">' + lab.name + '</a>');
+            });
 
-            }
+            chartData.lab = lab;
+            chartData.inUse = inUse;
+            chartData.available = available;
+            chartData.categories = categories;
+            chartData.offCount = offCount;
+            chartData.currentChart = "Campus Rooms";
 
-            // is there the big all lab chart $labs
-            else if ($labs.length) {
-
-                chartType = 'column';
-
-                // check if we are on the page displaying the cass rooms
-                if (/cass-rooms/.test(w.location.pathname)) {
-                    ajaxData = "cass-rooms";
+            chart = new Highcharts.Chart({
+                chart: {
+                    defaultSeriesType: 'bar',
+                    renderTo: Ext.get("chart").dom
+                    //events : {
+                    //    load: loopsiloop()
+                    //}
+                },
+                title: {
+                    text: 'Computer Room Availablity'
+                },
+                xAxis: {
+                    categories: chartData.categories
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'No. of Computers'
+                    }
+                },
+                legend: {
+                    align: 'right'
+                },
+                plotOptions: {
+                    series: {
+                        stacking: "normal"
+                    }
+                },
+                series: [{
+                    name: 'Available',
+                    data: chartData.available
+                }, {
+                    name: 'Off',
+                    data: chartData.offCount
+                }, {
+                    name: 'Busy',
+                    data: chartData.inUse
+                }],
+                subtitle: {
+                    text: "Displaying: <b>" + chartData.currentChart + "</b>",
+                    y : 40
                 }
+            });
 
-                // check if we are on the page displaying the law rooms
-                else if (/law-rooms/.test(w.location.pathname)) {
-                    ajaxData = "law-rooms";
-                }
+        });
 
-                // check if we are on the page displaying the health rooms
-                else if (/health-rooms/.test(w.location.pathname)) {
-                    ajaxData = "health-rooms";
-                }
-
-
-            }
-
-            CITY.load('highcharts', getData);
+        if (Ext.getStore("Labstats").getCount() <= 0) {
+            createChart.delay(4000);
+        }
     }
 });

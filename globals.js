@@ -3,6 +3,7 @@
 var
 gMap,
 chart,
+chartData = {},
 markers = [],
 polygons = [],
 json,
