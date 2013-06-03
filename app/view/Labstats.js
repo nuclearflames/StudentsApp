@@ -15,19 +15,24 @@ Ext.define("StudentApp.view.Labstats", {
                 id: "home"
             },{
                 xtype: "button",
+                text: 'Main Rooms',
+                id: "labstatsMainBtn"
+            },{
+                xtype: "button",
                 text: 'Cass Rooms',
-                ui: "back",
                 id: "labstatsCassBtn"
             },{
                 xtype: "button",
                 text: 'Law Rooms',
-                ui: "back",
                 id: "labstatsLawBtn"
             },{
                 xtype: "button",
                 text: 'Health Rooms',
-                ui: "back",
                 id: "labstatsHealthBtn"
+            },{
+                xtype: "button",
+                text: 'Test Rooms',
+                id: "test"
             }]
         },{
             xtype: "panel",
@@ -44,11 +49,8 @@ Ext.define("StudentApp.view.Labstats", {
         var
         createChart = Ext.create("Ext.util.DelayedTask", function() {
 
-        console.log(Ext.getStore("Labstats").getCount());
-
             Ext.getStore("Labstats").each(function(record) {
                 lab = record.data.asset;
-                console.log(record.data.asset);
                 available.push(record.data.available);
                 inUse.push(record.data.inUse);
                 offCount.push(record.data.offCount);
@@ -60,7 +62,7 @@ Ext.define("StudentApp.view.Labstats", {
             chartData.available = available;
             chartData.categories = categories;
             chartData.offCount = offCount;
-            chartData.currentChart = "Campus Rooms";
+            chartData.currentChart = "Main Campus Rooms";
 
             chart = new Highcharts.Chart({
                 chart: {
@@ -83,7 +85,9 @@ Ext.define("StudentApp.view.Labstats", {
                     }
                 },
                 legend: {
-                    align: 'right'
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    layout: "vertical"
                 },
                 plotOptions: {
                     series: {
@@ -94,7 +98,7 @@ Ext.define("StudentApp.view.Labstats", {
                     name: 'Available',
                     data: chartData.available
                 }, {
-                    name: 'Off',
+                    name: 'Off/Available',
                     data: chartData.offCount
                 }, {
                     name: 'Busy',
