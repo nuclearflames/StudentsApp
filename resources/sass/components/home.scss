@@ -10,3 +10,7 @@ body {
 		//background-color: $panels;
 	}
 }
+
+.highcharts-axis-labels text tspan:first-child {
+	visibility: hidden;
+}

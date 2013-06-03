@@ -20,50 +20,46 @@ Ext.define("StudentApp.controller.Labstats", {
         }
     },
     labstatsMainBtn: function() {
-        available = [];
         Ext.getStore("Labstats").load(
             {
                 params: "",
                 callback: function(r) {
-                    updateChart(r, "Main Campus Rooms");
+                    getData(r, "Main Campus Rooms", "reload");
                 }
             }
         );
     },
     labstatsCassBtn: function() {
-        available = [];
         Ext.getStore("Labstats").load(
             {
                 params: "cass-rooms",
                 callback: function(r) {
-                    updateChart(r, "Cass School Rooms");
+                    getData(r, "Cass School Rooms", "reload");
                 }
             }
         );
     },
     labstatsLawBtn: function() {
-        available = [];
         Ext.getStore("Labstats").load(
             {
                 params: "law-rooms",
                 callback: function(r) {
-                    updateChart(r, "Lawbore Rooms");
+                    getData(r, "Lawbore Rooms", "reload");
                 }
             }
         );
     },
     labstatsHealthBtn: function() {
-        available = [];
         Ext.getStore("Labstats").load(
             {
                 params: "health-rooms",
                 callback: function(r) {
-                    updateChart(r, "Health School Rooms");
+                    getData(r, "Health School Rooms", "reload");
                 }
             }
         );
     },
     test: function() {
-        console.log(Ext.getStore("Labstats"));
+        console.log();
     }
 });

@@ -49,71 +49,19 @@ Ext.define("StudentApp.view.Labstats", {
         var
         createChart = Ext.create("Ext.util.DelayedTask", function() {
 
-            Ext.getStore("Labstats").each(function(record) {
-                lab = record.data.asset;
-                available.push(record.data.available);
-                inUse.push(record.data.inUse);
-                offCount.push(record.data.offCount);
-                categories.push('<a href="' + String(lab.asset ? lab.asset.url : '') + '">' + lab.name + '</a>');
-            });
-
-            chartData.lab = lab;
-            chartData.inUse = inUse;
-            chartData.available = available;
-            chartData.categories = categories;
-            chartData.offCount = offCount;
-            chartData.currentChart = "Main Campus Rooms";
-
-            chart = new Highcharts.Chart({
-                chart: {
-                    defaultSeriesType: 'bar',
-                    renderTo: Ext.get("chart").dom
-                    //events : {
-                    //    load: loopsiloop()
-                    //}
-                },
-                title: {
-                    text: 'Computer Room Availablity'
-                },
-                xAxis: {
-                    categories: chartData.categories
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: 'No. of Computers'
+            Ext.getStore("Labstats").load(
+                {
+                    params: "",
+                    callback: function(r) {
+                        getData(r, "Main Campus Rooms");
                     }
-                },
-                legend: {
-                    align: 'right',
-                    verticalAlign: 'middle',
-                    layout: "vertical"
-                },
-                plotOptions: {
-                    series: {
-                        stacking: "normal"
-                    }
-                },
-                series: [{
-                    name: 'Available',
-                    data: chartData.available
-                }, {
-                    name: 'Off/Available',
-                    data: chartData.offCount
-                }, {
-                    name: 'Busy',
-                    data: chartData.inUse
-                }],
-                subtitle: {
-                    text: "Displaying: <b>" + chartData.currentChart + "</b>",
-                    y : 40
                 }
-            });
-
+            );
         });
 
         if (Ext.getStore("Labstats").getCount() <= 0) {
             createChart.delay(4000);
         }
+
     }
 });
