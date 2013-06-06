@@ -5,7 +5,7 @@ Ext.define("StudentApp.controller.Login", {
 			fieldset: "fieldset"
 		},
 		control: {
-			"#logInButton": {
+			"#loginBtn": {
 				tap: "loginButton"
 			},
 			"#registerButton": {
@@ -23,31 +23,38 @@ Ext.define("StudentApp.controller.Login", {
 		var username = Ext.getCmp("usernameTextField").getValue(),
 			password = Ext.getCmp("passwordTextField").getValue(),
 			jsonPost = {"username": username, "password": password},
-			label = Ext.getCmp("signInFailedLabel");
+			label = Ext.get("incorrectDetailsLabel"),
+			Viewport = this;
 
-		label.hide();
+		if(label){label.hide();}
 
 		Ext.Ajax.request({
 			url: "app/scripts/login.php",
 			method: "POST",
 			params: jsonPost,
-			success: function(response) {
-				console.log("successfull password send");
-				Ext.Viewport.animateActiveItem("mainview", this.slideLeftTransition);
+			callback: function(options, success, response) {
+				var r = response.responseText;
+				console.log(r);
+				if(r === "Wrong username/password") {
+					label.show();
+				} else {
+					Ext.Viewport.animateActiveItem("mainview", Viewport.slideLeftTransition);
+				}
 			},
 			failure: function(response) {
-				console.log("fail password");
 				label.show();
 			}
 		});
 	},
 	registerButton: function () {
+		console.log(Ext.Viewport);
+		console.log(this);
 		Ext.Viewport.animateActiveItem("registerview", this.slideLeftTransition);
 	},
 	launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        Ext.Viewport.add(Ext.create('StudentApp.view.Labstats'));
+        Ext.Viewport.add(Ext.create('StudentApp.view.Main'));
         var gMap = "avsdv";
     }
 });

@@ -3,18 +3,22 @@ Ext.define('StudentApp.view.Main', {
     alias: "widget.mainview",
     config: {
         fullscreen: true,
-        layout: {type: 'vbox'},
+        layout: "vbox",
         items: [{
-            docked: 'left',
             xtype: 'panel',
-            width: 200,
+            flex: 7,
             items:
                 [{
                     xtype: "button",
                     iconCls: 'action',
                     iconMask: true,
+                    text: 'Edit your profile',
+                    id: "editBtn"
+                },{
+                    xtype: "button",
+                    iconCls: 'action',
+                    iconMask: true,
                     text: 'University Maps',
-                    ui:"action",
                     id: "mapBtn"
                 },{
                     xtype: "button",
@@ -26,33 +30,30 @@ Ext.define('StudentApp.view.Main', {
                     xtype: "button",
                     iconCls: 'action',
                     iconMask: true,
-                    text: 'Blog',
+                    text: 'City Blogs',
                     id: "blogBtn"
-                }]
-            },{
-                xtype: 'panel',
-                html: 'Title',
-                flex: 1,
-                items: [{
-                    items: [{
-                        xtype: "button",
-                        iconCls: 'action',
-                        iconMask: true,
-                        text: 'Search',
-                        id: "searchBtn",
-                        pack: "center"
-                    }]
-                }]
-            },{
-                xtype: 'panel',
-                id: "content",
-                flex: 7,
-                items: [{
+                },{
                     xtype: "button",
                     iconCls: 'action',
                     iconMask: true,
-                    text: 'action'
+                    text: 'City News',
+                    id: "newsBtn"
+                },{
+                    xtype: "button",
+                    iconCls: 'action',
+                    iconMask: true,
+                    text: 'City Events',
+                    id: "eventsBtn"
+                },{
+                    xtype: "button",
+                    iconCls: 'action',
+                    iconMask: true,
+                    text: 'Search',
+                    id: "searchBtn",
+                    pack: "center"
                 }]
+            },{
+                xtype: "panel"
             }
         ]
     },

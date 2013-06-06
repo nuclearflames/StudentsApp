@@ -83,14 +83,11 @@ Ext.define("StudentApp.controller.Maps", {
 			dataType: "jsonp",
 			success: function(jsonP) {
 				json = jsonP.buildings;
-				console.log(json);
 			},
 			error: function(e) {
 				error = e;
 				console.error(error.message);
 			}
 		});
-		//inline styles ftm
-		$("body").css("color","black");
 	}
 });

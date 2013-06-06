@@ -2,11 +2,14 @@ Ext.define("StudentApp.controller.Blog", {
 	extend: "Ext.app.Controller",
 	config: {
 		control: {
-			"#personalBlogBtn": {
-				tap: "personalBlogBtnAction"
+			"#cityBlogBtn": {
+				tap: "cityBlogBtnAction"
 			},
 			"#blogHome": {
 				tap: "blogHomeBtnAction"
+			},
+			"#randEBlogBtn": {
+				tap: "randEBlogBtnAction"
 			}
 		}
 	},
@@ -16,10 +19,13 @@ Ext.define("StudentApp.controller.Blog", {
     slideRightTransition: {
 		type: 'slide', direction: 'right'
     },
-	personalBlogBtnAction: function() {
-        Ext.Viewport.setActiveItem("personalblogview");
+	cityBlogBtnAction: function() {
+        Ext.Viewport.setActiveItem("blogview");
 	},
 	blogHomeBtnAction: function() {
-        Ext.Viewport.animateActiveItem("blogview", this.slideRightTransition);
+        Ext.Viewport.animateActiveItem("blogview", this.slideLeftTransition);
+	},
+	randEBlogBtnAction: function() {
+        Ext.Viewport.animateActiveItem("blogrview", this.slideLeftTransition);
 	}
 });
