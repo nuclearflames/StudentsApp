@@ -1,11 +1,8 @@
 //This file is used for global jquery/javascript variables
 
 var
-gMap,
-chart, currentChartType,
-lab, categories = [], inUse = [], available = [], offCount = [], renderBox,
-chartData = {},
-
+//Labstats Code
+chart, currentChartType, lab, categories = [], inUse = [], available = [], offCount = [], renderBox, chartData = {}, infoWindow,
 getData = function (record, room, reload) {
     categories = [], inUse = [], available = [], offCount = [];
     jQuery.each(record, function(i, v) {
@@ -142,7 +139,47 @@ checkLabelClick = function() {
     });
 },
 
+//Google Maps Code
+gMap,
 markers = [],
 polygons = [],
 json,
+processContent = function(i, v) {
+    //Parse all multiple spaces in string
+    var
+    string = v.polygon.replace(/\s{2,}/g, " "),
+    polygonBuild = [],
+    polygonsBuild = [],
+    tmp = "", j;
+    polygonBuild = string.split(" ");
+    //loop through and format the latlng into google valid latlngs
+    for(j = 0; j < polygonBuild.length; j += 2) {
+        tmp += "new google.maps.LatLng("+polygonBuild[j]+","+ polygonBuild[j+1]+"),";
+    }
+    polygonsBuild.push(tmp);
+    polygons.push("[" + polygonsBuild + "]");
+},
+processMarkers = function(i, v) {
+    var
+    latLngBuild = new google.maps.LatLng(parseFloat(v.geoLat), parseFloat(v.geoLong)),
+    description = unescape(v.description.replace(/\+/g, " ")),
+    marker = new google.maps.Marker({
+        position: latLngBuild,
+        animation: google.maps.Animation.DROP,
+        title: v.title,
+        icon: v.icon
+    });
+    markers.push(marker);
+    if(v.category === "buildings") {
+        marker.setMap(gMap);
+    }
+    google.maps.event.addListener(marker, "mousedown", function() {
+        if(infoWindow) { infoWindow.close(); }
+        infoWindow = new google.maps.InfoWindow({content: "<b>" + v.title + "</b><br />" + description, maxWidth: 300});
+        infoWindow.open(gMap, marker);
+    });
+},
+handleNoGeolocation = function(initialLocation) {
+    gMap.setCenter(initialLocation);
+},
 error;

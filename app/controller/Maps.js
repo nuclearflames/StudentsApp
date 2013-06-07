@@ -39,6 +39,7 @@ Ext.define("StudentApp.controller.Maps", {
 				markers[i].setMap(gMap);
 			}
 		});
+		gMap.setZoom(17);
 	},
 	accomodationBtnAction: function() {
 		$.each(json, function(i, v){
@@ -46,12 +47,13 @@ Ext.define("StudentApp.controller.Maps", {
 			if(v.category === "accommodation") {
 				markers[i].setMap(gMap);
 			}
+			gMap.setZoom(15);
 		});
 	},
 	libariesBtnAction: function() {
 		$.each(json, function(i, v){
 			markers[i].setMap(null);
-			if(v.category === "lectureTheatres" || v.category === "publicLibraries" || v.category === "") {
+			if(v.category === "publicLibraries" || v.category === "") {
 				markers[i].setMap(gMap);
 			}
 		});
@@ -73,21 +75,5 @@ Ext.define("StudentApp.controller.Maps", {
 		});
 	},
 	init: function() {
-		//Ajax all data on program load
-		$.ajax({
-			type: "GET",
-			url: "https://www.city.ac.uk/visit/feeds/locationsWebapp.json?callback=?",
-			async: false,
-			jsonpCallback: "jsonCallback",
-			contentType: "application/json",
-			dataType: "jsonp",
-			success: function(jsonP) {
-				json = jsonP.buildings;
-			},
-			error: function(e) {
-				error = e;
-				console.error(error.message);
-			}
-		});
 	}
 });

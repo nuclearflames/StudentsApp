@@ -51,9 +51,9 @@
     </style>
     <!-- The line below must be kept intact for Sencha Command to build your application -->
     <script id="microloader" type="text/javascript" src="touch/microloader/development.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBbsMRdq6U5uLn-IA6_HDK4St00L5FBOw&sensor=false"></script>
-    <script src="resources/jquery/jquery-2.0.0.js"></script>
-    <script src="resources/jquery/highcharts-3.0.1.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBbsMRdq6U5uLn-IA6_HDK4St00L5FBOw&sensor=true"></script>
+    <script src="resources/jqueryjs/jquery-2.0.0.js"></script>
+    <script src="resources/jqueryjs/highcharts-3.0.1.js"></script>
     <script src="globals.js"></script>
 </script>
 </head>

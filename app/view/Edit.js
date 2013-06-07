@@ -6,14 +6,17 @@ Ext.define("StudentApp.view.Edit", {
         layout: 'vbox',
         fullscreen: true,
         items: [{
-            xtype: "panel",
             flex: 1,
+            xtype: "panel",
+            layout: 'vbox',
             items: [{
+                flex: 0.5,
                 xtype: "button",
                 text: 'Home',
                 ui: "back",
                 id: "home"
             },{
+                flex: 0.5,
                 xtype: "label",
                 html: "<h1>Edit your Account</h1>"
             }]
@@ -22,7 +25,7 @@ Ext.define("StudentApp.view.Edit", {
             flex: 9,
             layout: "fit",
             items: [{
-                xtype: "panel",
+                xtype: "fieldset",
                 layout: "vbox",
                 items: [{
                     flex: 3,
