@@ -10,7 +10,7 @@ Ext.define("StudentApp.view.Maps", {
 			flex: 3,
 			items: [{
 				xtype: "button",
-				text: 'Maps',
+				text: 'Home',
 				ui: "back",
 				id: "home"
 			},{

@@ -19,17 +19,17 @@ $password = mysql_real_escape_string($password);
 
 $sqlCode = "SELECT * FROM $tbl_name WHERE username='$username' and password='$password'";
 
-$results = mysql_query($sqlCode);
+$results = mysql_query($sqlCode) or die(mysql_error());
 
 $count = mysql_num_rows($results);
 
-if ($count==1) {
-	session_register("username");
-	session_register("password");
-	header("location:login_success.php");
-} else {
-	echo "Wrong username/password";
-}
+$resultsA = mysql_fetch_array($results);
 
+if ($count == 0) {
+	echo "Wrong username/password";
+} else {
+	session_start();
+	$_SESSION["userid"] = $resultsA[0];
+}
 
 ?>

@@ -10,9 +10,6 @@ Ext.define("StudentApp.controller.Edit", {
 			},
 			"#randEBlogBtn": {
 				tap: "randEBlogBtnAction"
-			},
-			"#editLayout": {
-				tap: "layoutTap"
 			}
 		}
 	},
@@ -30,8 +27,5 @@ Ext.define("StudentApp.controller.Edit", {
 	},
 	randEBlogBtnAction: function() {
         Ext.Viewport.animateActiveItem("blogrview", this.slideLeftTransition);
-	},
-	layoutTap: function() {
-		console.log(this);
 	}
 });

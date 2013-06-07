@@ -22,19 +22,25 @@ Ext.define("StudentApp.view.Blog", {
                 xtype: "button",
                 text: 'Research and Enterprise',
                 id: "randEBlogBtn"
-            },{
-                xtype: "label",
-                html: "<h1>Student News</h1>"
             }]
         },{
             xtype: "panel",
             flex: 9,
             layout: "fit",
             items: [{
-                xtype: "list",
-                id: "feed",
-                itemTpl: "<div class='contact'><span>{title}</span><p>{description}</p></div>",
-                store: "Feed"
+                xtype: "panel",
+                layout: "vbox",
+                items: [{
+                    flex: 1,
+                    xtype: "label",
+                    html: "<h3>Student News</h3>"
+                },{
+                    flex: 9,
+                    xtype: "list",
+                    id: "feed",
+                    itemTpl: "<div class='contact'><span><u>{title}</u></span><p>{description}</p></div>",
+                    store: "Feed"
+                }]
             }]
         }]
     },

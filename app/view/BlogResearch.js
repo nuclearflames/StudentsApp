@@ -17,19 +17,25 @@ Ext.define("StudentApp.view.BlogResearch", {
                 xtype: "button",
                 text: 'City Students News',
                 id: "cityBlogBtn"
-            },{
-                xtype: "label",
-                html: "<h1>Research and Enterprise</h1>"
             }]
         },{
             xtype: "panel",
             flex: 9,
             layout: "fit",
             items: [{
-                xtype: "list",
-                id: "feed",
-                itemTpl: "<div class='contact'><span>{title}</span><p>{description}</p></div>",
-                store: "FeedResearch"
+                xtype: "panel",
+                layout: "vbox",
+                items: [{
+                    flex: 1,
+                    xtype: "label",
+                    html: "<h3>Research and Enterprise News</h3>"
+                },{
+                    flex: 9,
+                    xtype: "list",
+                    id: "feed",
+                    itemTpl: "<div class='contact'><span><u>{title}</u></span><p>{description}</p></div>",
+                    store: "FeedResearch"
+                }]
             }]
         }]
     }

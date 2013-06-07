@@ -9,6 +9,9 @@ Ext.define('StudentApp.view.Main', {
             flex: 7,
             items:
                 [{
+                    xtype: "label",
+                    html: "<span>Welcome to the webapp, please, click around...</span>"
+                },{
                     xtype: "button",
                     iconCls: 'action',
                     iconMask: true,
@@ -59,5 +62,15 @@ Ext.define('StudentApp.view.Main', {
     },
     initialize: function() {
         this.callParent();
+        Ext.Ajax.request({
+            url: "app/scripts/login_success.php",
+            callback: function(options, success, response) {
+                var jsonObj = JSON.parse(response.responseText);
+                $("link[href*='resources/css/']").attr("href", "resources/css/" + jsonObj.layoutName + ".css");
+                $(".x-layout-card-item").css("background", jsonObj.layoutColor);
+                console.log($("span").css("font-size", jsonObj.layoutFontSize));
+                $("h3").css("font-size", jsonObj.layoutFontSize);
+            }
+        });
     }
 });

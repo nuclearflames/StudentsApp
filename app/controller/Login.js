@@ -34,7 +34,6 @@ Ext.define("StudentApp.controller.Login", {
 			params: jsonPost,
 			callback: function(options, success, response) {
 				var r = response.responseText;
-				console.log(r);
 				if(r === "Wrong username/password") {
 					label.show();
 				} else {
@@ -54,7 +53,7 @@ Ext.define("StudentApp.controller.Login", {
 	launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        Ext.Viewport.add(Ext.create('StudentApp.view.Main'));
+        Ext.Viewport.add(Ext.create('StudentApp.view.Login'));
         var gMap = "avsdv";
     }
 });
