@@ -31,11 +31,11 @@ Ext.define("StudentApp.view.Blog", {
                 xtype: "panel",
                 layout: "vbox",
                 items: [{
-                    flex: 1,
+                    flex: 0.5,
                     xtype: "label",
                     html: "<h3>Student News</h3>"
                 },{
-                    flex: 9,
+                    flex: 9.5,
                     xtype: "list",
                     id: "feed",
                     itemTpl: "<div class='contact'><span><u>{title}</u></span><p>{description}</p></div>",

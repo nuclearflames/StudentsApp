@@ -68,7 +68,7 @@ Ext.define('StudentApp.view.Main', {
                 var jsonObj = JSON.parse(response.responseText);
                 $("link[href*='resources/css/']").attr("href", "resources/css/" + jsonObj.layoutName + ".css");
                 $(".x-layout-card-item").css("background", jsonObj.layoutColor);
-                console.log($("span").css("font-size", jsonObj.layoutFontSize));
+                $("span").css("font-size", jsonObj.layoutFontSize);
                 $("h3").css("font-size", jsonObj.layoutFontSize);
             }
         });

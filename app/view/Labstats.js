@@ -7,7 +7,7 @@ Ext.define("StudentApp.view.Labstats", {
         fullscreen: true,
         items: [{
             xtype: "panel",
-            flex: 1,
+            width: 150,
             items: [{
                 xtype: "button",
                 text: 'Home',
@@ -46,22 +46,14 @@ Ext.define("StudentApp.view.Labstats", {
     initialize: function() {
         this.callParent();
         //Delay until store has retrieved data
-        var
-        createChart = Ext.create("Ext.util.DelayedTask", function() {
 
-            Ext.getStore("Labstats").load(
-                {
-                    params: "",
-                    callback: function(r) {
-                        getData(r, "Main Campus Rooms");
-                    }
+        Ext.getStore("Labstats").load(
+            {
+                params: "",
+                callback: function(r) {
+                    getData(r, "Main Campus Rooms");
                 }
-            );
-        });
-
-        if (Ext.getStore("Labstats").getCount() <= 0) {
-            createChart.delay(4000);
-        }
-
+            }
+        );
     }
 });
