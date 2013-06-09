@@ -22,6 +22,11 @@ Ext.define("StudentApp.view.Login", {
                     html: "You have successfully registered an account with us, please login",
                     hidden: true,
                     id: "registerLoginLabel"
+                },{
+                    xtype: "label",
+                    html: "Connecting to Server...",
+                    hidden: true,
+                    id: "connectingLoginLabel"
                 }]
             },{
             xtype: "panel",

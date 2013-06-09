@@ -2,7 +2,7 @@
 
 $host = "localhost";
 $Rusername = "root";
-$Rpassword = "";
+$Rpassword = "Bed1113053";
 $db_name = "studentsapp";
 $tbl_name = "personalisation";
 

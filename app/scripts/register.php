@@ -15,7 +15,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 $host = "localhost";
 $Rusername = "root";
-$Rpassword = "";
+$Rpassword = "Bed1113053";
 $db_name = "studentsapp";
 $tbl_name = "members";
 

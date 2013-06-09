@@ -6,7 +6,7 @@ if(isset($_POST["font"])){$font = $_POST["font"];}
 
 $host = "localhost";
 $Rusername = "root";
-$Rpassword = "";
+$Rpassword = "Bed1113053";
 $db_name = "studentsapp";
 $tbl_name = "members";
 

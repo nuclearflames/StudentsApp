@@ -2,7 +2,7 @@
 
 $host = "localhost";
 $Rusername = "root";
-$Rpassword = "";
+$Rpassword = "Bed1113053";
 $db_name = "studentsapp";
 $tbl_name = "members";
 
@@ -28,6 +28,7 @@ $resultsA = mysql_fetch_array($results);
 if ($count == 0) {
 	echo "Wrong username/password";
 } else {
+	echo "Login Success";
 	session_start();
 	$_SESSION["userid"] = $resultsA[0];
 }

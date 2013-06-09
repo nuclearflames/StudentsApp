@@ -42,8 +42,18 @@ define('CACHE_TIME', 24 * 60 * 60);
 define('MATRIX_URL', 'http://www.city.ac.uk/apis/labstats.xml/_nocache');
 define('TEST', FALSE);
 
-//Creates a SOAP Connection (Change URL to match your installation
-$client = new SoapClient("http://nsq209ap.enterprise.internal.city.ac.uk/LabStats/WebServices/Statistics.asmx?WSDL");
+//Curl soap json response
+$client = curl_init();
+
+curl_setopt($client, CURLOPT_URL, "value");
+curl_setopt($client, CURLOPT_HEADER, 0);
+curl_exec($client);
+
+
+// OR
+
+
+$client = "value";
 
 $bReCache = TRUE;
 

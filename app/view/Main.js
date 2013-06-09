@@ -3,10 +3,8 @@ Ext.define('StudentApp.view.Main', {
     alias: "widget.mainview",
     config: {
         fullscreen: true,
-        layout: "vbox",
         items: [{
             xtype: 'panel',
-            flex: 7,
             items: [{
                 xtype: "fieldset",
                 items: [{
@@ -14,26 +12,34 @@ Ext.define('StudentApp.view.Main', {
                     html: "<span>Welcome to the webapp, please, click around...</span>"
                 },{
                     xtype: "fieldset",
+                    layout: "hbox",
                     items: [{
+                        flex: 2.5,
                         xtype: "fieldset",
                         items: [{
                             xtype: "button",
                             iconCls: 'action',
                             iconMask: true,
                             text: 'Edit your profile',
-                            id: "editBtn"
+                            id: "editBtn",
                         }]
                     },{
                         xtype: "fieldset",
+                        flex: 2.5,
                         items: [{
                             xtype: "button",
                             iconCls: 'action',
                             iconMask: true,
                             text: 'University Maps',
-                            id: "mapBtn"
+                            id: "mapBtn",
                         }]
-                    },{
+                    }]
+                },{
+                    xtype: "fieldset",
+                    layout: "hbox",
+                    items: [{
                         xtype: "fieldset",
+                        flex: 2.5,
                         items: [{
                             xtype: "button",
                             iconCls: 'action',
@@ -43,6 +49,7 @@ Ext.define('StudentApp.view.Main', {
                         }]
                     },{
                         xtype: "fieldset",
+                        flex: 2.5,
                         items: [{
                             xtype: "button",
                             iconCls: 'action',
@@ -50,8 +57,13 @@ Ext.define('StudentApp.view.Main', {
                             text: 'City Blogs',
                             id: "blogBtn"
                         }]
-                    },{
+                    }]
+                },{
+                    xtype: "fieldset",
+                    layout: "hbox",
+                    items: [{
                         xtype: "fieldset",
+                        flex: 2.5,
                         items: [{
                             xtype: "button",
                             iconCls: 'action',
@@ -61,6 +73,7 @@ Ext.define('StudentApp.view.Main', {
                         }]
                     },{
                         xtype: "fieldset",
+                        flex: 2.5,
                         items: [{
                             xtype: "button",
                             iconCls: 'action',
@@ -68,15 +81,32 @@ Ext.define('StudentApp.view.Main', {
                             text: 'City Events',
                             id: "eventsBtn"
                         }]
-                    },{
+                    }]
+                },{
+                    xtype: "fieldset",
+                    layout: "hbox",
+                    items: [{
                         xtype: "fieldset",
+                        flex: 2.5,
                         items: [{
                             xtype: "button",
                             iconCls: 'action',
                             iconMask: true,
                             text: 'Search',
                             id: "searchBtn",
-                            pack: "center"
+                        }]
+                    },{
+                        xtype: "fieldset",
+                        flex: 2.5,
+                        items: [{
+                            xtype: "button",
+                            iconCls: 'action',
+                            iconMask: true,
+                            text: 'Personal Timetable',
+                            id: "timetableBtn",
+                            handler: function () {
+                                Ext.Viewport.setActiveItem("timetableview");
+                            }
                         }]
                     }]
                 }]

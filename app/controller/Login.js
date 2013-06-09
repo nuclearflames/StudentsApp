@@ -24,8 +24,10 @@ Ext.define("StudentApp.controller.Login", {
 			password = Ext.getCmp("passwordTextField").getValue(),
 			jsonPost = {"username": username, "password": password},
 			label = Ext.get("incorrectDetailsLabel"),
+			labelC = Ext.get("connectingLoginLabel"),
 			Viewport = this;
 
+		labelC.show();
 		if(label){label.hide();}
 
 		Ext.Ajax.request({
@@ -34,14 +36,16 @@ Ext.define("StudentApp.controller.Login", {
 			params: jsonPost,
 			callback: function(options, success, response) {
 				var r = response.responseText;
-				if(r === "Wrong username/password") {
-					label.show();
-				} else {
+				if(r === "Login Success") {
 					Ext.Viewport.animateActiveItem("mainview", Viewport.slideLeftTransition);
+				} else {
+					label.show();
+					labelC.hide();
 				}
 			},
 			failure: function(response) {
 				label.show();
+				labelC.hide();
 			}
 		});
 	},
@@ -53,7 +57,7 @@ Ext.define("StudentApp.controller.Login", {
 	launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        Ext.Viewport.add(Ext.create('StudentApp.view.Login'));
+        Ext.Viewport.add(Ext.create('StudentApp.view.Main'));
         var gMap = "avsdv";
     }
 });
