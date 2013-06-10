@@ -42,18 +42,13 @@ define('CACHE_TIME', 24 * 60 * 60);
 define('MATRIX_URL', 'http://www.city.ac.uk/apis/labstats.xml/_nocache');
 define('TEST', FALSE);
 
-//Curl soap json response
-$client = curl_init();
+ob_start();
+require 'http://webapps.city.ac.uk/StudentsApp/scripts/labstatsSOAPsend.php';
+$client = ob_get_contents();
 
-curl_setopt($client, CURLOPT_URL, "value");
-curl_setopt($client, CURLOPT_HEADER, 0);
-curl_exec($client);
+ob_end_clean();
 
-
-// OR
-
-
-$client = "value";
+$pcData = json_decode(urldecode($client));
 
 $bReCache = TRUE;
 
@@ -144,12 +139,6 @@ class Lab {
     public $last_updated = '';
 
 }
-
-
-
-//Retrieve the SOAP path
-$pcData = $client->GetGroupedCurrentStats()->GetGroupedCurrentStatsResult->GroupStat;
-
 
 if (!$pcData) {
     exit(json_encode("NULL"));

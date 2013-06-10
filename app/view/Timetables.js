@@ -1,12 +1,12 @@
 Ext.define("StudentApp.view.Timetables", {
-	extend:'Ext.Container',
-	alias: "widget.timetableview",
-	xtype: "timetableview",
-	config: {
-		layout: 'vbox',
-		fullscreen: true,
-		items: [{
-			flex: 2,
+    extend:'Ext.Container',
+    alias: "widget.timetableview",
+    xtype: "timetableview",
+    config: {
+        layout: 'vbox',
+        fullscreen: true,
+        items: [{
+            flex: 2,
             xtype: "fieldset",
             layout: {
                 type: 'hbox',
@@ -26,7 +26,7 @@ Ext.define("StudentApp.view.Timetables", {
                 margin: 20
             }]
         },{
-        	flex: 9,
+            flex: 9,
             xtype: "fieldset",
             layout: "vbox",
             items: [{
@@ -34,15 +34,20 @@ Ext.define("StudentApp.view.Timetables", {
                 layout: "fit",
                 items: [{
                     xtype: "fieldset",
-                    flex: 5,
                     title: "<h1><u>Enter your student account ID (e.g 'abcd123'):</u></h1>",
                     items: [{
-        				xtype: "searchfield",
-                        label: "search",
+                        xtype: "searchfield",
                         id: "editSearch"
                     }]
                 }]
+            },{
+                flex: 7,
+                xtype: "fieldset",
+                layout: "fit",
+                items: [{
+                    id: "timetableResults"
+                }]
             }]
         }]
-	}
+    }
 });
