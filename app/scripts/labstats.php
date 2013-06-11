@@ -43,9 +43,8 @@ define('MATRIX_URL', 'http://www.city.ac.uk/apis/labstats.xml/_nocache');
 define('TEST', FALSE);
 
 ob_start();
-require 'http://webapps.city.ac.uk/StudentsApp/scripts/labstatsSOAPsend.php';
+include 'http://webapps.city.ac.uk/StudentsApp/scripts/labstatsSOAPsend.php';
 $client = ob_get_contents();
-
 ob_end_clean();
 
 $pcData = json_decode(urldecode($client));

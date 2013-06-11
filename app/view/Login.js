@@ -49,7 +49,7 @@ Ext.define("StudentApp.view.Login", {
                     required: true
                 },{
                     items:[{
-                    xtype: "fieldset",
+                        xtype: "fieldset",
                         items: [{
                             xtype: "button",
                             //id: "logInButton",
@@ -57,7 +57,10 @@ Ext.define("StudentApp.view.Login", {
                             ui: "confirm",
                             padding: "10px",
                             text: "Log in"
-                        },{
+                        }]
+                    },{
+                        xtype: "fieldset",
+                        items: [{
                             xtype: "button",
                             //id: "logInButton",
                             id: "registerButton",
