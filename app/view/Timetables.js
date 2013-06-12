@@ -34,6 +34,7 @@ Ext.define("StudentApp.view.Timetables", {
                 layout: "fit",
                 items: [{
                     xtype: "fieldset",
+                    layout: "fit",
                     title: "<h1><u>Enter your student account ID (e.g 'abcd123'):</u></h1>",
                     items: [{
                         xtype: "searchfield",
@@ -45,6 +46,9 @@ Ext.define("StudentApp.view.Timetables", {
                 xtype: "fieldset",
                 layout: "fit",
                 items: [{
+                    layout: "fit",
+                    xtype: "panel",
+                    html: "<iframe width='100%' height='100%' src=''></iframe>",
                     id: "timetableResults"
                 }]
             }]

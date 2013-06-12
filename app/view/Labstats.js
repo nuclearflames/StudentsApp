@@ -3,36 +3,58 @@ Ext.define("StudentApp.view.Labstats", {
     alias: "widget.labstatsview",
     xtype: "labstatsview",
     config: {
-        layout: {type: 'hbox'},
+        layout: {type: 'vbox'},
         fullscreen: true,
         items: [{
-            xtype: "panel",
-            width: 150,
+            xtype: "fieldset",
             items: [{
-                xtype: "button",
-                text: 'Home',
-                ui: "back",
-                id: "home"
+                xtype: "fieldset",
+                layout: "hbox",
+                items: [{
+                    xtype: "button",
+                    text: 'Home',
+                    ui: "back",
+                    id: "home",
+                    margin: 10,
+                    flex: 5
+                },{
+                    xtype: "label",
+                    html: "<u>Computer Availability Stats</u>",
+                    margin: 10,
+                    flex: 5
+                }]
             },{
-                xtype: "button",
-                text: 'Main Rooms',
-                id: "labstatsMainBtn"
-            },{
-                xtype: "button",
-                text: 'Cass Rooms',
-                id: "labstatsCassBtn"
-            },{
-                xtype: "button",
-                text: 'Law Rooms',
-                id: "labstatsLawBtn"
-            },{
-                xtype: "button",
-                text: 'Health Rooms',
-                id: "labstatsHealthBtn"
-            },{
-                xtype: "button",
-                text: 'Test Rooms',
-                id: "test"
+                items: [{
+                    layout: "hbox",
+                    items: [{
+                        flex: 5,
+                        xtype: "button",
+                        text: "University PC's",
+                        id: "labstatsMainBtn",
+                        margin: 5
+                    },{
+                        flex: 5,
+                        xtype: "button",
+                        text: "Cass PC's",
+                        id: "labstatsCassBtn",
+                        margin: 5
+                    }]
+                },{
+                    layout: "hbox",
+                    items: [{
+                        flex: 5,
+                        xtype: "button",
+                        text: "Law PC's",
+                        id: "labstatsLawBtn",
+                        margin: 5
+                    },{
+                        flex: 5,
+                        xtype: "button",
+                        text: "Health PC's",
+                        id: "labstatsHealthBtn",
+                        margin: 5
+                    }]
+                }]
             }]
         },{
             xtype: "panel",

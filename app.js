@@ -1,9 +1,9 @@
 Ext.application({
     name: 'StudentApp',
-    views: ['Main','Maps', "Login", "Labstats", "Search", "Blog", "Register", "BlogResearch", "Edit", "Timetables"],
-    controllers:["Main", "Blog", "Labstats", "Login", "Register", "Maps", "Edit", "Timetables"],
-    models: ["Labstats", "Feed", "FeedResearch", "Edit", "EditFont", "EditColour"],
-    stores: ["Labstats", "Feed", "FeedResearch", "Edit", "EditFont", "EditColour"],
+    views: ['Main','Maps', "Login", "Labstats", "Search", "Blog", "Register", "BlogResearch", "Edit", "Timetables", "News"],
+    controllers:["Main", "Blog", "Labstats", "Login", "Register", "Maps", "Edit", "Timetables", "News"],
+    models: ["Labstats", "Feed", "FeedResearch", "Edit", "EditFont", "EditColour", "News", "Maps"],
+    stores: ["Labstats", "Feed", "FeedResearch", "Edit", "EditFont", "EditColour", "News", "Maps"],
 
     viewport: {
         layout: {

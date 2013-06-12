@@ -27,11 +27,11 @@ class Results {
 }
 
 $resultsArray = new Results();
-$resultsArray->layoutColor = $resultsA[0];
-$resultsArray->layoutFontSize = $resultsA[1];
-$resultsArray->layoutID = $resultsA[2];
+$resultsArray->layoutColor = $resultsA[2];
+$resultsArray->layoutFontSize = $resultsA[4];
+$resultsArray->layoutID = $resultsA[1];
 $resultsArray->layoutName = $resultsA[3];
-$resultsArray->userID = $resultsA[4];
+$resultsArray->userID = $resultsA[0];
 
 echo json_encode($resultsArray);
 

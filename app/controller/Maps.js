@@ -30,7 +30,7 @@ Ext.define("StudentApp.controller.Maps", {
 		type: 'slide', direction: 'right'
 	},
 	findPlaceBtnAction: function() {
-		console.log(gMap);
+		console.log(Ext.getStore("Maps"));
 	},
 	lectureTheatresBtnAction: function() {
 		$.each(json, function(i, v){

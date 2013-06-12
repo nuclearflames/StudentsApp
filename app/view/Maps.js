@@ -6,40 +6,67 @@ Ext.define("StudentApp.view.Maps", {
         layout: 'hbox',
         fullscreen: true,
         items: [{
-            xtype: "panel",
+            xtype: "fieldset",
             flex: 3,
             items: [{
-                xtype: "button",
-                text: 'Home',
-                ui: "back",
-                id: "home"
+                xtype: "fieldset",
+                layout: "hbox",
+                items: [{
+                    flex: 5,
+                    xtype: "button",
+                    text: 'Home',
+                    ui: "back",
+                    id: "home",
+                    margin: 20
+                },{
+                    flex: 5,
+                    xtype: "label",
+                    html: "<u>City University Maps</u>",
+                    margin: 20
+                }]
             },{
-                xtype: "button",
-                text: "Find a place",
-                id: "findPlaceBtn"
-            },{
-                xtype: "button",
-                text: "Lecture Theatres",
-                id: "lectureTheatresBtn"
-            },{
-                xtype: "button",
-                text: "Accomodation",
-                id: "accomodationBtn"
-            },{
-                xtype: "button",
-                text: "Libraries",
-                id: "libariesBtn"
-            },{
-                xtype: "button",
-                text: "Computer Rooms",
-                id: "computerRoomsBtn"
-            },{
-                xtype: "button",
-                text: "Student Services",
-                id: "studentServicesBtn"
+                xtype: "fieldset",
+                items: [{
+                    xtype: "button",
+                    text: "Lecture Theatres",
+                    id: "lectureTheatresBtn",
+                    margin: 5
+                },{
+                    xtype: "button",
+                    text: "Accomodation",
+                    id: "accomodationBtn",
+                    margin: 5
+                },{
+                    xtype: "button",
+                    text: "Libraries",
+                    id: "libariesBtn",
+                    margin: 5
+                },{
+                    xtype: "button",
+                    text: "Computer Rooms",
+                    id: "computerRoomsBtn",
+                    margin: 5
+                },{
+                    xtype: "button",
+                    text: "Student Services",
+                    id: "studentServicesBtn",
+                    margin: 5
+                },{
+                    xtype: "button",
+                    text: "Find a place",
+                    id: "findPlaceBtn",
+                    margin: 5
+                },{
+                    xtype: "list",
+                    title: "Places",
+                    id: "searchList",
+                    itemTpl: "{title}",
+                    margin: 5,
+                    store: "Maps"
+                }]
             }]
         },{
-            xtype: "panel",
+            xtype: "fieldset",
             layout: "fit",
             flex: 7,
             items: [{
@@ -75,6 +102,7 @@ Ext.define("StudentApp.view.Maps", {
                     $.each(b, function(i, v){
                         processContent(i, v);
                         processMarkers(i, v);
+                        updateStore(i, v);
                     });
                 };
 
@@ -89,7 +117,6 @@ Ext.define("StudentApp.view.Maps", {
                     });
                 }
                 init(json);
-
             },
             error: function(e) {
                 error = e;

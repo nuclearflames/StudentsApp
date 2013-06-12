@@ -1,7 +1,7 @@
-Ext.define("StudentApp.view.Blog", {
+Ext.define("StudentApp.view.News", {
     extend:'Ext.Container',
-    alias: "widget.blogview",
-    xtype: "blogview",
+    alias: "widget.newsview",
+    xtype: "newsview",
     config: {
         layout: 'vbox',
         fullscreen: true,
@@ -22,12 +22,12 @@ Ext.define("StudentApp.view.Blog", {
                     margin: 10,
                     flex: 5,
                     xtype: "label",
-                    html: '<u>Student News Blog</u>'
+                    html: '<u>City Universtiy News</u>'
                 }]
             },{
                 items: [{
                     margin: 10,
-                    xtype: "button",
+                    xtype: "searchfield",
                     text: 'Research and Enterprise',
                     id: "randEBlogBtn"
                 }]
@@ -38,12 +38,8 @@ Ext.define("StudentApp.view.Blog", {
             layout: "fit",
             items: [{
                 xtype: "panel",
-                layout: "vbox",
+                layout: "fit",
                 items: [{
-                    flex: 0.5,
-                    xtype: "label",
-                    html: "<h3>Student News</h3>"
-                },{
                     flex: 9.5,
                     xtype: "list",
                     id: "feed",
@@ -54,5 +50,6 @@ Ext.define("StudentApp.view.Blog", {
         }]
     },
     initialize: function() {
+        console.log(Ext.getStore("News"));
     }
 });

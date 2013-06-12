@@ -19,6 +19,9 @@ Ext.define("StudentApp.controller.Main", {
             },
             "#blogBtn": {
                 tap: "blogBtnAction"
+            },
+            "#newsBtn": {
+                tap: "newsBtnAction"
             }
         }
     },
@@ -45,5 +48,8 @@ Ext.define("StudentApp.controller.Main", {
     },
     editBtnAction: function () {
         Ext.Viewport.animateActiveItem("editview", this.slideLeftTransition);
+    },
+    newsBtnAction: function () {
+        Ext.Viewport.animateActiveItem("newsview", this.slideLeftTransition);
     }
 });

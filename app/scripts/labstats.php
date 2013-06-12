@@ -164,6 +164,8 @@ foreach ($pcData as $oLab) {
             $oTmpLab->last_updated = (string) date('c');
             if (array_key_exists($iLabStatId, $aLabs)) {
                 $oTmpLab->asset = $aLabs[$iLabStatId];
+                $url = explode("/", $oTmpLab->asset->url);
+                $oTmpLab->asset->name = end($url);
             }
             array_push($aReturn, $oTmpLab);
         }

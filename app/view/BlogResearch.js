@@ -6,20 +6,34 @@ Ext.define("StudentApp.view.BlogResearch", {
         layout: 'vbox',
         fullscreen: true,
         items: [{
-            xtype: "panel",
+            xtype: "fieldset",
             flex: 1,
             items: [{
-                xtype: "button",
-                text: 'Home',
-                ui: "back",
-                id: "home"
+                xtype: "panel",
+                layout: "hbox",
+                items: [{
+                    margin: 10,
+                    flex: 5,
+                    xtype: "button",
+                    text: 'Home',
+                    ui: "back",
+                    id: "home"
+                },{
+                    margin: 10,
+                    flex: 5,
+                    xtype: "label",
+                    html: '<u>Research and Enterprise News</u>'
+                }]
             },{
-                xtype: "button",
-                text: 'City Students News',
-                id: "cityBlogBtn"
+                items: [{
+                    margin: 10,
+                    xtype: "button",
+                    text: 'City Students News',
+                    id: "cityBlogBtn"
+                }]
             }]
         },{
-            xtype: "panel",
+            xtype: "fieldset",
             flex: 9,
             layout: "fit",
             items: [{

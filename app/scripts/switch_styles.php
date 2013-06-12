@@ -8,7 +8,7 @@ $host = "localhost";
 $Rusername = "root";
 $Rpassword = "Bed1113053";
 $db_name = "studentsapp";
-$tbl_name = "members";
+$tbl_name = "personalisation";
 
 mysql_connect("$host","$Rusername","$Rpassword") or die("cannot connect");
 mysql_select_db("$db_name")or die("cannot select DB " . mysql_error());
@@ -33,7 +33,7 @@ if(mysql_num_rows($found) == 1) {
 	$defaultName = "app";
 	$defaultFont = "18";
 	$defaultColor = "";
-	$updatetable = "INSERT INTO personalisation (userID, layoutName, layoutColor, layoutFont) VALUE ('$userID', '$defaultName', '$defaultColor', 'defaultFont')";
+	$updatetable = "INSERT INTO personalisation (userID, layoutName, layoutColor, layoutFontSize) VALUE ('$userID', '$defaultName', '$defaultColor', '$defaultFont')";
 }
 $results = mysql_query($updatetable) or die(mysql_error());
 
