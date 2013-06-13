@@ -7,7 +7,6 @@ Ext.define("StudentApp.view.Blog", {
         fullscreen: true,
         items: [{
             xtype: "fieldset",
-            layout: "vbox",
             items: [{
                 xtype: "panel",
                 layout: "hbox",
@@ -28,8 +27,8 @@ Ext.define("StudentApp.view.Blog", {
                 items: [{
                     margin: 10,
                     xtype: "button",
-                    text: 'Research and Enterprise',
-                    id: "randEBlogBtn"
+                    text: 'Research and Enterprise Blog Feed',
+                    id: "blogRBtn"
                 }]
             }]
         },{
@@ -38,12 +37,8 @@ Ext.define("StudentApp.view.Blog", {
             layout: "fit",
             items: [{
                 xtype: "panel",
-                layout: "vbox",
+                layout: "fit",
                 items: [{
-                    flex: 0.5,
-                    xtype: "label",
-                    html: "<h3>Student News</h3>"
-                },{
                     flex: 9.5,
                     xtype: "list",
                     id: "feed",
@@ -52,7 +47,5 @@ Ext.define("StudentApp.view.Blog", {
                 }]
             }]
         }]
-    },
-    initialize: function() {
     }
 });

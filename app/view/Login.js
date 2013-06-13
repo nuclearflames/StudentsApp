@@ -36,9 +36,9 @@ Ext.define("StudentApp.view.Login", {
                 title: "Please Login",
                 items: [{
                     xtype: "textfield",
-                    placeHolder: "Username",
-                    id: "usernameTextField",
-                    name: "username",
+                    placeHolder: "Email",
+                    id: "emailTextField",
+                    name: "email",
                     required: true
                 },{
                     xtype: "textfield",

@@ -20,9 +20,9 @@ Ext.define("StudentApp.controller.Login", {
 		type: 'slide', direction: 'right'
 	},
 	loginButton: function () {
-		var username = Ext.getCmp("usernameTextField").getValue(),
+		var email = Ext.getCmp("emailTextField").getValue(),
 			password = Ext.getCmp("passwordTextField").getValue(),
-			jsonPost = {"username": username, "password": password},
+			jsonPost = {"email": email, "password": password},
 			label = Ext.get("incorrectDetailsLabel"),
 			labelC = Ext.get("connectingLoginLabel"),
 			Viewport = this;
@@ -57,7 +57,7 @@ Ext.define("StudentApp.controller.Login", {
 	launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        Ext.Viewport.add(Ext.create('StudentApp.view.Maps'));
+        Ext.Viewport.add(Ext.create('StudentApp.view.Main'));
         var gMap = "avsdv";
     }
 });

@@ -4,18 +4,17 @@ Ext.define('StudentApp.view.Main', {
     config: {
         fullscreen: true,
         items: [{
-            xtype: 'panel',
+            xtype: 'fieldset',
             items: [{
-                xtype: "fieldset",
+                xtype: "panel",
                 items: [{
                     xtype: "label",
                     html: "<span>Welcome to the webapp, please, click around...</span>"
                 },{
-                    xtype: "fieldset",
                     layout: "hbox",
                     items: [{
                         flex: 2.5,
-                        xtype: "fieldset",
+                        xtype: "panel",
                         items: [{
                             xtype: "button",
                             iconCls: 'action',
@@ -24,7 +23,7 @@ Ext.define('StudentApp.view.Main', {
                             id: "editBtn",
                         }]
                     },{
-                        xtype: "fieldset",
+                        xtype: "panel",
                         flex: 2.5,
                         items: [{
                             xtype: "button",
@@ -35,20 +34,19 @@ Ext.define('StudentApp.view.Main', {
                         }]
                     }]
                 },{
-                    xtype: "fieldset",
                     layout: "hbox",
                     items: [{
-                        xtype: "fieldset",
+                        xtype: "panel",
                         flex: 2.5,
                         items: [{
                             xtype: "button",
                             iconCls: 'action',
                             iconMask: true,
-                            text: 'Labstats',
+                            text: 'PC Availability',
                             id: "labstatsBtn"
                         }]
                     },{
-                        xtype: "fieldset",
+                        xtype: "panel",
                         flex: 2.5,
                         items: [{
                             xtype: "button",
@@ -59,10 +57,9 @@ Ext.define('StudentApp.view.Main', {
                         }]
                     }]
                 },{
-                    xtype: "fieldset",
                     layout: "hbox",
                     items: [{
-                        xtype: "fieldset",
+                        xtype: "panel",
                         flex: 2.5,
                         items: [{
                             xtype: "button",
@@ -72,7 +69,7 @@ Ext.define('StudentApp.view.Main', {
                             id: "newsBtn"
                         }]
                     },{
-                        xtype: "fieldset",
+                        xtype: "panel",
                         flex: 2.5,
                         items: [{
                             xtype: "button",
@@ -83,10 +80,9 @@ Ext.define('StudentApp.view.Main', {
                         }]
                     }]
                 },{
-                    xtype: "fieldset",
                     layout: "hbox",
                     items: [{
-                        xtype: "fieldset",
+                        xtype: "panel",
                         flex: 2.5,
                         items: [{
                             xtype: "button",
@@ -96,7 +92,7 @@ Ext.define('StudentApp.view.Main', {
                             id: "searchBtn",
                         }]
                     },{
-                        xtype: "fieldset",
+                        xtype: "panel",
                         flex: 2.5,
                         items: [{
                             xtype: "button",

@@ -7,7 +7,6 @@ Ext.define("StudentApp.view.BlogResearch", {
         fullscreen: true,
         items: [{
             xtype: "fieldset",
-            flex: 1,
             items: [{
                 xtype: "panel",
                 layout: "hbox",
@@ -22,13 +21,13 @@ Ext.define("StudentApp.view.BlogResearch", {
                     margin: 10,
                     flex: 5,
                     xtype: "label",
-                    html: '<u>Research and Enterprise News</u>'
+                    html: '<u>Research and Enterprise Blog</u>'
                 }]
             },{
                 items: [{
                     margin: 10,
                     xtype: "button",
-                    text: 'City Students News',
+                    text: 'City Students Blog Feed',
                     id: "cityBlogBtn"
                 }]
             }]
@@ -38,12 +37,8 @@ Ext.define("StudentApp.view.BlogResearch", {
             layout: "fit",
             items: [{
                 xtype: "panel",
-                layout: "vbox",
+                layout: "fit",
                 items: [{
-                    flex: 0.5,
-                    xtype: "label",
-                    html: "<h3>Research and Enterprise Blog Feed:</h3>"
-                },{
                     flex: 9.5,
                     xtype: "list",
                     id: "feed",
