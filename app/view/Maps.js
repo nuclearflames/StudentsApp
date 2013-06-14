@@ -6,7 +6,7 @@ Ext.define("StudentApp.view.Maps", {
         layout: 'hbox',
         fullscreen: true,
         items: [{
-            xtype: "fieldset",
+            xtype: "container",
             flex: 3,
             items: [{
                 xtype: "fieldset",
@@ -57,12 +57,15 @@ Ext.define("StudentApp.view.Maps", {
                     id: "findPlaceBtn",
                     margin: 5
                 },{
-                    xtype: "list",
-                    title: "Places",
-                    id: "searchList",
-                    itemTpl: "{title}",
-                    margin: 5,
-                    store: "Maps"
+                    docked: "bottom",
+                    xtype: "panel",
+                    items: [{
+                        xtype: "list",
+                        title: "Places",
+                        itemTpl: "<div class='mapsList'><p>{title}<br /><a href='{link}'>Extra information</a></p></div>",
+                        margin: 5,
+                        store: "Maps"
+                    }]
                 }]
             }]
         },{
@@ -80,6 +83,7 @@ Ext.define("StudentApp.view.Maps", {
         //Ext.Viewport.setActiveItem(Ext.create("StudentApp.view.Maps"));
     },
     initialize: function() {
+        console.log(Ext.getStore("Maps"));
         //Ajax all data on page load
         $.ajax({
             type: "GET",

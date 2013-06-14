@@ -3,10 +3,10 @@ Ext.define("StudentApp.store.News", {
 	model: "StudentApp.model.News",
 	proxy: {
 		type: "ajax",
-		url: "http://search.city.ac.uk/s/search.json?collection=city-news&query=!kjkfds",
+		url: "app/scripts/news.php?",
 		reader: {
 			type: "json",
-			record: "results"
+			rootProperty: "response.resultPacket.results"
 		}
 	},
 	autoLoad: true

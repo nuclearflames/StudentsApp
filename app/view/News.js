@@ -43,13 +43,12 @@ Ext.define("StudentApp.view.News", {
                     flex: 9.5,
                     xtype: "list",
                     id: "feed",
-                    itemTpl: "<div class='contact'><span><u>{title}</u></span><p>{description}</p></div>",
-                    store: "Feed"
+                    itemTpl: "<div class='contact'><span><u>{title}</u></span><br /><a href='{liveUrl}'>Continue Reading</a></div>",
+                    store: "News"
                 }]
             }]
         }]
     },
     initialize: function() {
-        console.log(Ext.getStore("News"));
     }
 });
