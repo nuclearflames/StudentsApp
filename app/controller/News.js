@@ -10,6 +10,9 @@ Ext.define("StudentApp.controller.News", {
 			},
 			"#randEBlogBtn": {
 				tap: "randEBlogBtnAction"
+			},
+			"#newsSearch": {
+				keyup: "newsFeedAction"
 			}
 		}
 	},
@@ -27,5 +30,11 @@ Ext.define("StudentApp.controller.News", {
 	},
 	randEBlogBtnAction: function() {
         Ext.Viewport.animateActiveItem("blogrview", this.slideLeftTransition);
+	},
+	newsFeedAction: function() {
+        var val = Ext.ComponentMgr.get("newsSearch").getValue();
+        var store = Ext.getStore("News");
+        store.clearFilter();
+        store.filter("title", val);		
 	}
 });

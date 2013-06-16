@@ -12,14 +12,13 @@ Ext.define("StudentApp.view.Blog", {
                 layout: "hbox",
                 items: [{
                     margin: 10,
-                    flex: 5,
                     xtype: "button",
                     text: 'Home',
                     ui: "back",
                     id: "home"
                 },{
                     margin: 10,
-                    flex: 5,
+                    flex: 6,
                     xtype: "label",
                     html: '<u>Student News Blog</u>'
                 }]

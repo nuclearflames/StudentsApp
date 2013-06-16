@@ -7,7 +7,7 @@ Ext.define("StudentApp.view.Maps", {
         fullscreen: true,
         items: [{
             xtype: "container",
-            flex: 3,
+            flex: 2,
             items: [{
                 xtype: "fieldset",
                 layout: "hbox",
@@ -52,38 +52,37 @@ Ext.define("StudentApp.view.Maps", {
                     id: "studentServicesBtn",
                     margin: 5
                 },{
-                    xtype: "button",
-                    text: "Find a place",
-                    id: "findPlaceBtn",
-                    margin: 5
-                },{
-                    docked: "bottom",
-                    xtype: "panel",
+                    xtype: "fieldset",
                     items: [{
-                        xtype: "list",
-                        title: "Places",
-                        itemTpl: "<div class='mapsList'><p>{title}<br /><a href='{link}'>Extra information</a></p></div>",
-                        margin: 5,
-                        store: "Maps"
+                        xtype: "label",
+                        html: "<h1>Find a place</h1>",
+                        id: "studentServicesBtn",
+                        margin: 5
+                    },{
+                        xtype: "searchfield",
+                        id: "findPlaceSearch",
+                        margin: 5
                     }]
                 }]
             }]
         },{
+            docked: "right",
+            width: "10%",
+            xtype: "list",
+            title: "Places",
+            itemTpl: "<div class='mapsList'><p>{title}<br /><a href='{link}' target='_blank'>Extra information</a></p></div>",
+            margin: 5,
+            store: "Maps"
+        },{
+            flex: 7,
             xtype: "fieldset",
             layout: "fit",
-            flex: 7,
             items: [{
                 id: "map"
             }]
         }]
     },
-    blogBtnAction: function() {
-        Ext.Viewport.setActiveItem("blogview");
-        //Ext.getCmp("content").setActiveItem("loginview");
-        //Ext.Viewport.setActiveItem(Ext.create("StudentApp.view.Maps"));
-    },
     initialize: function() {
-        console.log(Ext.getStore("Maps"));
         //Ajax all data on page load
         $.ajax({
             type: "GET",
@@ -99,19 +98,17 @@ Ext.define("StudentApp.view.Maps", {
                 var
                 mapOptions = {
                     zoom: 17,
-                    center: new google.maps.LatLng(51.527361,-0.102365),
+                    center: mapCenter,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 },
                 init = function(b) {
+                //Build the map
+                gMap = new google.maps.Map(Ext.get("map").dom, mapOptions);
                     $.each(b, function(i, v){
                         processContent(i, v);
                         processMarkers(i, v);
-                        updateStore(i, v);
                     });
                 };
-
-                //Build the map
-                gMap = new google.maps.Map(Ext.get("map").dom, mapOptions);
 
                 // Try W3C Geolocation (Preferred)
                 if (navigator.geolocation) {
@@ -121,6 +118,13 @@ Ext.define("StudentApp.view.Maps", {
                     });
                 }
                 init(json);
+
+                //Maps jquery function
+                $(".x-list-item").click(function () {
+                    $number = $(this).attr("id").replace("ext-simplelistitem-", "");
+                    google.maps.event.trigger(markers[$number-1], "mousedown");
+                    markers[$number-1].setMap(gMap);
+                });
             },
             error: function(e) {
                 error = e;

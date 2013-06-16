@@ -20,6 +20,9 @@ Ext.define("StudentApp.controller.Maps", {
 			},
 			"#studentServicesBtn": {
 				tap: "studentServicesBtnAction"
+			},
+			"#findPlaceSearch": {
+				keyup: "findPlaceSearchAction"
 			}
 		}
 	},
@@ -40,6 +43,7 @@ Ext.define("StudentApp.controller.Maps", {
 			}
 		});
 		gMap.setZoom(17);
+    	gMap.setCenter(mapCenter);
 	},
 	accomodationBtnAction: function() {
 		$.each(json, function(i, v){
@@ -47,8 +51,9 @@ Ext.define("StudentApp.controller.Maps", {
 			if(v.category === "accommodation") {
 				markers[i].setMap(gMap);
 			}
-			gMap.setZoom(15);
 		});
+		gMap.setZoom(15);
+    	gMap.setCenter(mapCenter);
 	},
 	libariesBtnAction: function() {
 		$.each(json, function(i, v){
@@ -57,6 +62,7 @@ Ext.define("StudentApp.controller.Maps", {
 				markers[i].setMap(gMap);
 			}
 		});
+    	gMap.setCenter(mapCenter);
 	},
 	computerRoomsBtnAction: function() {
 		$.each(json, function(i, v){
@@ -65,6 +71,7 @@ Ext.define("StudentApp.controller.Maps", {
 				markers[i].setMap(gMap);
 			}
 		});
+    	gMap.setCenter(mapCenter);
 	},
 	studentServicesBtnAction: function() {
 		$.each(json, function(i, v){
@@ -73,6 +80,13 @@ Ext.define("StudentApp.controller.Maps", {
 				markers[i].setMap(gMap);
 			}
 		});
+    	gMap.setCenter(mapCenter);
+	},
+	findPlaceSearchAction: function() {
+        var val = Ext.ComponentMgr.get("findPlaceSearch").getValue();
+        var store = Ext.getStore("Maps");
+        store.clearFilter();
+        store.filter("title", val);
 	},
 	init: function() {
 	}

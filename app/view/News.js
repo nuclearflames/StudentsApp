@@ -13,23 +13,25 @@ Ext.define("StudentApp.view.News", {
                 layout: "hbox",
                 items: [{
                     margin: 10,
-                    flex: 5,
                     xtype: "button",
                     text: 'Home',
                     ui: "back",
                     id: "home"
                 },{
                     margin: 10,
-                    flex: 5,
+                    flex: 6,
                     xtype: "label",
                     html: '<u>City Universtiy News</u>'
                 }]
             },{
+                xtype: "fieldset",
                 items: [{
+                    xtype: "label",
+                    html: "<h1>Search News:</h1>"
+                },{
                     margin: 10,
                     xtype: "searchfield",
-                    text: 'Research and Enterprise',
-                    id: "randEBlogBtn"
+                    id: "newsSearch",
                 }]
             }]
         },{
@@ -42,8 +44,7 @@ Ext.define("StudentApp.view.News", {
                 items: [{
                     flex: 9.5,
                     xtype: "list",
-                    id: "feed",
-                    itemTpl: "<div class='contact'><span><u>{title}</u></span><br /><a href='{liveUrl}'>Continue Reading</a></div>",
+                    itemTpl: "<div class='contact'><span><u>{title}</u></span><br /><a target='_blank' href='{liveUrl}'>Continue Reading</a></div>",
                     store: "News"
                 }]
             }]

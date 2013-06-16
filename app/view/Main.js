@@ -2,107 +2,128 @@ Ext.define('StudentApp.view.Main', {
     extend: 'Ext.Container',
     alias: "widget.mainview",
     config: {
-        fullscreen: true,
         items: [{
             xtype: 'fieldset',
             items: [{
                 xtype: "panel",
                 items: [{
-                    xtype: "label",
-                    html: "<span>Welcome to the webapp, please, click around...</span>"
+                    xtype: "image",
+                    src: 'http://s1.city.ac.uk/i/city-logo-1894.png',
+                    height: "50px",
+                    width: "auto",
+                    align: "left"               
+                },{
+                    xtype: "panel",
+                    items: [{
+                        xtype: "label",
+                        html: "<span>Welcome to the University</span>"
+                    }]
                 },{
                     layout: "hbox",
                     items: [{
-                        flex: 2.5,
-                        xtype: "panel",
+                        flex: 5,
+                        type: "panel",
+                        layout: "hbox",
                         items: [{
-                            xtype: "button",
-                            iconCls: 'action',
-                            iconMask: true,
-                            text: 'Edit your profile',
-                            id: "editBtn",
+                            flex: 2.5,
+                            xtype: "panel",
+                            items: [{
+                                xtype: "button",
+                                iconCls: 'action',
+                                iconMask: true,
+                                text: 'Settings',
+                                id: "editBtn",
+                            }]
+                        },{
+                            xtype: "panel",
+                            flex: 2.5,
+                            items: [{
+                                xtype: "button",
+                                iconCls: 'action',
+                                iconMask: true,
+                                text: 'Maps',
+                                id: "mapBtn",
+                            }]
                         }]
                     },{
-                        xtype: "panel",
-                        flex: 2.5,
+                        flex: 5,
+                        layout: "hbox",
                         items: [{
-                            xtype: "button",
-                            iconCls: 'action',
-                            iconMask: true,
-                            text: 'University Maps',
-                            id: "mapBtn",
+                            xtype: "panel",
+                            flex: 2.5,
+                            items: [{
+                                xtype: "button",
+                                iconCls: 'action',
+                                iconMask: true,
+                                text: 'PC Availability',
+                                id: "labstatsBtn"
+                            }]
+                        },{
+                            xtype: "panel",
+                            flex: 2.5,
+                            items: [{
+                                xtype: "button",
+                                iconCls: 'action',
+                                iconMask: true,
+                                text: 'Blogs',
+                                id: "blogBtn"
+                            }]
                         }]
                     }]
                 },{
                     layout: "hbox",
                     items: [{
-                        xtype: "panel",
-                        flex: 2.5,
+                        layout: "hbox",
+                        flex: 5,
                         items: [{
-                            xtype: "button",
-                            iconCls: 'action',
-                            iconMask: true,
-                            text: 'PC Availability',
-                            id: "labstatsBtn"
+                            xtype: "panel",
+                            flex: 2.5,
+                            items: [{
+                                xtype: "button",
+                                iconCls: 'action',
+                                iconMask: true,
+                                text: 'News',
+                                id: "newsBtn"
+                            }]
+                        },{
+                            xtype: "panel",
+                            flex: 2.5,
+                            items: [{
+                                xtype: "button",
+                                iconCls: 'action',
+                                iconMask: true,
+                                text: 'Events',
+                                id: "eventsBtn"
+                            }]
                         }]
                     },{
-                        xtype: "panel",
-                        flex: 2.5,
+                        flex: 5,
                         items: [{
-                            xtype: "button",
-                            iconCls: 'action',
-                            iconMask: true,
-                            text: 'City Blogs',
-                            id: "blogBtn"
-                        }]
-                    }]
-                },{
-                    layout: "hbox",
-                    items: [{
-                        xtype: "panel",
-                        flex: 2.5,
-                        items: [{
-                            xtype: "button",
-                            iconCls: 'action',
-                            iconMask: true,
-                            text: 'City News',
-                            id: "newsBtn"
-                        }]
-                    },{
-                        xtype: "panel",
-                        flex: 2.5,
-                        items: [{
-                            xtype: "button",
-                            iconCls: 'action',
-                            iconMask: true,
-                            text: 'City Events',
-                            id: "eventsBtn"
-                        }]
-                    }]
-                },{
-                    layout: "hbox",
-                    items: [{
-                        xtype: "panel",
-                        flex: 2.5,
-                        items: [{
-                            xtype: "button",
-                            iconCls: 'action',
-                            iconMask: true,
-                            text: 'Search',
-                            id: "searchBtn",
-                        }]
-                    },{
-                        xtype: "panel",
-                        flex: 2.5,
-                        items: [{
-                            xtype: "button",
-                            iconCls: 'action',
-                            iconMask: true,
-                            text: 'Personal Timetable',
-                            id: "timetableBtn",
-                            handler: function () {
-                                Ext.Viewport.setActiveItem("timetableview");
-                            }
+                            layout: "hbox",
+                            items: [{
+                                xtype: "panel",
+                                flex: 2.5,
+                                items: [{
+                                    xtype: "button",
+                                    iconCls: 'action',
+                                    iconMask: true,
+                                    text: 'Search',
+                                    id: "searchBtn",
+                                }]
+                            },{
+                                xtype: "panel",
+                                flex: 2.5,
+                                items: [{
+                                    xtype: "button",
+                                    iconCls: 'action',
+                                    iconMask: true,
+                                    text: 'Timetable',
+                                    id: "timetableBtn",
+                                    handler: function () {
+                                        Ext.Viewport.setActiveItem("timetableview");
+                                    }
+                                }]
+                            }]
                         }]
                     }]
                 }]
