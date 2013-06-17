@@ -50,14 +50,12 @@ Ext.define("StudentApp.controller.Login", {
 		});
 	},
 	registerButton: function () {
-		console.log(Ext.Viewport);
-		console.log(this);
 		Ext.Viewport.animateActiveItem("registerview", this.slideLeftTransition);
 	},
 	launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        Ext.Viewport.add(Ext.create('StudentApp.view.Main'));
+        Ext.Viewport.add(Ext.create('StudentApp.view.Search'));
         var gMap = "avsdv";
     }
 });

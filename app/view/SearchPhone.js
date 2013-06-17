@@ -1,6 +1,6 @@
-Ext.define("StudentApp.view.Search", {
+Ext.define("StudentApp.view.SearchPhone", {
     extend:'Ext.Container',
-    alias: "widget.searchview",
+    alias: "widget.phoneview",
     xtype: "blogview",
     config: {
         layout: 'vbox',
@@ -27,8 +27,8 @@ Ext.define("StudentApp.view.Search", {
                 items: [{
                     margin: 10,
                     xtype: "button",
-                    text: 'Search phone directory',
-                    id: "searchPhoneBtn"
+                    text: 'Search Email directory',
+                    id: "searchEmailBtn"
                 }]
             }]
         },{
@@ -38,62 +38,41 @@ Ext.define("StudentApp.view.Search", {
             items: [{
                 xtype: "panel",
                 layout: "fit",
-                id: "formPanel",
+                id: "formPhonePanel",
                 items: [{
                     layout: "vbox",
                     xtype: "container",
                     items: [{
-                        flex:4,
+                        flex: 3,
                         items: [{
                             xtype: "label",
                             html: "<h3>Search Details</h3>",
                             margin: 5
                         },{
                             xtype: "textfield",
-                            label: 'Family Name',
-                            name: "family",
-                            id: "familyField"
+                            label: 'Search For',
+                            name: "name1",
+                            id: "name1"
                         },{
                             xtype: "textfield",
-                            label: 'Given Name',
-                            name: "given",
-                            id: "givenField"
-                        },{
-                            xtype: "label",
-                            html: "<h3>Category</h3>",
-                            margin: 5
-                        },{
-                            xtype: 'radiofield',
-                            name : 'category',
-                            value: 'all',
-                            label: 'all',
-                            checked: true,
-                            id: "formCategory"
-                        },{
-                            xtype: 'radiofield',
-                            name : 'category',
-                            value: 'student',
-                            label: 'Student'
-                        },{
-                            xtype: 'radiofield',
-                            name : 'category',
-                            value: 'staff',
-                            label: 'Staff'
+                            label: 'Refine With',
+                            name: "name2",
+                            id: "name2"
                         },{
                             xtype: "button",
-                            id: "formPanelBtn",
+                            id: "formPhonePanelBtn",
                             ui: "action",
                             text: "Submit",
                             margin: 10
                         }]
                     },{
-                        flex:6,
+                        flex: 7,
                         layout: "fit",
                         xtype: "container",
                         items: [{
                             xtype: "panel",
                             scrollable: 'vertical',
-                            id: "emailResponsePanel"
+                            id: "phoneResponsePanel"
                         }]
                     }]
                 }]
