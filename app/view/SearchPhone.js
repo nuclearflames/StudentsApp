@@ -1,7 +1,7 @@
 Ext.define("StudentApp.view.SearchPhone", {
     extend:'Ext.Container',
     alias: "widget.phoneview",
-    xtype: "blogview",
+    xtype: "phoneview",
     config: {
         layout: 'vbox',
         fullscreen: true,

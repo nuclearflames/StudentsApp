@@ -1,7 +1,7 @@
 Ext.define("StudentApp.view.Search", {
     extend:'Ext.Container',
     alias: "widget.searchview",
-    xtype: "blogview",
+    xtype: "searchview",
     config: {
         layout: 'vbox',
         fullscreen: true,
@@ -43,7 +43,6 @@ Ext.define("StudentApp.view.Search", {
                     layout: "vbox",
                     xtype: "container",
                     items: [{
-                        flex:4,
                         items: [{
                             xtype: "label",
                             html: "<h3>Search Details</h3>",

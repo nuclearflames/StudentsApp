@@ -14,13 +14,14 @@ Ext.define("StudentApp.view.Timetables", {
                 align: "center"
             },
             items: [{
+                flex: 5,
                 xtype: "button",
                 text: 'Home',
                 ui: "back",
                 id: "home",
                 margin: 20
             },{
-                flex: 6,
+                flex: 5,
                 xtype: "label",
                 html: "<h1><u>View your Timetable</u></h1>",
                 margin: 20

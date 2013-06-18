@@ -54,11 +54,7 @@ Ext.define("StudentApp.view.Maps", {
                 },{
                     xtype: "fieldset",
                     items: [{
-                        xtype: "label",
-                        html: "<h1>Find a place</h1>",
-                        id: "studentServicesBtn",
-                        margin: 5
-                    },{
+                        label: "Search",
                         xtype: "searchfield",
                         id: "findPlaceSearch",
                         margin: 5

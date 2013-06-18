@@ -1,6 +1,6 @@
 Ext.define("StudentApp.view.Events", {
     extend:'Ext.Container',
-    alias: "widget.newsview",
+    alias: "widget.eventsview",
     xtype: "eventsview",
     config: {
         layout: 'vbox',
@@ -22,14 +22,15 @@ Ext.define("StudentApp.view.Events", {
                     margin: 10,
                     flex: 5,
                     xtype: "label",
-                    html: '<u>City Universtiy News</u>'
+                    html: '<u>City University Events</u>'
                 }]
             },{
+                xtype: "panel",
                 items: [{
                     margin: 10,
+                    label: "Search Events:",
                     xtype: "searchfield",
-                    text: 'Research and Enterprise',
-                    id: "randEBlogBtn"
+                    id: "eventsSearch",
                 }]
             }]
         },{
@@ -42,9 +43,9 @@ Ext.define("StudentApp.view.Events", {
                 items: [{
                     flex: 9.5,
                     xtype: "list",
-                    id: "feed",
-                    itemTpl: "<div class='contact'><span><u>{title}</u></span><br /><a href='{liveUrl}'>Continue Reading</a></div>",
-                    store: "News"
+                    id: "feedEvents",
+                    itemTpl: "<div class='contact'><span><u>{title}</u></span><br /><span>{metaData.c}</span><br /><a href='{liveUrl}' target='_blank'>Continue Reading</a></div>",
+                    store: "Events"
                 }]
             }]
         }]

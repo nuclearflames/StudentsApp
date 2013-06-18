@@ -1,4 +1,4 @@
-Ext.define("StudentApp.model.News", {
+Ext.define("StudentApp.model.Events", {
 	extend: "Ext.data.Model",
 	config: {
 		fields: [

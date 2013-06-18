@@ -31,8 +31,8 @@ Ext.define('StudentApp.view.Main', {
                                 xtype: "button",
                                 iconCls: 'action',
                                 iconMask: true,
-                                text: 'Settings',
-                                id: "editBtn",
+                                text: 'Maps',
+                                id: "mapBtn",
                             }]
                         },{
                             xtype: "panel",
@@ -41,8 +41,8 @@ Ext.define('StudentApp.view.Main', {
                                 xtype: "button",
                                 iconCls: 'action',
                                 iconMask: true,
-                                text: 'Maps',
-                                id: "mapBtn",
+                                text: 'PC Availability',
+                                id: "labstatsBtn"
                             }]
                         }]
                     },{
@@ -55,8 +55,11 @@ Ext.define('StudentApp.view.Main', {
                                 xtype: "button",
                                 iconCls: 'action',
                                 iconMask: true,
-                                text: 'PC Availability',
-                                id: "labstatsBtn"
+                                text: 'Timetable',
+                                id: "timetableBtn",
+                                handler: function () {
+                                    Ext.Viewport.setActiveItem("timetableview");
+                                }
                             }]
                         },{
                             xtype: "panel",
@@ -65,8 +68,8 @@ Ext.define('StudentApp.view.Main', {
                                 xtype: "button",
                                 iconCls: 'action',
                                 iconMask: true,
-                                text: 'Blogs',
-                                id: "blogBtn"
+                                text: 'Search',
+                                id: "searchBtn",
                             }]
                         }]
                     }]
@@ -98,31 +101,26 @@ Ext.define('StudentApp.view.Main', {
                         }]
                     },{
                         flex: 5,
+                        layout: "hbox",
                         items: [{
-                            layout: "hbox",
+                            xtype: "panel",
+                            flex: 2.5,
                             items: [{
-                                xtype: "panel",
-                                flex: 2.5,
-                                items: [{
-                                    xtype: "button",
-                                    iconCls: 'action',
-                                    iconMask: true,
-                                    text: 'Search',
-                                    id: "searchBtn",
-                                }]
-                            },{
-                                xtype: "panel",
-                                flex: 2.5,
-                                items: [{
-                                    xtype: "button",
-                                    iconCls: 'action',
-                                    iconMask: true,
-                                    text: 'Timetable',
-                                    id: "timetableBtn",
-                                    handler: function () {
-                                        Ext.Viewport.setActiveItem("timetableview");
-                                    }
-                                }]
+                                xtype: "button",
+                                iconCls: 'action',
+                                iconMask: true,
+                                text: 'Blogs',
+                                id: "blogBtn"
+                            }]
+                        },{
+                            xtype: "panel",
+                            flex: 2.5,
+                            items: [{
+                                xtype: "button",
+                                iconCls: 'action',
+                                iconMask: true,
+                                text: 'Settings',
+                                id: "editBtn"
                             }]
                         }]
                     }]
