@@ -55,7 +55,7 @@ Ext.define("StudentApp.controller.Login", {
 	launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        Ext.Viewport.add(Ext.create('StudentApp.view.Login'));
+        Ext.Viewport.add(Ext.create('StudentApp.view.Main'));
         var gMap = "avsdv";
     }
 });
