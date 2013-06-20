@@ -6,6 +6,7 @@ Ext.define("StudentApp.store.EditColour", {
 		{ colour: "Green" },
 		{ colour: "Red" },
 		{ colour: "Orange" },
-		{ colour: "Yellow" }
+		{ colour: "Yellow" },
+		{ colour: "White" }
 	]
 });

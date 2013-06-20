@@ -32,9 +32,12 @@ Ext.define("StudentApp.controller.News", {
         Ext.Viewport.animateActiveItem("blogrview", this.slideLeftTransition);
 	},
 	newsFeedAction: function() {
-        var val = Ext.ComponentMgr.get("newsSearch").getValue();
-        var store = Ext.getStore("News");
+        var val = Ext.ComponentMgr.get("newsSearch").getValue(),
+        store = Ext.getStore("News");
         store.clearFilter();
-        store.filter("title", val);		
+        store.filter("title", val);
+        if(val === "") {
+        	store.filter("title", val);
+        }
 	}
 });
