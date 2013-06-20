@@ -136,9 +136,10 @@ Ext.define('StudentApp.view.Main', {
                 var jsonObj = JSON.parse(response.responseText);
                 if (jsonObj.userID !== null) {
                     $("link[href*='resources/css/']").attr("href", "resources/css/" + jsonObj.layoutName + ".css");
-                    $(".x-layout-card-item").css("background", jsonObj.layoutColor);
+                    $(".x-container").css("background", jsonObj.layoutColor);
                     $("span").css("font-size", jsonObj.layoutFontSize);
                     $("h3").css("font-size", jsonObj.layoutFontSize);
+                    $("p").css("font-size", jsonObj.layoutFontSize);
                 }
             }
         });

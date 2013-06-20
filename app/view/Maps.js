@@ -6,8 +6,23 @@ Ext.define("StudentApp.view.Maps", {
         layout: 'hbox',
         fullscreen: true,
         items: [{
-            xtype: "container",
+            width: "50%",
+            xtype: "fieldset",
+            layout: "fit",
+            items: [{
+                id: "map"
+            }]
+        },{
+            docked: "right",
+            width: "25%",
+            xtype: "list",
+            title: "Places",
+            itemTpl: "<div class='mapsList'><p>{title}<br /><a href='{link}' target='_blank'>Extra information</a></p></div>",
+            margin: 5,
+            store: "Maps"
+        },{
             flex: 2,
+            xtype: "container",
             items: [{
                 xtype: "fieldset",
                 layout: "hbox",
@@ -43,7 +58,7 @@ Ext.define("StudentApp.view.Maps", {
                     margin: 5
                 },{
                     xtype: "button",
-                    text: "PC Labs",
+                    text: "Computer Rooms",
                     id: "computerRoomsBtn",
                     margin: 5
                 },{
@@ -61,24 +76,10 @@ Ext.define("StudentApp.view.Maps", {
                     }]
                 }]
             }]
-        },{
-            docked: "right",
-            width: "10%",
-            xtype: "list",
-            title: "Places",
-            itemTpl: "<div class='mapsList'><p>{title}<br /><a href='{link}' target='_blank'>Extra information</a></p></div>",
-            margin: 5,
-            store: "Maps"
-        },{
-            flex: 7,
-            xtype: "fieldset",
-            layout: "fit",
-            items: [{
-                id: "map"
-            }]
         }]
     },
     initialize: function() {
+        console.log(Ext.getStore("Maps"));
         //Ajax all data on page load
         $.ajax({
             type: "GET",

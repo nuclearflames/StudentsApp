@@ -86,7 +86,7 @@ Ext.define("StudentApp.controller.Maps", {
         var val = Ext.ComponentMgr.get("findPlaceSearch").getValue();
         var store = Ext.getStore("Maps");
         store.clearFilter();
-        store.filter("category", val);
+        store.filter("title", val);
 	},
 	init: function() {
 	}
