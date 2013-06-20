@@ -43,7 +43,7 @@ Ext.define("StudentApp.view.Maps", {
                     margin: 5
                 },{
                     xtype: "button",
-                    text: "Computer Rooms",
+                    text: "PC Labs",
                     id: "computerRoomsBtn",
                     margin: 5
                 },{

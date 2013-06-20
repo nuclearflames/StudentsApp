@@ -144,6 +144,7 @@ gMap,
 markers = [],
 polygons = [],
 json,
+mapCenter = new google.maps.LatLng(51.527636,-0.1027),
 processContent = function(i, v) {
     //Parse all multiple spaces in string
     var
