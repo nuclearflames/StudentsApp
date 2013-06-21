@@ -7,7 +7,15 @@
 // Custom code goes here..
 
 // Examples of using the icon mixin:
-// @include icon('user');
+@include icon('user');
+@include icon('map', "G");
+@include icon('pc', "Z");
+@include icon('timetable', "n");
+@include icon('search', "s");
+@include icon('news', "N");
+@include icon('events', "\\");
+@include icon('blogs', "f");
+@include icon('settings', "y");
 
 @import "variables";
 @import "components/home";

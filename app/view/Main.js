@@ -11,7 +11,7 @@ Ext.define('StudentApp.view.Main', {
                     src: 'http://s1.city.ac.uk/i/city-logo-1894.png',
                     height: "50px",
                     width: "auto",
-                    align: "left"               
+                    align: "left"
                 },{
                     xtype: "panel",
                     items: [{
@@ -29,17 +29,17 @@ Ext.define('StudentApp.view.Main', {
                             xtype: "panel",
                             items: [{
                                 xtype: "button",
-                                iconCls: 'action',
+                                iconCls: 'map',
                                 iconMask: true,
                                 text: 'Maps',
-                                id: "mapBtn",
+                                id: "mapBtn"
                             }]
                         },{
                             xtype: "panel",
                             flex: 2.5,
                             items: [{
                                 xtype: "button",
-                                iconCls: 'action',
+                                iconCls: 'pc',
                                 iconMask: true,
                                 text: 'PC Availability',
                                 id: "labstatsBtn"
@@ -53,7 +53,7 @@ Ext.define('StudentApp.view.Main', {
                             flex: 2.5,
                             items: [{
                                 xtype: "button",
-                                iconCls: 'action',
+                                iconCls: 'timetable',
                                 iconMask: true,
                                 text: 'Timetable',
                                 id: "timetableBtn",
@@ -66,7 +66,7 @@ Ext.define('StudentApp.view.Main', {
                             flex: 2.5,
                             items: [{
                                 xtype: "button",
-                                iconCls: 'action',
+                                iconCls: 'search',
                                 iconMask: true,
                                 text: 'Search',
                                 id: "searchBtn",
@@ -83,7 +83,7 @@ Ext.define('StudentApp.view.Main', {
                             flex: 2.5,
                             items: [{
                                 xtype: "button",
-                                iconCls: 'action',
+                                iconCls: 'news',
                                 iconMask: true,
                                 text: 'News',
                                 id: "newsBtn"
@@ -93,7 +93,7 @@ Ext.define('StudentApp.view.Main', {
                             flex: 2.5,
                             items: [{
                                 xtype: "button",
-                                iconCls: 'action',
+                                iconCls: 'events',
                                 iconMask: true,
                                 text: 'Events',
                                 id: "eventsBtn"
@@ -107,7 +107,7 @@ Ext.define('StudentApp.view.Main', {
                             flex: 2.5,
                             items: [{
                                 xtype: "button",
-                                iconCls: 'action',
+                                iconCls: 'blogs',
                                 iconMask: true,
                                 text: 'Blogs',
                                 id: "blogBtn"
@@ -117,7 +117,7 @@ Ext.define('StudentApp.view.Main', {
                             flex: 2.5,
                             items: [{
                                 xtype: "button",
-                                iconCls: 'action',
+                                iconCls: 'settings',
                                 iconMask: true,
                                 text: 'Settings',
                                 id: "editBtn"
