@@ -87,7 +87,5 @@ Ext.define("StudentApp.controller.Maps", {
         var store = Ext.getStore("Maps");
         store.clearFilter();
         store.filter("title", val);
-	},
-	init: function() {
 	}
 });

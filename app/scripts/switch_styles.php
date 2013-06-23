@@ -3,6 +3,7 @@
 if(isset($_POST["color"])){$color = $_POST["color"];}
 if(isset($_POST["stylesheet"])){$stylesheet = $_POST["stylesheet"];}
 if(isset($_POST["font"])){$font = $_POST["font"];}
+if(isset($_POST["startUp"])){$startUp = $_POST["startUp"];}
 
 $host = "localhost";
 $Rusername = "root";
@@ -21,11 +22,13 @@ $found = mysql_query($findUser) or die(mysql_error());
 
 if(mysql_num_rows($found) == 1) {
 	if (isset($color)) {
-		$updatetable = "UPDATE personalisation SET layoutColor='$color'";
+		$updatetable = "UPDATE personalisation SET layoutColor='$color' WHERE userID='$userID'";
 	} else if (isset($stylesheet)) {
-		$updatetable = "UPDATE personalisation SET layoutName='$stylesheet'";
+		$updatetable = "UPDATE personalisation SET layoutName='$stylesheet' WHERE userID='$userID'";
 	} else if (isset($font)) {
-		$updatetable = "UPDATE personalisation SET layoutFontSize='$font'";
+		$updatetable = "UPDATE personalisation SET layoutFontSize='$font' WHERE userID='$userID'";
+	} else if (isset($startUp)) {
+		$updatetable = "UPDATE personalisation SET startUp='$startUp' WHERE userID='$userID'";
 	} else {
 		echo "no insert value";
 	}

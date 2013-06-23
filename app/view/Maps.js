@@ -13,33 +13,27 @@ Ext.define("StudentApp.view.Maps", {
                 id: "map"
             }]
         },{
-            docked: "right",
-            width: "25%",
-            xtype: "list",
-            title: "Places",
-            itemTpl: "<div class='mapsList'><p>{title}<br /><a href='{link}' target='_blank'>Extra information</a></p></div>",
-            margin: 5,
-            store: "Maps"
+            xtype: "fieldset",
+            docked: "top",
+            layout: "hbox",
+            items: [{
+                flex: 5,
+                xtype: "button",
+                text: 'Home',
+                ui: "back",
+                id: "home",
+                margin: 20
+            },{
+                flex: 5,
+                xtype: "label",
+                html: "<u>City University Maps</u>",
+                margin: 20
+            }]
         },{
             flex: 2,
-            xtype: "container",
+            xtype: "fieldset",
+            layout: "vbox",
             items: [{
-                xtype: "fieldset",
-                layout: "hbox",
-                items: [{
-                    flex: 5,
-                    xtype: "button",
-                    text: 'Home',
-                    ui: "back",
-                    id: "home",
-                    margin: 20
-                },{
-                    flex: 5,
-                    xtype: "label",
-                    html: "<u>City University Maps</u>",
-                    margin: 20
-                }]
-            },{
                 xtype: "fieldset",
                 items: [{
                     xtype: "button",
@@ -57,15 +51,21 @@ Ext.define("StudentApp.view.Maps", {
                     id: "libariesBtn",
                     margin: 5
                 },{
-                    xtype: "button",
-                    text: "Computer Rooms",
-                    id: "computerRoomsBtn",
-                    margin: 5
-                },{
-                    xtype: "button",
-                    text: "Student Services",
-                    id: "studentServicesBtn",
-                    margin: 5
+                    xtype: "container",
+                    layout: "hbox",
+                    items: [{
+                        flex: 5,
+                        xtype: "button",
+                        text: "Computer Rooms",
+                        id: "computerRoomsBtn",
+                        margin: 5
+                    },{
+                        flex: 5,
+                        xtype: "button",
+                        text: "Student Services",
+                        id: "studentServicesBtn",
+                        margin: 5
+                    }]
                 },{
                     xtype: "fieldset",
                     items: [{
@@ -75,11 +75,17 @@ Ext.define("StudentApp.view.Maps", {
                         margin: 5
                     }]
                 }]
+            },{
+                flex: 5,
+                xtype: "list",
+                title: "Places",
+                itemTpl: "<div class='mapsList'><p>{title}<br /><a href='{link}' target='_blank'>Extra information</a></p></div>",
+                margin: 5,
+                store: "Maps"
             }]
         }]
     },
     initialize: function() {
-        console.log(Ext.getStore("Maps"));
         //Ajax all data on page load
         $.ajax({
             type: "GET",
@@ -118,9 +124,18 @@ Ext.define("StudentApp.view.Maps", {
 
                 //Maps jquery function
                 $(".x-list-item").click(function () {
-                    $number = $(this).attr("id").replace("ext-simplelistitem-", "");
-                    google.maps.event.trigger(markers[$number-1], "mousedown");
-                    markers[$number-1].setMap(gMap);
+                    $number = $(this).find("p:first").contents()[0].data;
+                    for (i=0;i<markers.length;i++) {
+                        if(markers[i].title === $number) {
+                            google.maps.event.trigger(markers[i], "mousedown");
+                            markers[i].setMap(gMap);
+                        }
+                    }
+                });
+                //Store Clearer
+                $(".x-clear-icon").click(function() {
+                    var store = Ext.getStore("Maps");
+                    store.clearFilter();
                 });
             },
             error: function(e) {

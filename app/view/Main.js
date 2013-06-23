@@ -113,7 +113,7 @@ Ext.define('StudentApp.view.Main', {
                                 id: "blogBtn"
                             }]
                         },{
-                            xtype: "panel",
+                            xtype: "panel", 
                             flex: 2.5,
                             items: [{
                                 xtype: "button",
@@ -140,6 +140,7 @@ Ext.define('StudentApp.view.Main', {
                     $("span").css("font-size", jsonObj.layoutFontSize);
                     $("h3").css("font-size", jsonObj.layoutFontSize);
                     $("p").css("font-size", jsonObj.layoutFontSize);
+                    Ext.Viewport.setActiveItem(jsonObj.startUp + "view");
                 }
             }
         });

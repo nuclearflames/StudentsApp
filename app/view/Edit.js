@@ -100,7 +100,7 @@ Ext.define("StudentApp.view.Edit", {
                 },{
                     xtype: "fieldset",
                     layout: "vbox",
-                    id: "editColor",
+                    id: "editColour",
                     items:[{
                         flex: 1,
                         xtype: "label",
@@ -121,6 +121,33 @@ Ext.define("StudentApp.view.Edit", {
                                         color: recordVal
                                     },
                                     callback: function(options, success, response) {
+                                    }
+                                });
+                            }
+                        }
+                    }]
+                },{
+                    xtype: "fieldset",
+                    layout: "vbox",
+                    id: "EditView",
+                    items:[{
+                        flex: 1,
+                        xtype: "label",
+                        html: "<h3><u>Change Startup Page:</u></h3>"
+                    },{
+                        flex: 5,
+                        xtype: "list",
+                        id: "EditView",
+                        itemTpl: "<div class='edit'><span>{startUp}</span></div>",
+                        store: "EditView",
+                        listeners : {
+                            itemtap: function (list, index, item, record) {
+                                var recordVal = record.data.startUp.toLowerCase();
+                                $(".x-layout-card-item").css("background", recordVal);
+                                Ext.Ajax.request({
+                                    url: "app/scripts/switch_styles.php",
+                                    params: {
+                                        startUp: recordVal
                                     }
                                 });
                             }

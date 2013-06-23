@@ -49,7 +49,5 @@ Ext.define("StudentApp.view.Events", {
                 }]
             }]
         }]
-    },
-    initialize: function() {
     }
 });

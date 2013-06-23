@@ -13,9 +13,6 @@ Ext.define("StudentApp.controller.Labstats", {
             },
             "#labstatsHealthBtn": {
                 tap: "labstatsHealthBtn"
-            },
-            "#test": {
-                tap: "test"
             }
         }
     },
@@ -58,8 +55,5 @@ Ext.define("StudentApp.controller.Labstats", {
                 }
             }
         );
-    },
-    test: function() {
-        console.log();
     }
 });

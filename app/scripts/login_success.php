@@ -24,6 +24,7 @@ class Results {
 	public $layoutID = 0;
 	public $layoutName = "";
 	public $userID = 0;
+	public $startUp = 0;
 }
 
 $resultsArray = new Results();
@@ -32,6 +33,7 @@ $resultsArray->layoutFontSize = $resultsA[4];
 $resultsArray->layoutID = $resultsA[1];
 $resultsArray->layoutName = $resultsA[3];
 $resultsArray->userID = $resultsA[0];
+$resultsArray->startUp = $resultsA[5];
 
 echo json_encode($resultsArray);
 

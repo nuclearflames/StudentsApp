@@ -39,5 +39,9 @@ Ext.define("StudentApp.controller.News", {
         if(val === "") {
         	store.filter("title", val);
         }
+        //Store Clearer
+        $(".x-clear-icon").click(function() {
+            store.clearFilter();
+        });
 	}
 });

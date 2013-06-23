@@ -39,5 +39,9 @@ Ext.define("StudentApp.controller.Events", {
         if(val === "") {
         	store.filter("title", val);
         }
+        //Store Clearer
+        $(".x-clear-icon").click(function() {
+            store.clearFilter();
+        });
 	}
 });

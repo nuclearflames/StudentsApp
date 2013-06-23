@@ -8,7 +8,7 @@ Ext.define("StudentApp.view.Labstats", {
         items: [{
             xtype: "fieldset",
             items: [{
-                xtype: "fieldset",
+                xtype: "panel",
                 layout: "hbox",
                 items: [{
                     xtype: "button",
