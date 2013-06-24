@@ -1,7 +1,7 @@
-Ext.define("StudentApp.view.Events", {
+Ext.define("StudentApp.view.City", {
     extend:'Ext.Container',
-    alias: "widget.eventsview",
-    xtype: "eventsview",
+    alias: "widget.cityview",
+    xtype: "cityview",
     config: {
         layout: 'vbox',
         fullscreen: true,
@@ -16,22 +16,14 @@ Ext.define("StudentApp.view.Events", {
                     flex: 5,
                     xtype: "button",
                     text: 'Home',
-                    ui: "back",
                     iconCls: "home",
+                    ui: "back",
                     id: "home"
                 },{
                     margin: 10,
                     flex: 5,
                     xtype: "label",
-                    html: '<u>City University Events</u>'
-                }]
-            },{
-                xtype: "panel",
-                items: [{
-                    margin: 10,
-                    label: "Search Events:",
-                    xtype: "searchfield",
-                    id: "eventsSearch",
+                    html: '<u>City University Information</u>'
                 }]
             }]
         },{
@@ -44,11 +36,13 @@ Ext.define("StudentApp.view.Events", {
                 items: [{
                     flex: 9.5,
                     xtype: "list",
-                    id: "feedEvents",
-                    itemTpl: "<div class='contact'><span><u>{title}</u></span><br /><span>{metaData.c}</span><br /><a href='{liveUrl}' target='_blank'>Continue Reading</a></div>",
-                    store: "Events"
+                    itemTpl: "<div class='contact'><span><u>{title}</u></span><br /><span>{summary}</span><br /><a target='_blank' href='{liveUrl}'>Continue Reading</a></div>",
+                    store: "City"
                 }]
             }]
         }]
+    },
+    initialize: function() {
+        console.log(Ext.getStore("City"));
     }
 });

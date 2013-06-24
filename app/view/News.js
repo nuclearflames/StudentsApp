@@ -16,13 +16,14 @@ Ext.define("StudentApp.view.News", {
                     flex: 5,
                     xtype: "button",
                     text: 'Home',
+                    iconCls: "home",
                     ui: "back",
                     id: "home"
                 },{
                     margin: 10,
                     flex: 5,
                     xtype: "label",
-                    html: '<u>City Universtiy News</u>'
+                    html: '<u>City University News</u>'
                 }]
             },{
                 xtype: "panel",
@@ -30,7 +31,7 @@ Ext.define("StudentApp.view.News", {
                     label: "Search News:",
                     margin: 10,
                     xtype: "searchfield",
-                    id: "newsSearch",
+                    id: "newsSearch"
                 }]
             }]
         },{

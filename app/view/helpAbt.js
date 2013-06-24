@@ -1,7 +1,7 @@
-Ext.define("StudentApp.view.Timetables", {
+Ext.define("StudentApp.view.helpAbt", {
     extend:'Ext.Container',
-    alias: "widget.timetableview",
-    xtype: "timetableview",
+    alias: "widget.helpAbtview",
+    xtype: "helpAbtview",
     config: {
         layout: 'vbox',
         fullscreen: true,
@@ -24,7 +24,7 @@ Ext.define("StudentApp.view.Timetables", {
             },{
                 flex: 5,
                 xtype: "label",
-                html: "<h1><u>View your Timetable</u></h1>",
+                html: "<h1><u>Help/About</u></h1>",
                 margin: 20
             }]
         },{
@@ -32,30 +32,16 @@ Ext.define("StudentApp.view.Timetables", {
             xtype: "fieldset",
             layout: "vbox",
             items: [{
+                flex: 5,
                 xtype: "fieldset",
-                layout: "fit",
-                items: [{
-                    xtype: "fieldset",
-                    layout: "fit",
-                    title: "<h1><u>Enter your student account ID (e.g 'abcd123'):</u></h1>",
-                    items: [{
-                        xtype: "searchfield",
-                        id: "editSearch"
-                    }]
-                }]
+                layout: "fit"
             },{
-                flex: 7,
+                flex: 5,
                 xtype: "fieldset",
-                layout: "fit",
-                items: [{
-                    layout: "fit",
-                    xtype: "panel",
-                    html: "<iframe width='100%' height='100%' src=''></iframe>",
-                    id: "timetableResults"
-                }]
+                layout: "fit"
             }]
         }]
-    }, 
+    },
     initialize: function () {
         Ext.Ajax.request({
             url: "app/scripts/loadTimetable.php",
@@ -65,7 +51,7 @@ Ext.define("StudentApp.view.Timetables", {
                 if (r) {
                     $("#timetableResults .x-innerhtml").css("height", "100%");
                     $("#timetableResults iframe").attr("src", "http://webapps.city.ac.uk/sst/vle/index.html?&c=ccb8520b676760f079268c34279d4469&i=1370812813&t=49948&u="+ r);
-                }                
+                }
             }
         });
     }

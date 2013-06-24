@@ -25,6 +25,12 @@ Ext.define("StudentApp.controller.Main", {
             },
             "#eventsBtn": {
                 tap: "eventsBtnAction"
+            },
+            "#cityBtn": {
+                tap: "cityBtnAction"
+            },
+            "#helpAbtBtn": {
+                tap: "helpAbtBtnAction"
             }
         }
     },
@@ -50,12 +56,18 @@ Ext.define("StudentApp.controller.Main", {
         Ext.Viewport.animateActiveItem("mainview", this.slideRightTransition);
     },
     editBtnAction: function () {
-        Ext.Viewport.animateActiveItem("editview", this.slideLeftTransition);
+        Ext.Viewport.animateActiveItem("settingsview", this.slideLeftTransition);
     },
     newsBtnAction: function () {
         Ext.Viewport.animateActiveItem("newsview", this.slideLeftTransition);
     },
     eventsBtnAction: function () {
         Ext.Viewport.animateActiveItem("eventsview", this.slideLeftTransition);
+    },
+    cityBtnAction: function() {
+        Ext.Viewport.setActiveItem("cityview");
+    },
+    helpAbtBtnAction: function() {
+        Ext.Viewport.setActiveItem("helpAbtview");
     }
 });

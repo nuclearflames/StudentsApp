@@ -69,7 +69,7 @@ Ext.define('StudentApp.view.Main', {
                                 iconCls: 'search',
                                 iconMask: true,
                                 text: 'Search',
-                                id: "searchBtn",
+                                id: "searchBtn"
                             }]
                         }]
                     }]
@@ -113,7 +113,7 @@ Ext.define('StudentApp.view.Main', {
                                 id: "blogBtn"
                             }]
                         },{
-                            xtype: "panel", 
+                            xtype: "panel",
                             flex: 2.5,
                             items: [{
                                 xtype: "button",
@@ -121,6 +121,33 @@ Ext.define('StudentApp.view.Main', {
                                 iconMask: true,
                                 text: 'Settings',
                                 id: "editBtn"
+                            }]
+                        }]
+                    }]
+                },{
+                    layout: "hbox",
+                    items: [{
+                        layout: "hbox",
+                        flex: 5,
+                        items: [{
+                            xtype: "panel",
+                            flex: 2.5,
+                            items: [{
+                                xtype: "button",
+                                iconCls: 'city',
+                                iconMask: true,
+                                text: 'City Information',
+                                id: "cityBtn"
+                            }]
+                        },{
+                            xtype: "panel",
+                            flex: 2.5,
+                            items: [{
+                                xtype: "button",
+                                iconCls: 'information',
+                                iconMask: true,
+                                text: 'Help/About',
+                                id: "helpAbtBtn"
                             }]
                         }]
                     }]

@@ -11,6 +11,7 @@ Ext.define("StudentApp.view.Register", {
 			items: [{
 				xtype: "button",
 				text: 'Home',
+                iconCls: "home",
 				ui: "back",
 				id: "loginHome"
 			},{

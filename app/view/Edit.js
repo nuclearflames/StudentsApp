@@ -1,7 +1,7 @@
 Ext.define("StudentApp.view.Edit", {
     extend:'Ext.Container',
-    alias: "widget.editview",
-    xtype: "editview",
+    alias: "widget.settingsview",
+    xtype: "settingsview",
     config: {
         layout: 'vbox',
         fullscreen: true,
@@ -17,6 +17,7 @@ Ext.define("StudentApp.view.Edit", {
                 flex: 5,
                 xtype: "button",
                 text: 'Home',
+                iconCls: "home",
                 ui: "back",
                 id: "home",
                 margin: 20

@@ -14,6 +14,7 @@ Ext.define("StudentApp.view.Labstats", {
                     xtype: "button",
                     text: 'Home',
                     ui: "back",
+                    iconCls: "home",
                     id: "home",
                     margin: 10,
                     flex: 5

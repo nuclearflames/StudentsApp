@@ -15,6 +15,7 @@ Ext.define("StudentApp.view.Search", {
                     flex: 5,
                     xtype: "button",
                     text: 'Home',
+                    iconCls: "home",
                     ui: "back",
                     id: "home"
                 },{

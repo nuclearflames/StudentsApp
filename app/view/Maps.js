@@ -20,6 +20,7 @@ Ext.define("StudentApp.view.Maps", {
                 flex: 5,
                 xtype: "button",
                 text: 'Home',
+                iconCls: "home",
                 ui: "back",
                 id: "home",
                 margin: 20
@@ -39,16 +40,19 @@ Ext.define("StudentApp.view.Maps", {
                     xtype: "button",
                     text: "Lecture Theatres",
                     id: "lectureTheatresBtn",
+                    iconCls: "lecture",
                     margin: 5
                 },{
                     xtype: "button",
                     text: "Accomodation",
                     id: "accomodationBtn",
+                    iconCls: "accomodation",
                     margin: 5
                 },{
                     xtype: "button",
                     text: "Libraries",
                     id: "libariesBtn",
+                    iconCls: "library",
                     margin: 5
                 },{
                     xtype: "container",
@@ -58,12 +62,14 @@ Ext.define("StudentApp.view.Maps", {
                         xtype: "button",
                         text: "Computer Rooms",
                         id: "computerRoomsBtn",
+                        iconCls: "computer",
                         margin: 5
                     },{
                         flex: 5,
                         xtype: "button",
                         text: "Student Services",
                         id: "studentServicesBtn",
+                        iconCls: "services",
                         margin: 5
                     }]
                 },{
