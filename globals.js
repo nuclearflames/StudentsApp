@@ -183,4 +183,28 @@ processMarkers = function(i, v) {
 handleNoGeolocation = function(initialLocation) {
     gMap.setCenter(initialLocation);
 },
-error;
+error,
+$fontSize,
+$layoutColor,
+//Set the classes for design
+classSet = function() {
+    Ext.Ajax.request({
+        url: "app/scripts/login_success.php",
+        callback: function(options, success, response) {
+            var jsonObj = JSON.parse(response.responseText);
+            if (jsonObj.userID !== null) {
+                $("link[href*='resources/css/']").attr("href", "resources/css/" + jsonObj.layoutName + ".css");
+                $layoutColor = jsonObj.layoutColor;
+                $fontSize = jsonObj.layoutFontSize;
+                $startUp = jsonObj.startUp;
+                Ext.Viewport.setActiveItem(jsonObj.startUp + "view");
+            }
+        }
+    });
+},
+setSettings = function() {
+    $(".x-container").css("background", $layoutColor);
+    $("span").css("font-size", $fontSize);
+    $("h3").css("font-size", $fontSize);
+    $("p").css("font-size", $fontSize);
+};

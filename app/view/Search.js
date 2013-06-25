@@ -22,7 +22,7 @@ Ext.define("StudentApp.view.Search", {
                     margin: 10,
                     flex: 5,
                     xtype: "label",
-                    html: '<u>Search for Staff and Student Emails</u>'
+                    html: '<u>Search for Staff and Student Email details</u>'
                 }]
             },{
                 items: [{
@@ -98,6 +98,11 @@ Ext.define("StudentApp.view.Search", {
                     }]
                 }]
             }]
-        }]
+        }],
+        listeners: {
+            show: function() {
+                setSettings();                
+            }
+        }
     }
 });

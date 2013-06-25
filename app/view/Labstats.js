@@ -64,7 +64,12 @@ Ext.define("StudentApp.view.Labstats", {
             items: [{
                 id: "chart"
             }]
-        }]
+        }],
+        listeners: {
+            show: function() {
+                setSettings();                
+            }
+        }
     },
     initialize: function() {
         this.callParent();

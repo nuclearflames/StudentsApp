@@ -157,19 +157,7 @@ Ext.define('StudentApp.view.Main', {
     },
     initialize: function() {
         this.callParent();
-        Ext.Ajax.request({
-            url: "app/scripts/login_success.php",
-            callback: function(options, success, response) {
-                var jsonObj = JSON.parse(response.responseText);
-                if (jsonObj.userID !== null) {
-                    $("link[href*='resources/css/']").attr("href", "resources/css/" + jsonObj.layoutName + ".css");
-                    $(".x-container").css("background", jsonObj.layoutColor);
-                    $("span").css("font-size", jsonObj.layoutFontSize);
-                    $("h3").css("font-size", jsonObj.layoutFontSize);
-                    $("p").css("font-size", jsonObj.layoutFontSize);
-                    Ext.Viewport.setActiveItem(jsonObj.startUp + "view");
-                }
-            }
-        });
+        classSet();
+        setSettings();
     }
 });

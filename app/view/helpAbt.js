@@ -40,7 +40,12 @@ Ext.define("StudentApp.view.helpAbt", {
                 xtype: "fieldset",
                 layout: "fit"
             }]
-        }]
+        }],
+        listeners: {
+            show: function() {
+                setSettings();                
+            }
+        }
     },
     initialize: function () {
         Ext.Ajax.request({

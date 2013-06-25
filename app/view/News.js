@@ -48,8 +48,11 @@ Ext.define("StudentApp.view.News", {
                     store: "News"
                 }]
             }]
-        }]
-    },
-    initialize: function() {
+        }],
+        listeners: {
+            show: function() {
+                setSettings();                
+            }
+        }
     }
 });

@@ -89,7 +89,12 @@ Ext.define("StudentApp.view.Maps", {
                 margin: 5,
                 store: "Maps"
             }]
-        }]
+        }],
+        listeners: {
+            show: function() {
+                setSettings();                
+            }
+        }
     },
     initialize: function() {
         //Ajax all data on page load

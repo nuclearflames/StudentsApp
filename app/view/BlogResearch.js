@@ -47,6 +47,11 @@ Ext.define("StudentApp.view.BlogResearch", {
                     store: "FeedResearch"
                 }]
             }]
-        }]
+        }],
+        listeners: {
+            show: function() {
+                setSettings();                
+            }
+        }
     }
 });

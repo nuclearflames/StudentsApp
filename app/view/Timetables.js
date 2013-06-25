@@ -54,7 +54,12 @@ Ext.define("StudentApp.view.Timetables", {
                     id: "timetableResults"
                 }]
             }]
-        }]
+        }],
+        listeners: {
+            show: function() {
+                setSettings();                
+            }
+        }
     }, 
     initialize: function () {
         Ext.Ajax.request({

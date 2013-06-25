@@ -40,9 +40,11 @@ Ext.define("StudentApp.view.City", {
                     store: "City"
                 }]
             }]
-        }]
-    },
-    initialize: function() {
-        console.log(Ext.getStore("City"));
+        }],
+        listeners: {
+            show: function() {
+                setSettings();                
+            }
+        }
     }
 });
