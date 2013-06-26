@@ -1,8 +1,10 @@
+//Initialize the view
 Ext.define("StudentApp.view.Events", {
     extend:'Ext.Container',
     alias: "widget.eventsview",
     xtype: "eventsview",
     config: {
+        //This sets the design of the page onload
         layout: 'vbox',
         fullscreen: true,
         items: [{
@@ -31,7 +33,7 @@ Ext.define("StudentApp.view.Events", {
                     margin: 10,
                     label: "Search Events:",
                     xtype: "searchfield",
-                    id: "eventsSearch",
+                    id: "eventsSearch"
                 }]
             }]
         },{
@@ -50,9 +52,10 @@ Ext.define("StudentApp.view.Events", {
                 }]
             }]
         }],
+        //Event listener for the page
         listeners: {
             show: function() {
-                setSettings();                
+                setSettings();
             }
         }
     }

@@ -1,3 +1,4 @@
+//Initialize the view
 Ext.define("StudentApp.view.Login", {
 	extend: "Ext.Container",
 	alias: "widget.loginview",
@@ -6,7 +7,6 @@ Ext.define("StudentApp.view.Login", {
         fullscreen: true,
         items: [{
             xtype: "panel",
-            flex: 1,
             items: [{
                     xtype: "image",
                     src: 'http://s1.city.ac.uk/i/city-logo-1894.png',
@@ -30,7 +30,6 @@ Ext.define("StudentApp.view.Login", {
                 }]
             },{
             xtype: "panel",
-            flex: 8,
             items: [{
                 xtype: "fieldset",
                 title: "Please Login",
@@ -74,6 +73,6 @@ Ext.define("StudentApp.view.Login", {
         }]
 	},
 	initialize: function () {
-		this.callParent(arguments);
+		this.callParent();
 	}
 });

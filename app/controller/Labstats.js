@@ -1,7 +1,9 @@
+//Initialise the controller
 Ext.define("StudentApp.controller.Labstats", {
     extend: "Ext.app.Controller",
     config: {
         control: {
+            //Events that will make the functions run, gets the ID and initilize a function
             "#labstatsMainBtn": {
                 tap: "labstatsMainBtn"
             },
@@ -16,6 +18,7 @@ Ext.define("StudentApp.controller.Labstats", {
             }
         }
     },
+    //Load University labs
     labstatsMainBtn: function() {
         Ext.getStore("Labstats").load(
             {
@@ -26,6 +29,7 @@ Ext.define("StudentApp.controller.Labstats", {
             }
         );
     },
+    //Load Cass labs
     labstatsCassBtn: function() {
         Ext.getStore("Labstats").load(
             {
@@ -36,6 +40,7 @@ Ext.define("StudentApp.controller.Labstats", {
             }
         );
     },
+    //Load Law labs
     labstatsLawBtn: function() {
         Ext.getStore("Labstats").load(
             {
@@ -46,6 +51,7 @@ Ext.define("StudentApp.controller.Labstats", {
             }
         );
     },
+    //Load Health labs
     labstatsHealthBtn: function() {
         Ext.getStore("Labstats").load(
             {

@@ -2,7 +2,9 @@
 
 var
 //Labstats Code
+//Variables that are used by the labstats code
 chart, currentChartType, lab, categories = [], inUse = [], available = [], offCount = [], renderBox, chartData = {}, infoWindow,
+//Will take the data for labstats and parse it into a series that highcharts can use
 getData = function (record, room, reload) {
     categories = [], inUse = [], available = [], offCount = [];
     jQuery.each(record, function(i, v) {
@@ -35,6 +37,7 @@ getData = function (record, room, reload) {
     }
     checkLabelClick();
 },
+//Renders the column chart from the data given
 renderColumnChart = function(data) {
     if (chart) {
         chart.destroy();
@@ -84,6 +87,7 @@ renderColumnChart = function(data) {
         }
     });
 },
+//Renders a pie chart upon clicking the label/name of a room
 renderPieChart = function(data) {
     if (chart) {
         chart.destroy();
@@ -128,6 +132,7 @@ renderPieChart = function(data) {
     });
 
 },
+//Will check for label/name clicks on the chart and initialise the pie chart
 checkLabelClick = function() {
     $(".highcharts-axis-labels text").click(function() {
         var text = $(this);
@@ -140,11 +145,13 @@ checkLabelClick = function() {
 },
 
 //Google Maps Code
+//Goolge maps variables
 gMap,
 markers = [],
 polygons = [],
 json,
 mapCenter = new google.maps.LatLng(51.527636,-0.1027),
+//Process the xml ajax content into useable variables
 processContent = function(i, v) {
     //Parse all multiple spaces in string
     var
@@ -160,6 +167,7 @@ processContent = function(i, v) {
     polygonsBuild.push(tmp);
     polygons.push("[" + polygonsBuild + "]");
 },
+//Process the content into markers from the ajax xml data
 processMarkers = function(i, v) {
     var
     latLngBuild = new google.maps.LatLng(parseFloat(v.geoLat), parseFloat(v.geoLong)),
@@ -180,13 +188,16 @@ processMarkers = function(i, v) {
         infoWindow.open(gMap, marker);
     });
 },
+//Thrown if the user has disabled geolocation
 handleNoGeolocation = function(initialLocation) {
     gMap.setCenter(initialLocation);
 },
-error,
+
+//layout code
+//Layout design variables
 $fontSize,
 $layoutColor,
-//Set the classes for design
+//Gets the content for the design and puts into variables
 classSet = function() {
     Ext.Ajax.request({
         url: "app/scripts/login_success.php",
@@ -202,6 +213,7 @@ classSet = function() {
         }
     });
 },
+//Will set the design based on the variables
 setSettings = function() {
     $(".x-container").css("background", $layoutColor);
     $("span").css("font-size", $fontSize);

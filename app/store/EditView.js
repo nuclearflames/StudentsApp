@@ -1,3 +1,4 @@
+//Initilize the data for the store
 Ext.define("StudentApp.store.EditView", {
 	extend: "Ext.data.Store",
 	model: "StudentApp.model.EditView",

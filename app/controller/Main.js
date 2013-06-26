@@ -1,7 +1,9 @@
+//Initialise the controller
 Ext.define("StudentApp.controller.Main", {
     extend: "Ext.app.Controller",
     config: {
         control: {
+            //Events that will make the functions run, gets the ID and initilize a function
             "#home": {
                 tap: "homeBtnAction"
             },
@@ -34,6 +36,7 @@ Ext.define("StudentApp.controller.Main", {
             }
         }
     },
+    //All of the slide transitions to different pages
     slideLeftTransition: {
         type: 'slide', direction: 'left'
     },

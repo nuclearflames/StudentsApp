@@ -1,3 +1,4 @@
+//Initialise the controller
 Ext.define("StudentApp.controller.Events", {
 	extend: "Ext.app.Controller",
 	config: {
@@ -31,6 +32,7 @@ Ext.define("StudentApp.controller.Events", {
 	randEBlogBtnAction: function() {
         Ext.Viewport.animateActiveItem("blogrview", this.slideLeftTransition);
 	},
+	//Search the events list
 	eventsSearchAction: function() {
         var val = Ext.ComponentMgr.get("eventsSearch").getValue(),
         store = Ext.getStore("Events");

@@ -1,8 +1,10 @@
+//Initialize the view
 Ext.define("StudentApp.view.Blog", {
     extend:'Ext.Container',
     alias: "widget.blogview",
     xtype: "blogview",
     config: {
+        //This sets the design of the page onload
         layout: 'vbox',
         fullscreen: true,
         items: [{
@@ -48,9 +50,10 @@ Ext.define("StudentApp.view.Blog", {
                 }]
             }]
         }],
+        //Event listener for the page
         listeners: {
             show: function() {
-                setSettings();                
+                setSettings();
             }
         }
     }

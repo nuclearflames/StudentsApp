@@ -1,3 +1,4 @@
+//Initialize the view
 Ext.define("StudentApp.view.Register", {
 	extend:'Ext.Container',
 	alias: "widget.registerview",
@@ -7,7 +8,6 @@ Ext.define("StudentApp.view.Register", {
 		fullscreen: true,
 		items: [{
 			xtype: "panel",
-			flex: 1,
 			items: [{
 				xtype: "button",
 				text: 'Home',
@@ -37,7 +37,6 @@ Ext.define("StudentApp.view.Register", {
 			}]
 		},{
 			xtype: "panel",
-			flex: 8,
 			items: [{
 				xtype: "fieldset",
 				items: [{

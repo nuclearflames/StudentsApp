@@ -1,18 +1,18 @@
 <?php
+//This file is for caching and cross domain mitigation
+$cachefile = "cacheAll.json";
 
-$cachefile = "cacheLabstats.json";
+// 1/2 Day
+$cacheLength = 43200;
 
-// 2 Mins
-$cacheMins = 2 * 60;
-
-if (file_exists($cachefile) && (time() - $cacheMins < filemtime($cachefile))) {
+if (file_exists($cachefile) && (time() - $cacheLength < filemtime($cachefile))) {
 	include($cachefile);
 	exit;
 }
 
 ob_start();
 
-$client = "https://www.city.ac.uk/visit/feeds/locationsWebapp.json?callback=?";
+$client = "http://search.city.ac.uk/s/search.json?collection=all-city&query=!asd";
 
 // create curl resource
 $ch = curl_init($client);
@@ -26,8 +26,7 @@ $output = curl_exec($ch);
 // close curl resource to free up system resources
 curl_close($ch);
 
-$fOutput = substr($output, 14);
-$fOutput = substr($fOutput, 0, -2);
+$fOutput = $output;
 
 echo $fOutput;
 

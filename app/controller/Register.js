@@ -1,3 +1,4 @@
+//Initialise the controller
 Ext.define("StudentApp.controller.Register", {
 	extend: "Ext.app.Controller",
 	config: {
@@ -5,6 +6,7 @@ Ext.define("StudentApp.controller.Register", {
 			fieldset: "fieldset"
 		},
 		control: {
+            //Events that will make the functions run, gets the ID and initilize a function
 			"#logInButton": {
 				tap: "loginButton"
 			},
@@ -22,6 +24,7 @@ Ext.define("StudentApp.controller.Register", {
 	slideRightTransition: {
 		type: 'slide', direction: 'right'
 	},
+    //This will initiliaze the registration script, gets the details from the form and ajax it
 	registerButton: function () {
 		var username = Ext.getCmp("registerUsernameTextField").getValue(),
 			password = Ext.getCmp("registerPasswordField").getValue(),

@@ -1,8 +1,10 @@
+//Initialize the view
 Ext.define("StudentApp.view.Maps", {
     extend:'Ext.Container',
     alias: "widget.mapsview",
     xtype: "mapsview",
     config: {
+        //This sets the design of the page onload
         layout: 'hbox',
         fullscreen: true,
         items: [{
@@ -90,9 +92,10 @@ Ext.define("StudentApp.view.Maps", {
                 store: "Maps"
             }]
         }],
+        //Event listener for the page
         listeners: {
             show: function() {
-                setSettings();                
+                setSettings();
             }
         }
     },

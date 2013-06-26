@@ -1,8 +1,10 @@
+//Initialize the view
 Ext.define("StudentApp.view.Edit", {
     extend:'Ext.Container',
     alias: "widget.settingsview",
     xtype: "settingsview",
     config: {
+        //This sets the design of the page onload
         layout: 'vbox',
         fullscreen: true,
         items: [{
@@ -50,6 +52,7 @@ Ext.define("StudentApp.view.Edit", {
                         itemTpl: "<div class='edit'><span>{stylesheet}</span></div>",
                         store: "Edit",
                         listeners : {
+                            //On tap will set the database to the values and reflect the changes on the page
                             itemtap: function (list, index, item, record) {
                                 var recordVal = record.data.stylesheet.toLowerCase();
                                 if (recordVal === "default") {
@@ -83,6 +86,7 @@ Ext.define("StudentApp.view.Edit", {
                         itemTpl: "<div class='edit'><span>{font}</span></div>",
                         store: "EditFont",
                         listeners : {
+                            //On tap will set the database to the values and reflect the changes on the page
                             itemtap: function (list, index, item, record) {
                                 var recordVal = record.data.font;
                                 $("span").css("font-size", recordVal);
@@ -113,6 +117,7 @@ Ext.define("StudentApp.view.Edit", {
                         itemTpl: "<div class='edit'><span>{colour}</span></div>",
                         store: "EditColour",
                         listeners : {
+                            //On tap will set the database to the values and reflect the changes on the page
                             itemtap: function (list, index, item, record) {
                                 var recordVal = record.data.colour.toLowerCase();
                                 $(".x-layout-card-item").css("background", recordVal);
@@ -142,6 +147,7 @@ Ext.define("StudentApp.view.Edit", {
                         itemTpl: "<div class='edit'><span>{startUp}</span></div>",
                         store: "EditView",
                         listeners : {
+                            //On tap will set the database to the values and reflect the changes on the page
                             itemtap: function (list, index, item, record) {
                                 var recordVal = record.data.startUp.toLowerCase();
                                 $(".x-layout-card-item").css("background", recordVal);
@@ -157,9 +163,10 @@ Ext.define("StudentApp.view.Edit", {
                 }]
             }]
         }],
+        //Event listener for the page
         listeners: {
             show: function() {
-                setSettings();                
+                setSettings();
             }
         }
     }

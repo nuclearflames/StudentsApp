@@ -1,8 +1,10 @@
+//Initialize the view
 Ext.define("StudentApp.view.News", {
     extend:'Ext.Container',
     alias: "widget.newsview",
     xtype: "newsview",
     config: {
+        //This sets the design of the page onload
         layout: 'vbox',
         fullscreen: true,
         items: [{
@@ -49,9 +51,10 @@ Ext.define("StudentApp.view.News", {
                 }]
             }]
         }],
+        //Event listener for the page
         listeners: {
             show: function() {
-                setSettings();                
+                setSettings();
             }
         }
     }

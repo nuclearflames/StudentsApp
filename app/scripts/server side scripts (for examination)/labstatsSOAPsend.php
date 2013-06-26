@@ -1,4 +1,5 @@
 <?php
+//This file is for caching and cross domain mitigation
 
 $cachefile = "cache.json";
 

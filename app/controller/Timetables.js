@@ -1,7 +1,9 @@
+//Initialise the controller
 Ext.define("StudentApp.controller.Timetables", {
     extend: "Ext.app.Controller",
     config: {
         control: {
+            //Events that will make the functions run, gets the ID and initilize a function
             "#editSearch": {
                 keyup: "editSearchAction"
             }
@@ -13,6 +15,7 @@ Ext.define("StudentApp.controller.Timetables", {
     slideRightTransition: {
         type: 'slide', direction: 'right'
     },
+    //Load the timetable based on the value in search
     editSearchAction: function() {
         var val = Ext.ComponentMgr.get("editSearch").getValue();
         $("#timetableResults .x-innerhtml").css("height", "100%") ;

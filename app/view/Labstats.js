@@ -1,8 +1,10 @@
+//Initialize the view
 Ext.define("StudentApp.view.Labstats", {
     extend:'Ext.Container',
     alias: "widget.labstatsview",
     xtype: "labstatsview",
     config: {
+        //This sets the design of the page onload
         layout: {type: 'vbox'},
         fullscreen: true,
         items: [{
@@ -65,16 +67,15 @@ Ext.define("StudentApp.view.Labstats", {
                 id: "chart"
             }]
         }],
+        //Event listener for the page
         listeners: {
             show: function() {
-                setSettings();                
+                setSettings();
             }
         }
     },
     initialize: function() {
-        this.callParent();
-        //Delay until store has retrieved data
-
+        //Initialize the labstats highcharts
         Ext.getStore("Labstats").load(
             {
                 params: "",

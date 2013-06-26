@@ -4,34 +4,9 @@
  * This file fetches data from Matrix (lab metadata) and the Labstats API
  * (computer terminal availability) mashes them together and returns JSON(P).
  *
- * $_GET variables
- *
- * @param id (Labstat ID, returns single lab data only)
- * @param callback (Wraps the JSON in a callback function. ie. JSONP)
- *
- * @copyright 2012 Mayes, Kennedy & Company. All Rights Reserved.
- * @author Simon Mayes <simon.mayes@mayeskennedy.co.uk>
  */
-/**
- * Control errors in this simple PHP environment
- */
-ini_set('display_errors', TRUE);
+ini_set('display_errors', FALSE);
 error_reporting(E_ALL);
-
-//set TZ
-date_default_timezone_set('Europe/London');
-
-/**
- * Prep the include path to include libraries
- *
- * Zend_Json used futher down.
- */
-set_include_path(
-    implode(PATH_SEPARATOR, array_merge(
-            explode(PATH_SEPARATOR, get_include_path()), array('/web/docs/webapps/lib')
-        )
-    )
-);
 
 /**
  * Setup the config variables used in the file
@@ -40,7 +15,6 @@ define('CACHE_FILE', 'cache/labstats.cache');
 define('CACHE_TIME', 24 * 60 * 60);
 
 define('MATRIX_URL', 'http://www.city.ac.uk/apis/labstats.xml/_nocache');
-define('TEST', FALSE);
 
 ob_start();
 include 'http://webapps.city.ac.uk/StudentsApp/scripts/labstatsSOAPsend.php';
@@ -52,19 +26,8 @@ $pcData = json_decode(urldecode($client));
 $bReCache = TRUE;
 
 // Check the cache file exists
-if (file_exists(CACHE_FILE) && !TEST) {
+if (file_exists(CACHE_FILE)) {
     $aFile = @unserialize(file_get_contents(CACHE_FILE));
-    /**
-     * Check the cache file is valid and in-date
-     * 
-     * Expected cache file format:
-     * 
-     * array(
-     *  'update' => (integer), // unix timestamp
-     *  'xml' => (string) // xml cache
-     * )
-     * 
-     */
     if (is_array($aFile) && isset($aFile['update']) && isset($aFile['xml'])) {
         if ($aFile['update'] - CACHE_TIME < time()) {
             $sXML = $aFile['xml'];
@@ -77,16 +40,14 @@ if (file_exists(CACHE_FILE) && !TEST) {
 if ($bReCache || (isset($_GET['recache']) && 'true' == $_GET['recache'])) {
     $sXML = file_get_contents(MATRIX_URL);
     // Try and write the cache file
-    if (!TEST) { // only cache in production
-        @file_put_contents(
-            CACHE_FILE, serialize(
-                array(
-                    'update' => time(),
-                    'xml' => $sXML
-                )
+    @file_put_contents(
+        CACHE_FILE, serialize(
+            array(
+                'update' => time(),
+                'xml' => $sXML
             )
-        );
-    }
+        )
+    );
 }
 
 // Turn the matrix metadata xml string into a SimpleXMLElement
@@ -102,9 +63,9 @@ foreach ($oXml->xpath('lab[location/labstat/id>0]') as $oLab) { // select labs w
     $aLabs[(int) $oLab->location->labstat->id] = $oLab;
 }
 
-//re-initalise and un-edited version of the labstat xml
 $sXML = file_get_contents(MATRIX_URL);
 $oXml = new SimpleXMLElement($sXML);
+//paramater matching to determine the type of lab area to load
 if (isset($_GET['id'])) {
     foreach ($oXml->xpath("lab/location[labstat/id='" . $_GET['id'] . "']") as $oLab) {
         array_push($value, $oLab->labstat->id);
@@ -139,10 +100,12 @@ class Lab {
 
 }
 
+//Escape if no data
 if (!$pcData) {
     exit(json_encode("NULL"));
 }
 
+//Merge the matrix metadata and the soap stream then convert to JSON object
 $aReturn = array();
 foreach ($pcData as $oLab) {
     for ($i = 0; $i < count($value); $i++) {
@@ -172,9 +135,11 @@ foreach ($pcData as $oLab) {
     }
 }
 
+//Send code to JSON object
 $sJSON = json_encode($aReturn);
 
-// Prepare response and set headers
+//Send as JSONP object back to webpage
+//Prepare response and set headers
 if (isset($_GET['callback'])) { // jsonp
     header('Content-Type: text/javascript');
     exit(sprintf('%s(%s)', $_GET['callback'], $sJSON));

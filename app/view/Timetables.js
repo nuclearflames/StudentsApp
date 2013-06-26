@@ -1,8 +1,10 @@
+//Initialize the view
 Ext.define("StudentApp.view.Timetables", {
     extend:'Ext.Container',
     alias: "widget.timetableview",
     xtype: "timetableview",
     config: {
+        //This sets the design of the page onload
         layout: 'vbox',
         fullscreen: true,
         items: [{
@@ -55,13 +57,15 @@ Ext.define("StudentApp.view.Timetables", {
                 }]
             }]
         }],
+        //Event listener for the page
         listeners: {
             show: function() {
-                setSettings();                
+                setSettings();
             }
         }
-    }, 
+    },
     initialize: function () {
+        //Load the timetable if the person has perviously entered data
         Ext.Ajax.request({
             url: "app/scripts/loadTimetable.php",
             method: "POST",
@@ -70,7 +74,7 @@ Ext.define("StudentApp.view.Timetables", {
                 if (r) {
                     $("#timetableResults .x-innerhtml").css("height", "100%");
                     $("#timetableResults iframe").attr("src", "http://webapps.city.ac.uk/sst/vle/index.html?&c=ccb8520b676760f079268c34279d4469&i=1370812813&t=49948&u="+ r);
-                }                
+                }
             }
         });
     }

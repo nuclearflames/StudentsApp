@@ -1,8 +1,10 @@
+//Initialize the view
 Ext.define("StudentApp.view.helpAbt", {
     extend:'Ext.Container',
     alias: "widget.helpAbtview",
     xtype: "helpAbtview",
     config: {
+        //This sets the design of the page onload
         layout: 'vbox',
         fullscreen: true,
         items: [{
@@ -34,30 +36,22 @@ Ext.define("StudentApp.view.helpAbt", {
             items: [{
                 flex: 5,
                 xtype: "fieldset",
-                layout: "fit"
+                layout: "fit",
+                scrollable: "vertical",
+                html: "<div style='text-align:center'><h1>Webapp For Students</h1><p>This webapp was built by: James Grant</p><p> To use this app navigate to the different pages, to change your settings go to 'settings'</p></div>"
             },{
                 flex: 5,
                 xtype: "fieldset",
-                layout: "fit"
+                layout: "fit",
+                scrollable: "vertical",
+                html: "<div style='text-align:center'><h1><u>About City</u></h1><p>City University London is a special place. With skill and dedication, we have been using education, research and enterprise to transform the lives of our students, our community and the world for over a hundred years.</p><h2>Academic excellence for business and the professions</h2><p>We are a leading international university and the only university in London to be both committed to academic excellence and focused on business and the professions.</p></div>"
             }]
         }],
+        //Event listener for the page
         listeners: {
             show: function() {
-                setSettings();                
+                setSettings();
             }
         }
-    },
-    initialize: function () {
-        Ext.Ajax.request({
-            url: "app/scripts/loadTimetable.php",
-            method: "POST",
-            callback: function(options, success, response) {
-                var r = response.responseText;
-                if (r) {
-                    $("#timetableResults .x-innerhtml").css("height", "100%");
-                    $("#timetableResults iframe").attr("src", "http://webapps.city.ac.uk/sst/vle/index.html?&c=ccb8520b676760f079268c34279d4469&i=1370812813&t=49948&u="+ r);
-                }
-            }
-        });
     }
 });

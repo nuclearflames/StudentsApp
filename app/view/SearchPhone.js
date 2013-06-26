@@ -1,8 +1,10 @@
+//Initialize the view
 Ext.define("StudentApp.view.SearchPhone", {
     extend:'Ext.Container',
     alias: "widget.phoneview",
     xtype: "phoneview",
     config: {
+        //This sets the design of the page onload
         layout: 'vbox',
         fullscreen: true,
         items: [{
@@ -79,9 +81,10 @@ Ext.define("StudentApp.view.SearchPhone", {
                 }]
             }]
         }],
+        //Event listener for the page
         listeners: {
             show: function() {
-                setSettings();                
+                setSettings();
             }
         }
     }

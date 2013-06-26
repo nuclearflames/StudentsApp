@@ -1,8 +1,11 @@
+//Initialize the view
+//Initialize the view
 Ext.define("StudentApp.view.City", {
     extend:'Ext.Container',
     alias: "widget.cityview",
     xtype: "cityview",
     config: {
+        //This sets the design of the page onload
         layout: 'vbox',
         fullscreen: true,
         items: [{
@@ -41,9 +44,10 @@ Ext.define("StudentApp.view.City", {
                 }]
             }]
         }],
+        //Event listener for the page
         listeners: {
             show: function() {
-                setSettings();                
+                setSettings();
             }
         }
     }

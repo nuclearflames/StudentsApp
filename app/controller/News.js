@@ -1,7 +1,9 @@
+//Initialise the controller
 Ext.define("StudentApp.controller.News", {
 	extend: "Ext.app.Controller",
 	config: {
 		control: {
+            //Events that will make the functions run, gets the ID and initilize a function
 			"#cityBlogBtn": {
 				tap: "cityBlogBtnAction"
 			},
@@ -31,6 +33,7 @@ Ext.define("StudentApp.controller.News", {
 	randEBlogBtnAction: function() {
         Ext.Viewport.animateActiveItem("blogrview", this.slideLeftTransition);
 	},
+	//This will filter the news feed store
 	newsFeedAction: function() {
         var val = Ext.ComponentMgr.get("newsSearch").getValue(),
         store = Ext.getStore("News");

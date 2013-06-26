@@ -1,3 +1,4 @@
+//Initialise the data design model for the store
 Ext.define("StudentApp.model.Labstats", {
 	extend: "Ext.data.Model",
 	config: {

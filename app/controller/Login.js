@@ -1,3 +1,4 @@
+//Initialise the controller
 Ext.define("StudentApp.controller.Login", {
 	extend: "Ext.app.Controller",
 	config: {
@@ -5,6 +6,7 @@ Ext.define("StudentApp.controller.Login", {
 			fieldset: "fieldset"
 		},
 		control: {
+            //Events that will make the functions run, gets the ID and initilize a function
 			"#loginBtn": {
 				tap: "loginButton"
 			},
@@ -19,6 +21,7 @@ Ext.define("StudentApp.controller.Login", {
 	slideRightTransition: {
 		type: 'slide', direction: 'right'
 	},
+	//Will get the form details and post them to the php script, will login if details are correct else displays error labels
 	loginButton: function () {
 		var email = Ext.getCmp("emailTextField").getValue(),
 			password = Ext.getCmp("passwordTextField").getValue(),
@@ -52,9 +55,10 @@ Ext.define("StudentApp.controller.Login", {
 	registerButton: function () {
 		Ext.Viewport.animateActiveItem("registerview", this.slideLeftTransition);
 	},
+	//Controls the app start page
 	launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        Ext.Viewport.add(Ext.create('StudentApp.view.Labstats'));
+        Ext.Viewport.add(Ext.create('StudentApp.view.Main'));
     }
 });

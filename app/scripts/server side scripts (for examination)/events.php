@@ -1,11 +1,12 @@
 <?php
+//This file is for caching and cross domain mitigation
 
 $cachefile = "cacheEvents.json";
 
-// 2 hrs
-$cacheMins = 120 * 60;
+// 1/2 Day
+$cacheLength = 43200;
 
-if (file_exists($cachefile) && (time() - $cacheMins < filemtime($cachefile))) {
+if (file_exists($cachefile) && (time() - $cacheLength < filemtime($cachefile))) {
 	include($cachefile);
 	exit;
 }

@@ -2,6 +2,7 @@ Ext.define('StudentApp.view.Main', {
     extend: 'Ext.Container',
     alias: "widget.mainview",
     config: {
+        //This sets the design of the page onload
         items: [{
             xtype: 'fieldset',
             items: [{
@@ -157,7 +158,9 @@ Ext.define('StudentApp.view.Main', {
     },
     initialize: function() {
         this.callParent();
+        //Load the initial design with the users perferences
         classSet();
+        //Set the loaded settings
         setSettings();
     }
 });

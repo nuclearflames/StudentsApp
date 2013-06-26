@@ -1,3 +1,4 @@
+//Initialise the controller
 Ext.define("StudentApp.controller.Edit", {
 	extend: "Ext.app.Controller",
 	config: {
@@ -19,6 +20,7 @@ Ext.define("StudentApp.controller.Edit", {
     slideRightTransition: {
 		type: 'slide', direction: 'right'
     },
+    //Page navigation
 	cityBlogBtnAction: function() {
         Ext.Viewport.setActiveItem("blogview");
 	},

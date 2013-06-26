@@ -1,7 +1,9 @@
+//Initialise the controller
 Ext.define("StudentApp.controller.Blog", {
 	extend: "Ext.app.Controller",
 	config: {
 		control: {
+            //Events that will make the functions run, gets the ID and initilize a function
 			"#cityBlogBtn": {
 				tap: "cityBlogBtnAction"
 			},
@@ -19,6 +21,7 @@ Ext.define("StudentApp.controller.Blog", {
     slideRightTransition: {
 		type: 'slide', direction: 'right'
     },
+    //Page swapping functions
 	cityBlogBtnAction: function() {
         Ext.Viewport.animateActiveItem("blogview", this.slideRightTransition);
 	},

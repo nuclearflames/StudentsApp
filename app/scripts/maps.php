@@ -1,5 +1,6 @@
 <?php
 
+//Get the json values here
 ob_start();
 include 'http://webapps.city.ac.uk/StudentsApp/scripts/maps.php';
 $client = ob_get_contents();

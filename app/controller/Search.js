@@ -1,7 +1,9 @@
+//Initialise the controller
 Ext.define("StudentApp.controller.Search", {
     extend: "Ext.app.Controller",
     config: {
         control: {
+            //Events that will make the functions run, gets the ID and initilize a function
             "#formPanelBtn": {
                 tap: "formPanelBtnAction"
             },
@@ -16,6 +18,7 @@ Ext.define("StudentApp.controller.Search", {
     slideRightTransition: {
         type: 'slide', direction: 'right'
     },
+    //Get the search terms and send to the screen
     formPanelBtnAction: function() {
         var familyField = Ext.ComponentMgr.get("familyField").getValue(),
             givenField = Ext.ComponentMgr.get("givenField").getValue(),
