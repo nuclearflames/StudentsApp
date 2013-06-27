@@ -1,14 +1,7 @@
 <?php
 
-$host = "localhost";
-$Rusername = "root";
-$Rpassword = "Bed1113053";
-$db_name = "studentsapp";
+include("config.php");
 $tbl_name = "timetable";
-
-//Connect to database
-mysql_connect("$host","$Rusername","$Rpassword") or die("cannot connect");
-mysql_select_db("$db_name")or die("cannot select DB " . mysql_error());
 
 //Get the user ID
 session_start();

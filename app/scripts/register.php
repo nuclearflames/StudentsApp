@@ -14,15 +14,8 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 	die("Bad Email Address");
 }
 
-$host = "localhost";
-$Rusername = "root";
-$Rpassword = "Bed1113053";
-$db_name = "studentsapp";
+include("config.php");
 $tbl_name = "members";
-
-//DB request
-mysql_connect("$host","$Rusername","$Rpassword") or die("cannot connect");
-mysql_select_db("$db_name")or die("cannot select DB " . mysql_error());
 
 //Sql injection protection
 $username = stripslashes($username);

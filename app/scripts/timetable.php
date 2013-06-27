@@ -2,15 +2,7 @@
 //get the variables
 if(isset($_POST["userNo"])){$userNo = $_POST["userNo"];}
 
-$host = "localhost";
-$Rusername = "root";
-$Rpassword = "Bed1113053";
-$db_name = "studentsapp";
-$tbl_name = "timetable";
-
-//db connection
-mysql_connect("$host","$Rusername","$Rpassword") or die("cannot connect");
-mysql_select_db("$db_name")or die("cannot select DB " . mysql_error());
+include("config.php");
 
 //session user id
 session_start();

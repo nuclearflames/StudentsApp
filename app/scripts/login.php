@@ -1,14 +1,7 @@
 <?php
 
-$host = "localhost";
-$Rusername = "root";
-$Rpassword = "Bed1113053";
-$db_name = "studentsapp";
+include("config.php");
 $tbl_name = "members";
-
-//Connect to database
-mysql_connect("$host","$Rusername","$Rpassword") or die("cannot connect");
-mysql_select_db("$db_name")or die("cannot select DB " . mysql_error());
 
 //Get the posted variables
 $email = $_POST["email"];

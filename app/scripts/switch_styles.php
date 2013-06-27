@@ -6,15 +6,8 @@ if(isset($_POST["stylesheet"])){$stylesheet = $_POST["stylesheet"];}
 if(isset($_POST["font"])){$font = $_POST["font"];}
 if(isset($_POST["startUp"])){$startUp = $_POST["startUp"];}
 
-$host = "localhost";
-$Rusername = "root";
-$Rpassword = "Bed1113053";
-$db_name = "studentsapp";
+include("config.php");
 $tbl_name = "personalisation";
-
-//Connect to the database
-mysql_connect("$host","$Rusername","$Rpassword") or die("cannot connect");
-mysql_select_db("$db_name")or die("cannot select DB " . mysql_error());
 
 //Get the session user
 session_start();
