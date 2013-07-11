@@ -33,6 +33,9 @@ Ext.define("StudentApp.controller.Main", {
             },
             "#helpAbtBtn": {
                 tap: "helpAbtBtnAction"
+            },
+            "#menu": {
+                tap: "menuExpandAction"
             }
         }
     },
@@ -72,5 +75,19 @@ Ext.define("StudentApp.controller.Main", {
     },
     helpAbtBtnAction: function() {
         Ext.Viewport.setActiveItem("helpAbtview");
+    },
+    menuExpandAction: function() {
+        var menu = Ext.ComponentMgr.get("expandMenu");
+        if (menu.getFlex() != 30) {
+            menu.setFlex(30);
+        } else {
+            menu.setFlex(2);
+        }
+    },
+    //Controls the app start page
+    launch: function() {
+        // Destroy the #appLoadingIndicator element
+        Ext.fly('appLoadingIndicator').destroy();
+        Ext.Viewport.add(Ext.create('StudentApp.view.Maps'));
     }
 });

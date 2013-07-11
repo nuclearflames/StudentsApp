@@ -5,91 +5,111 @@ Ext.define("StudentApp.view.Maps", {
     xtype: "mapsview",
     config: {
         //This sets the design of the page onload
-        layout: 'hbox',
+        layout: 'vbox',
         fullscreen: true,
         items: [{
-            width: "50%",
-            xtype: "fieldset",
-            layout: "fit",
-            items: [{
-                id: "map"
-            }]
-        },{
-            xtype: "fieldset",
-            docked: "top",
-            layout: "hbox",
-            items: [{
-                flex: 5,
-                xtype: "button",
-                text: 'Home',
-                iconCls: "home",
-                ui: "back",
-                id: "home",
-                margin: 20
-            },{
-                flex: 5,
-                xtype: "label",
-                html: "<u>City University Maps</u>",
-                margin: 20
-            }]
-        },{
-            flex: 2,
             xtype: "fieldset",
             layout: "vbox",
+            id: "expandMenu",
             items: [{
-                xtype: "fieldset",
+                xtype: "panel",
+                layout: "hbox",
                 items: [{
+                    flex: 5,
                     xtype: "button",
-                    text: "Lecture Theatres",
-                    id: "lectureTheatresBtn",
-                    iconCls: "lecture",
-                    margin: 5
+                    text: 'Home',
+                    iconCls: "home",
+                    ui: "back",
+                    id: "home",
+                    margin: 20
                 },{
-                    xtype: "button",
-                    text: "Accomodation",
-                    id: "accomodationBtn",
-                    iconCls: "accomodation",
-                    margin: 5
+                    flex: 5,
+                    xtype: "label",
+                    html: "<u>City University Maps</u>",
+                    margin: 20
                 },{
-                    xtype: "button",
-                    text: "Libraries",
-                    id: "libariesBtn",
-                    iconCls: "library",
-                    margin: 5
-                },{
+                    docked: "right",
                     xtype: "container",
-                    layout: "hbox",
+                    width: "30%",
                     items: [{
-                        flex: 5,
                         xtype: "button",
-                        text: "Computer Rooms",
-                        id: "computerRoomsBtn",
-                        iconCls: "computer",
-                        margin: 5
-                    },{
-                        flex: 5,
-                        xtype: "button",
-                        text: "Student Services",
-                        id: "studentServicesBtn",
-                        iconCls: "services",
-                        margin: 5
-                    }]
-                },{
-                    xtype: "fieldset",
-                    items: [{
-                        label: "Search",
-                        xtype: "searchfield",
-                        id: "findPlaceSearch",
-                        margin: 5
+                        text: 'Menu',
+                        iconCls: "menu",
+                        id: "menu",
+                        margin: 20
                     }]
                 }]
             },{
                 flex: 5,
-                xtype: "list",
-                title: "Places",
-                itemTpl: "<div class='mapsList'><p>{title}<br /><a href='{link}' target='_blank'>Extra information</a></p></div>",
-                margin: 5,
-                store: "Maps"
+                layout: "fit",
+                xtype: "panel",
+                items: [{
+                    layout: "hbox",
+                    items: [{
+                        flex: 5,
+                        scrollable: {
+                            direction: 'vertical',
+                            directionLock: true
+                        },
+                        items: [{
+                            xtype: "button",
+                            text: "Lecture Theatres",
+                            id: "lectureTheatresBtn",
+                            iconCls: "lecture",
+                            margin: 5
+                        },{
+                            xtype: "button",
+                            text: "Accomodation",
+                            id: "accomodationBtn",
+                            iconCls: "accomodation",
+                            margin: 5
+                        },{
+                            xtype: "button",
+                            text: "Libraries",
+                            id: "libariesBtn",
+                            iconCls: "library",
+                            margin: 5
+                        },{
+                            xtype: "button",
+                            text: "Computer Rooms",
+                            id: "computerRoomsBtn",
+                            iconCls: "computer",
+                            margin: 5
+                        },{
+                            flex: 5,
+                            xtype: "button",
+                            text: "Student Services",
+                            id: "studentServicesBtn",
+                            iconCls: "services",
+                            margin: 5
+                        },{
+                            xtype: "fieldset",
+                            items: [{
+                                label: "Search",
+                                xtype: "searchfield",
+                                id: "findPlaceSearch",
+                                margin: 5
+                            }]
+                        }]
+                    },{
+                        layout: "fit",
+                        flex: 5,
+                        items: [{
+                            xtype: "list",
+                            title: "Places",
+                            itemTpl: "<div class='mapsList'><p>{title}<br /><a href='{link}' target='_blank'>Extra information</a></p></div>",
+                            margin: 5,
+                            store: "Maps"
+                        }]
+                    }]
+                }]
+            }]
+        },{
+            flex: 8,
+            xtype: "fieldset",
+            layout: "fit",
+            items: [{
+                id: "map"
             }]
         }],
         //Event listener for the page
