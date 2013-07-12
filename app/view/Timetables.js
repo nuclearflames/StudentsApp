@@ -26,7 +26,7 @@ Ext.define("StudentApp.view.Timetables", {
             },{
                 flex: 5,
                 xtype: "label",
-                html: "<h1><u>View your Timetable</u></h1>",
+                html: "<h3><u>View your Timetable</u></h3>",
                 margin: 20
             }]
         },{
@@ -39,7 +39,7 @@ Ext.define("StudentApp.view.Timetables", {
                 items: [{
                     xtype: "fieldset",
                     layout: "fit",
-                    title: "<h1><u>Enter your student account ID (e.g 'abcd123'):</u></h1>",
+                    title: "<h3><u>Enter your student account ID (e.g 'abcd123'):</u></h3>",
                     items: [{
                         xtype: "searchfield",
                         id: "editSearch"
