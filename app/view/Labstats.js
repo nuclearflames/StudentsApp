@@ -8,7 +8,9 @@ Ext.define("StudentApp.view.Labstats", {
         layout: {type: 'vbox'},
         fullscreen: true,
         items: [{
+            height: "100px",
             xtype: "fieldset",
+            cls: "expandMenu",
             items: [{
                 xtype: "panel",
                 layout: "hbox",
@@ -19,60 +21,64 @@ Ext.define("StudentApp.view.Labstats", {
                     iconCls: "home",
                     id: "home",
                     margin: 10,
-                    flex: 5
+                    flex: 3
                 },{
                     xtype: "label",
                     html: "<u>Computer Availability Stats</u>",
                     margin: 10,
-                    flex: 5
+                    flex: 7
+                },{
+                    docked: "right",
+                    width: "30%",
+                    items: [{
+                        xtype: "button",
+                        text: 'Menu',
+                        iconCls: "menu",
+                        id: "menu",
+                        action: "menuExpand",
+                        margin: 20
+                    }]
                 }]
             },{
+                xtype: "panel",
                 items: [{
-                    layout: "hbox",
-                    items: [{
-                        flex: 5,
-                        xtype: "button",
-                        text: "University PC's",
-                        id: "labstatsMainBtn",
-                        margin: 5
-                    },{
-                        flex: 5,
-                        xtype: "button",
-                        text: "Cass PC's",
-                        id: "labstatsCassBtn",
-                        margin: 5
-                    }]
+                    flex: 5,
+                    xtype: "button",
+                    text: "University PC's",
+                    id: "labstatsMainBtn",
+                    margin: 5
                 },{
-                    layout: "hbox",
-                    items: [{
-                        flex: 5,
-                        xtype: "button",
-                        text: "Law PC's",
-                        id: "labstatsLawBtn",
-                        margin: 5
-                    },{
-                        flex: 5,
-                        xtype: "button",
-                        text: "Health PC's",
-                        id: "labstatsHealthBtn",
-                        margin: 5
-                    }]
+                    flex: 5,
+                    xtype: "button",
+                    text: "Cass PC's",
+                    id: "labstatsCassBtn",
+                    margin: 5
+                },{
+                    flex: 5,
+                    xtype: "button",
+                    text: "Law PC's",
+                    id: "labstatsLawBtn",
+                    margin: 5
+                },{
+                    flex: 5,
+                    xtype: "button",
+                    text: "Health PC's",
+                    id: "labstatsHealthBtn",
+                    margin: 5
                 }]
             }]
         },{
-            xtype: "panel",
+            xtype: "fieldset",
             layout: "fit",
             flex: 9,
             items: [{
+                scrollable: {
+                    direction: 'vertical',
+                    directionLock: true
+                },
                 id: "chart"
             }]
-        }],
-        //Event listener for the page
-        listeners: {
-            show: function() {
-                setSettings();
-            }
-        }
+        }]
     },
     initialize: function() {
         //Initialize the labstats highcharts

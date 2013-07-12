@@ -162,12 +162,6 @@ Ext.define("StudentApp.view.Edit", {
                     }]
                 }]
             }]
-        }],
-        //Event listener for the page
-        listeners: {
-            show: function() {
-                setSettings();
-            }
-        }
+        }]
     }
 });

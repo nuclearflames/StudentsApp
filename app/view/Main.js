@@ -138,9 +138,5 @@ Ext.define('StudentApp.view.Main', {
     },
     initialize: function() {
         this.callParent();
-        //Load the initial design with the users perferences
-        classSet();
-        //Set the loaded settings
-        setSettings();
     }
 });

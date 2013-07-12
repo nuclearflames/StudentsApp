@@ -8,13 +8,15 @@ Ext.define("StudentApp.view.SearchPhone", {
         layout: 'vbox',
         fullscreen: true,
         items: [{
+            height: "100px",
             xtype: "fieldset",
+            cls: "expandMenu",
             items: [{
                 xtype: "panel",
                 layout: "hbox",
                 items: [{
                     margin: 10,
-                    flex: 5,
+                    flex: 3,
                     xtype: "button",
                     text: 'Home',
                     iconCls: "home",
@@ -22,9 +24,20 @@ Ext.define("StudentApp.view.SearchPhone", {
                     id: "home"
                 },{
                     margin: 10,
-                    flex: 5,
+                    flex: 3,
                     xtype: "label",
-                    html: '<u>Search for Staff and Student phone details</u>'
+                    html: '<u>Phone Records</u>'
+                },{
+                    docked: "right",
+                    width: "30%",
+                    items: [{
+                        xtype: "button",
+                        text: 'Menu',
+                        iconCls: "menu",
+                        id: "menu",
+                        action: "menuExpand",
+                        margin: 20
+                    }]
                 }]
             },{
                 items: [{
@@ -46,7 +59,6 @@ Ext.define("StudentApp.view.SearchPhone", {
                     layout: "vbox",
                     xtype: "container",
                     items: [{
-                        flex: 3,
                         items: [{
                             xtype: "label",
                             html: "<h3>Search Details</h3>",
@@ -74,18 +86,15 @@ Ext.define("StudentApp.view.SearchPhone", {
                         xtype: "container",
                         items: [{
                             xtype: "panel",
-                            scrollable: 'vertical',
+                            scrollable: {
+                                direction: 'both',
+                                directionLock: true
+                            },
                             id: "phoneResponsePanel"
                         }]
                     }]
                 }]
             }]
-        }],
-        //Event listener for the page
-        listeners: {
-            show: function() {
-                setSettings();
-            }
-        }
+        }]
     }
 });

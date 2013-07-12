@@ -62,8 +62,8 @@ renderColumnChart = function(data) {
             }
         },
         legend: {
-            align: 'right',
-            verticalAlign: 'middle',
+            align: 'center',
+            verticalAlign: 'bottom',
             layout: "vertical"
         },
         plotOptions: {
@@ -191,32 +191,4 @@ processMarkers = function(i, v) {
 //Thrown if the user has disabled geolocation
 handleNoGeolocation = function(initialLocation) {
     gMap.setCenter(initialLocation);
-},
-
-//layout code
-//Layout design variables
-$fontSize,
-$layoutColor,
-//Gets the content for the design and puts into variables
-classSet = function() {
-    Ext.Ajax.request({
-        url: "app/scripts/login_success.php",
-        callback: function(options, success, response) {
-            var jsonObj = JSON.parse(response.responseText);
-            if (jsonObj.userID !== null) {
-                $("link[href*='resources/css/']").attr("href", "resources/css/" + jsonObj.layoutName + ".css");
-                $layoutColor = jsonObj.layoutColor;
-                $fontSize = jsonObj.layoutFontSize;
-                $startUp = jsonObj.startUp;
-                Ext.Viewport.setActiveItem(jsonObj.startUp + "view");
-            }
-        }
-    });
-},
-//Will set the design based on the variables
-setSettings = function() {
-    $(".x-container").css("background", $layoutColor);
-    $("span").css("font-size", $fontSize);
-    $("h3").css("font-size", $fontSize);
-    $("p").css("font-size", $fontSize);
 };

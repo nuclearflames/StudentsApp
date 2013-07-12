@@ -34,7 +34,7 @@ Ext.define("StudentApp.controller.Main", {
             "#helpAbtBtn": {
                 tap: "helpAbtBtnAction"
             },
-            "#menu": {
+            "button[action=menuExpand]": {
                 tap: "menuExpandAction"
             }
         }
@@ -76,18 +76,21 @@ Ext.define("StudentApp.controller.Main", {
     helpAbtBtnAction: function() {
         Ext.Viewport.setActiveItem("helpAbtview");
     },
-    menuExpandAction: function() {
-        var menu = Ext.ComponentMgr.get("expandMenu");
-        if (menu.getFlex() != 30) {
-            menu.setFlex(30);
-        } else {
-            menu.setFlex(2);
+    menuExpandAction: function(e) {
+        var menu = Ext.ComponentQuery.query("fieldset[_cls='expandMenu']");
+        console.log(menu);
+        for (i = 0; i < menu.length; i++) {
+            if (menu[i].getHeight() === "100px") {
+                menu[i].setHeight("70%");
+            } else {
+                menu[i].setHeight("100px");
+            }
         }
     },
     //Controls the app start page
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        Ext.Viewport.add(Ext.create('StudentApp.view.Maps'));
+        Ext.Viewport.add(Ext.create('StudentApp.view.SearchPhone'));
     }
 });

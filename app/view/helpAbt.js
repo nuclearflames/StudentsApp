@@ -46,12 +46,6 @@ Ext.define("StudentApp.view.helpAbt", {
                 scrollable: "vertical",
                 html: "<div style='text-align:center'><h1><u>About City</u></h1><p>City University London is a special place. With skill and dedication, we have been using education, research and enterprise to transform the lives of our students, our community and the world for over a hundred years.</p><h2>Academic excellence for business and the professions</h2><p>We are a leading international university and the only university in London to be both committed to academic excellence and focused on business and the professions.</p></div>"
             }]
-        }],
-        //Event listener for the page
-        listeners: {
-            show: function() {
-                setSettings();
-            }
-        }
+        }]
     }
 });

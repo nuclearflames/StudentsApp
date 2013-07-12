@@ -56,13 +56,7 @@ Ext.define("StudentApp.view.Timetables", {
                     id: "timetableResults"
                 }]
             }]
-        }],
-        //Event listener for the page
-        listeners: {
-            show: function() {
-                setSettings();
-            }
-        }
+        }]
     },
     initialize: function () {
         //Load the timetable if the person has perviously entered data

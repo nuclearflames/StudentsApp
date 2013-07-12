@@ -49,12 +49,6 @@ Ext.define("StudentApp.view.BlogResearch", {
                     store: "FeedResearch"
                 }]
             }]
-        }],
-        //Event listener for the page
-        listeners: {
-            show: function() {
-                setSettings();
-            }
-        }
+        }]
     }
 });

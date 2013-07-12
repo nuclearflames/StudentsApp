@@ -8,14 +8,14 @@ Ext.define("StudentApp.view.Maps", {
         layout: 'vbox',
         fullscreen: true,
         items: [{
+            height: "100px",
             xtype: "fieldset",
             layout: "vbox",
-            id: "expandMenu",
+            cls: "expandMenu",
             items: [{
-                xtype: "panel",
                 layout: "hbox",
                 items: [{
-                    flex: 5,
+                    flex: 3,
                     xtype: "button",
                     text: 'Home',
                     iconCls: "home",
@@ -23,19 +23,20 @@ Ext.define("StudentApp.view.Maps", {
                     id: "home",
                     margin: 20
                 },{
-                    flex: 5,
+                    flex: 7,
                     xtype: "label",
                     html: "<u>City University Maps</u>",
                     margin: 20
                 },{
+                    xtype: "panel",
                     docked: "right",
-                    xtype: "container",
                     width: "30%",
                     items: [{
                         xtype: "button",
                         text: 'Menu',
                         iconCls: "menu",
                         id: "menu",
+                        action: "menuExpand",
                         margin: 20
                     }]
                 }]
@@ -45,56 +46,54 @@ Ext.define("StudentApp.view.Maps", {
                 xtype: "panel",
                 items: [{
                     layout: "hbox",
+                    scrollable: {
+                        direction: 'vertical',
+                        directionLock: true
+                    },
                     items: [{
                         flex: 5,
-                        scrollable: {
-                            direction: 'vertical',
-                            directionLock: true
-                        },
+                        xtype: "panel",
                         items: [{
                             xtype: "button",
                             text: "Lecture Theatres",
                             id: "lectureTheatresBtn",
-                            iconCls: "lecture",
-                            margin: 5
+                            iconCls: "lecture"
                         },{
                             xtype: "button",
                             text: "Accomodation",
                             id: "accomodationBtn",
-                            iconCls: "accomodation",
-                            margin: 5
+                            iconCls: "accomodation"
                         },{
                             xtype: "button",
                             text: "Libraries",
                             id: "libariesBtn",
-                            iconCls: "library",
-                            margin: 5
+                            iconCls: "library"
                         },{
                             xtype: "button",
                             text: "Computer Rooms",
                             id: "computerRoomsBtn",
-                            iconCls: "computer",
-                            margin: 5
+                            iconCls: "computer"
                         },{
-                            flex: 5,
                             xtype: "button",
                             text: "Student Services",
                             id: "studentServicesBtn",
-                            iconCls: "services",
-                            margin: 5
+                            iconCls: "services"
                         },{
                             xtype: "fieldset",
                             items: [{
                                 label: "Search",
                                 xtype: "searchfield",
-                                id: "findPlaceSearch",
-                                margin: 5
+                                id: "findPlaceSearch"
                             }]
                         }]
                     },{
                         layout: "fit",
                         flex: 5,
                         items: [{
+                            scrollable: {
+                                direction: 'vertical',
+                                directionLock: true
+                            },
                             xtype: "list",
                             title: "Places",
                             itemTpl: "<div class='mapsList'><p>{title}<br /><a href='{link}' target='_blank'>Extra information</a></p></div>",
@@ -109,15 +108,10 @@ Ext.define("StudentApp.view.Maps", {
             xtype: "fieldset",
             layout: "fit",
             items: [{
+                layout: "fit",
                 id: "map"
             }]
-        }],
-        //Event listener for the page
-        listeners: {
-            show: function() {
-                setSettings();
-            }
-        }
+        }]
     },
     initialize: function() {
         //Ajax all data on page load
@@ -161,8 +155,9 @@ Ext.define("StudentApp.view.Maps", {
                     $number = $(this).find("p:first").contents()[0].data;
                     for (i=0;i<markers.length;i++) {
                         if(markers[i].title === $number) {
-                            google.maps.event.trigger(markers[i], "mousedown");
                             markers[i].setMap(gMap);
+                            console.log((markers[i]));
+                            gMap.setCenter(markers[i].position);
                         }
                     }
                 });

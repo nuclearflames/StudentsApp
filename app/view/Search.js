@@ -100,12 +100,6 @@ Ext.define("StudentApp.view.Search", {
                     }]
                 }]
             }]
-        }],
-        //Event listener for the page
-        listeners: {
-            show: function() {
-                setSettings();
-            }
-        }
+        }]
     }
 });

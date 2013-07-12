@@ -50,12 +50,6 @@ Ext.define("StudentApp.view.News", {
                     store: "News"
                 }]
             }]
-        }],
-        //Event listener for the page
-        listeners: {
-            show: function() {
-                setSettings();
-            }
-        }
+        }]
     }
 });

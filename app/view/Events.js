@@ -51,12 +51,6 @@ Ext.define("StudentApp.view.Events", {
                     store: "Events"
                 }]
             }]
-        }],
-        //Event listener for the page
-        listeners: {
-            show: function() {
-                setSettings();
-            }
-        }
+        }]
     }
 });

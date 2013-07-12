@@ -43,12 +43,6 @@ Ext.define("StudentApp.view.City", {
                     store: "City"
                 }]
             }]
-        }],
-        //Event listener for the page
-        listeners: {
-            show: function() {
-                setSettings();
-            }
-        }
+        }]
     }
 });
