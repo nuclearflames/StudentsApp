@@ -90,6 +90,6 @@ Ext.define("StudentApp.controller.Main", {
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        Ext.Viewport.add(Ext.create('StudentApp.view.SearchPhone'));
+        Ext.Viewport.add(Ext.create('StudentApp.view.Main'));
     }
 });
