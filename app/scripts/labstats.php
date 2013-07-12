@@ -16,12 +16,8 @@ define('CACHE_TIME', 24 * 60 * 60);
 
 define('MATRIX_URL', 'http://www.city.ac.uk/apis/labstats.xml/_nocache');
 
-ob_start();
-include 'http://webapps.city.ac.uk/StudentsApp/scripts/labstatsSOAPsend.php';
-$client = ob_get_contents();
-ob_end_clean();
-
-$pcData = json_decode(urldecode($client));
+//Creates a SOAP Connection (Change URL to match your installation
+$pcData = new SoapClient("http://nsq209ap.enterprise.internal.city.ac.uk/LabStats/WebServices/Statistics.asmx?WSDL");
 
 $bReCache = TRUE;
 
@@ -99,6 +95,9 @@ class Lab {
     public $last_updated = '';
 
 }
+
+//Retrieve the SOAP path
+$pcData = $pcData->GetGroupedCurrentStats()->GetGroupedCurrentStatsResult->GroupStat;
 
 //Escape if no data
 if (!$pcData) {

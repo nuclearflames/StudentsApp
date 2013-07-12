@@ -20,7 +20,6 @@ Ext.define("StudentApp.view.City", {
                     xtype: "button",
                     text: 'Home',
                     iconCls: "home",
-                    ui: "back",
                     id: "home"
                 },{
                     margin: 10,

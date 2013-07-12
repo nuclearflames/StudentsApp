@@ -18,7 +18,6 @@ Ext.define("StudentApp.view.Events", {
                     flex: 5,
                     xtype: "button",
                     text: 'Home',
-                    ui: "back",
                     iconCls: "home",
                     id: "home"
                 },{

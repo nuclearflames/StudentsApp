@@ -20,7 +20,6 @@ Ext.define("StudentApp.view.Edit", {
                 xtype: "button",
                 text: 'Home',
                 iconCls: "home",
-                ui: "back",
                 id: "home",
                 margin: 20
             },{
@@ -59,15 +58,6 @@ Ext.define("StudentApp.view.Edit", {
                                     recordVal = "app";
                                 }
                                 $("link[href*='resources/css/']").attr("href", "resources/css/"+recordVal+".css");
-                                Ext.Ajax.request({
-                                    url: "app/scripts/switch_styles.php",
-                                    params: {
-                                        stylesheet: recordVal
-                                    },
-                                    callback: function(options, success, response) {
-                                        console.log(response.responseText);
-                                    }
-                                });
                             }
                         }
                     }]
@@ -91,14 +81,6 @@ Ext.define("StudentApp.view.Edit", {
                                 var recordVal = record.data.font;
                                 $("span").css("font-size", recordVal);
                                 $("h3").css("font-size", recordVal);
-                                Ext.Ajax.request({
-                                    url: "app/scripts/switch_styles.php",
-                                    params: {
-                                        font: recordVal
-                                    },
-                                    callback: function(options, success, response) {
-                                    }
-                                });
                             }
                         }
                     }]
@@ -121,14 +103,6 @@ Ext.define("StudentApp.view.Edit", {
                             itemtap: function (list, index, item, record) {
                                 var recordVal = record.data.colour.toLowerCase();
                                 $(".x-layout-card-item").css("background", recordVal);
-                                Ext.Ajax.request({
-                                    url: "app/scripts/switch_styles.php",
-                                    params: {
-                                        color: recordVal
-                                    },
-                                    callback: function(options, success, response) {
-                                    }
-                                });
                             }
                         }
                     }]
@@ -151,12 +125,6 @@ Ext.define("StudentApp.view.Edit", {
                             itemtap: function (list, index, item, record) {
                                 var recordVal = record.data.startUp.toLowerCase();
                                 $(".x-layout-card-item").css("background", recordVal);
-                                Ext.Ajax.request({
-                                    url: "app/scripts/switch_styles.php",
-                                    params: {
-                                        startUp: recordVal
-                                    }
-                                });
                             }
                         }
                     }]

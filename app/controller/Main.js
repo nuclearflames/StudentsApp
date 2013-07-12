@@ -78,7 +78,6 @@ Ext.define("StudentApp.controller.Main", {
     },
     menuExpandAction: function(e) {
         var menu = Ext.ComponentQuery.query("fieldset[_cls='expandMenu']");
-        console.log(menu);
         for (i = 0; i < menu.length; i++) {
             if (menu[i].getHeight() === "100px") {
                 menu[i].setHeight("70%");

@@ -19,7 +19,6 @@ Ext.define("StudentApp.view.Maps", {
                     xtype: "button",
                     text: 'Home',
                     iconCls: "home",
-                    ui: "back",
                     id: "home",
                     margin: 20
                 },{

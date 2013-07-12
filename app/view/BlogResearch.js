@@ -18,7 +18,6 @@ Ext.define("StudentApp.view.BlogResearch", {
                     xtype: "button",
                     text: 'Home',
                     iconCls: "home",
-                    ui: "back",
                     id: "home"
                 },{
                     margin: 10,

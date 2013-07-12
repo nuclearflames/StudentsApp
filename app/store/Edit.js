@@ -4,7 +4,6 @@ Ext.define("StudentApp.store.Edit", {
 	model: "StudentApp.model.Edit",
 	data: [
 		{ stylesheet: "Default" },
-		{ stylesheet: "Blackberry" },
 		{ stylesheet: "Windows" }
 	]
 });
