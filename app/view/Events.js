@@ -24,7 +24,7 @@ Ext.define("StudentApp.view.Events", {
                     margin: 10,
                     flex: 5,
                     xtype: "label",
-                    html: '<u>City University Events</u>'
+                    html: '<h3><u>City University Events</u></h3>'
                 }]
             },{
                 xtype: "panel",

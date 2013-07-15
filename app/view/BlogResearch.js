@@ -23,7 +23,7 @@ Ext.define("StudentApp.view.BlogResearch", {
                     margin: 10,
                     flex: 5,
                     xtype: "label",
-                    html: '<u>Research and Enterprise Blog</u>'
+                    html: '<h3><u>Research and Enterprise Blog</u></h3>'
                 }]
             },{
                 items: [{

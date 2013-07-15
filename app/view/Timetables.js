@@ -56,19 +56,5 @@ Ext.define("StudentApp.view.Timetables", {
                 }]
             }]
         }]
-    },
-    initialize: function () {
-        //Load the timetable if the person has perviously entered data
-        Ext.Ajax.request({
-            url: "app/scripts/loadTimetable.php",
-            method: "POST",
-            callback: function(options, success, response) {
-                var r = response.responseText;
-                if (r) {
-                    $("#timetableResults .x-innerhtml").css("height", "100%");
-                    $("#timetableResults iframe").attr("src", "http://webapps.city.ac.uk/sst/vle/index.html?&c=ccb8520b676760f079268c34279d4469&i=1370812813&t=49948&u="+ r);
-                }
-            }
-        });
     }
 });

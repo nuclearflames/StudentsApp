@@ -23,7 +23,7 @@ Ext.define("StudentApp.view.Labstats", {
                     flex: 3
                 },{
                     xtype: "label",
-                    html: "<u>Computer Availability Stats</u>",
+                    html: "<h3><u>Computer Availability Stats</u></h3>",
                     margin: 10,
                     flex: 7
                 },{

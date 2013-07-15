@@ -24,7 +24,7 @@ Ext.define("StudentApp.view.Maps", {
                 },{
                     flex: 7,
                     xtype: "label",
-                    html: "<u>City University Maps</u>",
+                    html: "<h3><u>City University Maps</u></h3>",
                     margin: 20
                 },{
                     xtype: "panel",

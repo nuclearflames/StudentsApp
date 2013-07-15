@@ -25,7 +25,7 @@ Ext.define("StudentApp.view.City", {
                     margin: 10,
                     flex: 5,
                     xtype: "label",
-                    html: '<u>City University Information</u>'
+                    html: '<h3><u>City University Information</u></h3>'
                 }]
             }]
         },{

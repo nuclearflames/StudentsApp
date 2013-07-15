@@ -23,7 +23,7 @@ Ext.define("StudentApp.view.Search", {
                     margin: 10,
                     flex: 5,
                     xtype: "label",
-                    html: '<u>Search for Staff and Student Email details</u>'
+                    html: '<h3><u>Search for Staff and Student Email details</u></h3>'
                 }]
             },{
                 items: [{

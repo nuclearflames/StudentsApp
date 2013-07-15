@@ -25,7 +25,7 @@ Ext.define("StudentApp.view.SearchPhone", {
                     margin: 10,
                     flex: 3,
                     xtype: "label",
-                    html: '<u>Phone Records</u>'
+                    html: '<h3><u>Phone Records</u></h3>'
                 },{
                     docked: "right",
                     width: "30%",

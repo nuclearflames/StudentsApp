@@ -25,7 +25,7 @@ Ext.define("StudentApp.view.Edit", {
             },{
                 flex: 5,
                 xtype: "label",
-                html: "<h1><u>Edit your Account</u></h1>",
+                html: "<h3><u>Edit your Account</u></h3>",
                 margin: 20
             }]
         },{

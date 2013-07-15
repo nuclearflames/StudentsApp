@@ -77,13 +77,24 @@ Ext.define("StudentApp.controller.Main", {
         Ext.Viewport.setActiveItem("helpAbtview");
     },
     menuExpandAction: function(e) {
-        var menu = Ext.ComponentQuery.query("fieldset[_cls='expandMenu']");
+        var menu = Ext.ComponentQuery.query("fieldset[_cls='expandMenu']"),
+        newWidth, newHeight;
         for (i = 0; i < menu.length; i++) {
             if (menu[i].getHeight() === "100px") {
                 menu[i].setHeight("70%");
             } else {
                 menu[i].setHeight("100px");
             }
+        }
+        //Used to resize the highchart if it exists
+        if ($(".highcharts-container").length) {
+            newWidth = $(".highcharts-container").parent().width();
+            newHeight = $(".highcharts-container").parent().height();
+            chart.setSize(newWidth, newHeight);
+        }
+        //Trigger resize of map on page size change
+        if (gMap) {
+            google.maps.event.trigger(gMap, 'resize');
         }
     },
     //Controls the app start page
