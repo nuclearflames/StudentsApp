@@ -2,6 +2,10 @@
 Ext.define("StudentApp.controller.Labstats", {
     extend: "Ext.app.Controller",
     config: {
+        routes: {
+            "labstats": "showView",
+            "pcs": "showView"
+        },
         control: {
             //Events that will make the functions run, gets the ID and initilize a function
             "#labstatsMainBtn": {
@@ -17,6 +21,9 @@ Ext.define("StudentApp.controller.Labstats", {
                 tap: "labstatsHealthBtn"
             }
         }
+    },
+    showView: function(e) {
+        Ext.Viewport.setActiveItem("labstatsview");
     },
     //Load University labs
     labstatsMainBtn: function() {

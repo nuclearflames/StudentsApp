@@ -3,6 +3,19 @@
 //Get the search value
 $urlVal = isset($_GET['research']);
 
+$cachefile = "cacheStudent.json";
+if($urlVal) {
+	$cachefile = "cacheResearch.json";
+}
+
+// 1/2 Day
+$cacheLength = 43200;
+
+if (file_exists($cachefile) && (time() - $cacheLength < filemtime($cachefile))) {
+	include($cachefile);
+	exit;
+}
+
 $url = "https://blogs.city.ac.uk/student-news/feed/";
 
 if($urlVal) {
@@ -39,4 +52,9 @@ foreach ($xml->channel->item as $v) {
 $jsonE = json_encode($json);
 
 echo($jsonE);
+
+$fp = fopen($cachefile, "w");
+
+fwrite($fp, $jsonE);
+
 ?>

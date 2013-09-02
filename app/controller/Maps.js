@@ -3,6 +3,10 @@ Ext.define("StudentApp.controller.Maps", {
     extend: "Ext.app.Controller",
     gMap: Ext.get("map"),
     config: {
+        routes: {
+            "map": "showView",
+            "maps": "showView"
+        },
         control: {
             //Events that will make the functions run, gets the ID and initilize a function
             "#lectureTheatresBtn": {
@@ -24,6 +28,9 @@ Ext.define("StudentApp.controller.Maps", {
                 keyup: "findPlaceSearchAction"
             }
         }
+    },
+    showView: function(e) {
+        Ext.Viewport.setActiveItem("mapsview");
     },
     slideLeftTransition: {
         type: 'slide', direction: 'left'

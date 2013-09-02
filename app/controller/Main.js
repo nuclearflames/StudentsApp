@@ -34,6 +34,9 @@ Ext.define("StudentApp.controller.Main", {
             "#helpAbtBtn": {
                 tap: "helpAbtBtnAction"
             },
+            "#timetableBtn": {
+                tap: "timetableBtnAction"
+            },
             "button[action=menuExpand]": {
                 tap: "menuExpandAction"
             }
@@ -48,33 +51,57 @@ Ext.define("StudentApp.controller.Main", {
     },
     mapsBtnAction: function() {
         Ext.Viewport.setActiveItem("mapsview");
+        window.location.hash = "#maps";
+        //Trigger resize of map incase window size has changed previously
+        if (gMap) {
+            google.maps.event.trigger(gMap, 'resize');
+        }
     },
     labstatsBtnAction: function() {
         Ext.Viewport.setActiveItem("labstatsview");
+        window.location.hash = "#pcs";
+        //Used to resize the highchart if it exists
+        if ($(".highcharts-container").length) {
+            newWidth = $(".highcharts-container").parent().width();
+            newHeight = $(".highcharts-container").parent().height();
+            chart.setSize(newWidth, newHeight);
+        }
     },
     searchBtnAction: function() {
         Ext.Viewport.setActiveItem("searchview");
+        window.location.hash = "#search";
     },
     blogBtnAction: function() {
         Ext.Viewport.setActiveItem("blogview");
+        window.location.hash = "#blog";
     },
     homeBtnAction: function () {
         Ext.Viewport.animateActiveItem("mainview", this.slideRightTransition);
+        window.location.hash = "";
     },
     editBtnAction: function () {
         Ext.Viewport.animateActiveItem("settingsview", this.slideLeftTransition);
+        window.location.hash = "#settings";
     },
     newsBtnAction: function () {
         Ext.Viewport.animateActiveItem("newsview", this.slideLeftTransition);
+        window.location.hash = "#news";
+    },
+    timetableBtnAction: function () {
+        Ext.Viewport.setActiveItem("timetableview");
+        window.location.hash = "#timetable";
     },
     eventsBtnAction: function () {
         Ext.Viewport.animateActiveItem("eventsview", this.slideLeftTransition);
+        window.location.hash = "#events";
     },
     cityBtnAction: function() {
         Ext.Viewport.setActiveItem("cityview");
+        window.location.hash = "#city";
     },
     helpAbtBtnAction: function() {
         Ext.Viewport.setActiveItem("helpAbtview");
+        window.location.hash = "#help";
     },
     menuExpandAction: function(e) {
         var menu = Ext.ComponentQuery.query("fieldset[_cls='expandMenu']"),

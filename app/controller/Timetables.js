@@ -2,12 +2,18 @@
 Ext.define("StudentApp.controller.Timetables", {
     extend: "Ext.app.Controller",
     config: {
+        routes: {
+            "timetable": "showView"
+        },
         control: {
             //Events that will make the functions run, gets the ID and initilize a function
             "#editSearch": {
                 keyup: "editSearchAction"
             }
         }
+    },
+    showView: function(e) {
+        Ext.Viewport.setActiveItem("timetableview");
     },
     slideLeftTransition: {
         type: 'slide', direction: 'left'

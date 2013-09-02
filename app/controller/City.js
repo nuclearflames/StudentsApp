@@ -2,6 +2,9 @@
 Ext.define("StudentApp.controller.City", {
     extend: "Ext.app.Controller",
     config: {
+        routes: {
+            "city": "showView"
+        },
         control: {
             //Events that will make the functions run, gets the ID and initilize a function
             "#cityBlogBtn": {
@@ -17,6 +20,9 @@ Ext.define("StudentApp.controller.City", {
                 keyup: "cityFeedAction"
             }
         }
+    },
+    showView: function(e) {
+        Ext.Viewport.setActiveItem("cityview");
     },
     slideLeftTransition: {
         type: 'slide', direction: 'left'

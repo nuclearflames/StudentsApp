@@ -11,40 +11,23 @@ error_reporting(E_ALL);
 /**
  * Setup the config variables used in the file
  */
-define('CACHE_FILE', 'cache/labstats.cache');
-define('CACHE_TIME', 24 * 60 * 60);
 
-define('MATRIX_URL', 'http://www.city.ac.uk/apis/labstats.xml/_nocache');
+$cachefile = "cacheLabstats.json";
+$matrixUrl = "http://www.city.ac.uk/apis/labstats.xml/_nocache";
+
+// 1/2 Day
+$cacheLength = 120;
+
+if (file_exists($cachefile) && (time() - $cacheLength < filemtime($cachefile))) {
+    include($cachefile);
+    exit;
+} else {
+    $sXML = file_get_contents($matrixUrl);
+}
+
 
 //Creates a SOAP Connection (Change URL to match your installation
 $pcData = new SoapClient("http://nsq209ap.enterprise.internal.city.ac.uk/LabStats/WebServices/Statistics.asmx?WSDL");
-
-$bReCache = TRUE;
-
-// Check the cache file exists
-if (file_exists(CACHE_FILE)) {
-    $aFile = @unserialize(file_get_contents(CACHE_FILE));
-    if (is_array($aFile) && isset($aFile['update']) && isset($aFile['xml'])) {
-        if ($aFile['update'] - CACHE_TIME < time()) {
-            $sXML = $aFile['xml'];
-            $bReCache = FALSE;
-        }
-    }
-}
-
-// Does the system need to recache?
-if ($bReCache || (isset($_GET['recache']) && 'true' == $_GET['recache'])) {
-    $sXML = file_get_contents(MATRIX_URL);
-    // Try and write the cache file
-    @file_put_contents(
-        CACHE_FILE, serialize(
-            array(
-                'update' => time(),
-                'xml' => $sXML
-            )
-        )
-    );
-}
 
 // Turn the matrix metadata xml string into a SimpleXMLElement
 $oXml = new SimpleXMLElement($sXML);
@@ -59,7 +42,6 @@ foreach ($oXml->xpath('lab[location/labstat/id>0]') as $oLab) { // select labs w
     $aLabs[(int) $oLab->location->labstat->id] = $oLab;
 }
 
-$sXML = file_get_contents(MATRIX_URL);
 $oXml = new SimpleXMLElement($sXML);
 //paramater matching to determine the type of lab area to load
 if (isset($_GET['id'])) {
@@ -144,6 +126,8 @@ if (isset($_GET['callback'])) { // jsonp
     exit(sprintf('%s(%s)', $_GET['callback'], $sJSON));
 } else { // json
     header('Content-Type: application/json');
+    $fp = fopen($cachefile, "w");
+    fwrite($fp, $sJSON);
     exit($sJSON);
 }
 

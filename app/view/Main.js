@@ -56,10 +56,7 @@ Ext.define('StudentApp.view.Main', {
                             iconCls: 'timetable',
                             iconMask: true,
                             text: 'Timetable',
-                            id: "timetableBtn",
-                            handler: function () {
-                                Ext.Viewport.setActiveItem("timetableview");
-                            }
+                            id: "timetableBtn"
                         }]
                     },{
                         xtype: "panel",

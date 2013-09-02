@@ -2,6 +2,9 @@
 Ext.define("StudentApp.controller.Search", {
     extend: "Ext.app.Controller",
     config: {
+        routes: {
+            "search": "showView"
+        },
         control: {
             //Events that will make the functions run, gets the ID and initilize a function
             "#formPanelBtn": {
@@ -11,6 +14,9 @@ Ext.define("StudentApp.controller.Search", {
                 tap: "searchPhoneBtnAction"
             }
         }
+    },
+    showView: function(e) {
+        Ext.Viewport.setActiveItem("searchview");
     },
     slideLeftTransition: {
         type: 'slide', direction: 'left'

@@ -2,6 +2,9 @@
 Ext.define("StudentApp.controller.Events", {
 	extend: "Ext.app.Controller",
 	config: {
+        routes: {
+            "events": "showView"
+        },
 		control: {
 			"#cityBlogBtn": {
 				tap: "cityBlogBtnAction"
@@ -17,6 +20,9 @@ Ext.define("StudentApp.controller.Events", {
 			}
 		}
 	},
+    showView: function(e) {
+        Ext.Viewport.setActiveItem("eventsview");
+    },
     slideLeftTransition: {
         type: 'slide', direction: 'left'
     },

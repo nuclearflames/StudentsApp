@@ -2,6 +2,9 @@
 Ext.define("StudentApp.controller.Edit", {
 	extend: "Ext.app.Controller",
 	config: {
+        routes: {
+            "settings": "showView"
+        },
 		control: {
 			"#cityBlogBtn": {
 				tap: "cityBlogBtnAction"
@@ -14,6 +17,9 @@ Ext.define("StudentApp.controller.Edit", {
 			}
 		}
 	},
+    showView: function(e) {
+        Ext.Viewport.setActiveItem("editview");
+    },
     slideLeftTransition: {
         type: 'slide', direction: 'left'
     },
